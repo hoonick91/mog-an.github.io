@@ -108,20 +108,24 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="jjj&#39;s park">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="DI(의존성 주입)을 적용하는 방법은 xml을 이용한 DI 뿐만아니라 java config파일을 만들어서 DI를 적용시키는 방법이 있다. Java config를 이용한 방법ApplicationConfig.java1234567891011121314151617package kr.or.connect.diexam01;import org.springframework">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dependency Injection(java config)">
+<meta property="og:url" content="http://yoursite.com/2018/11/29/Dependency-Injection-java-config/index.html">
 <meta property="og:site_name" content="jjj&#39;s park">
+<meta property="og:description" content="DI(의존성 주입)을 적용하는 방법은 xml을 이용한 DI 뿐만아니라 java config파일을 만들어서 DI를 적용시키는 방법이 있다. Java config를 이용한 방법ApplicationConfig.java1234567891011121314151617package kr.or.connect.diexam01;import org.springframework">
 <meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2018-11-29T05:56:21.848Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jjj&#39;s park">
+<meta name="twitter:title" content="Dependency Injection(java config)">
+<meta name="twitter:description" content="DI(의존성 주입)을 적용하는 방법은 xml을 이용한 DI 뿐만아니라 java config파일을 만들어서 DI를 적용시키는 방법이 있다. Java config를 이용한 방법ApplicationConfig.java1234567891011121314151617package kr.or.connect.diexam01;import org.springframework">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2018/11/29/Dependency-Injection-java-config/">
 
 
 
@@ -131,7 +135,7 @@
   };
 </script>
 
-  <title>jjj's park</title>
+  <title>Dependency Injection(java config) | jjj's park</title>
   
 
 
@@ -180,8 +184,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -218,7 +221,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
 
     
     
@@ -297,9 +300,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -331,10 +334,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/11/29/Dependency-Injection-java-config/" class="post-title-link" itemprop="http://yoursite.com/index.html">Dependency Injection(java config)</a>
+          <h1 class="post-title" itemprop="name headline">Dependency Injection(java config)
               
             
           </h1>
@@ -415,9 +415,7 @@
       
 
       
-        
-          
-            <p>DI(의존성 주입)을 적용하는 방법은 <a href="https://jjjpark.github.io/2018/11/28/Dependency-Injection-DI/" target="_blank" rel="noopener">xml을 이용한 DI</a> 뿐만아니라 java config파일을 만들어서 DI를 적용시키는 방법이 있다.</p>
+        <p>DI(의존성 주입)을 적용하는 방법은 <a href="https://jjjpark.github.io/2018/11/28/Dependency-Injection-DI/" target="_blank" rel="noopener">xml을 이용한 DI</a> 뿐만아니라 java config파일을 만들어서 DI를 적용시키는 방법이 있다.</p>
 <h2 id="Java-config를-이용한-방법"><a href="#Java-config를-이용한-방법" class="headerlink" title="Java config를 이용한 방법"></a>Java config를 이용한 방법</h2><h3 id="ApplicationConfig-java"><a href="#ApplicationConfig-java" class="headerlink" title="ApplicationConfig.java"></a>ApplicationConfig.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationConfig</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Car <span class="title">car</span><span class="params">(Engine e)</span> </span>&#123;</span><br><span class="line">		Car c = <span class="keyword">new</span> Car();</span><br><span class="line">		c.setEngine(e);</span><br><span class="line">		<span class="keyword">return</span> c;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Engine <span class="title">engine</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Engine();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>@Configuration - spring에서 사용하는 설정 클래스</p>
 <p>@Bean - bean으로 등록하겠다.(bean은 컴파일 시간에 객체가 만들어져서 싱글톤으로 관리된다.)</p>
@@ -431,8 +429,6 @@
 <h3 id="ApplicationContextExam04-java"><a href="#ApplicationContextExam04-java" class="headerlink" title="ApplicationContextExam04.java"></a>ApplicationContextExam04.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.AnnotationConfigApplicationContext;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationContextExam04</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		ApplicationContext ac = <span class="keyword">new</span> AnnotationConfigApplicationContext(ApplicationConfig2.class);</span><br><span class="line">		   </span><br><span class="line">		Car car = ac.getBean(Car.class);</span><br><span class="line">		car.run();</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>물론, <a href="##더-간단한-방법이-있다.">간단한 방법이 </a> 편하지만, @ComponentScan은 @Component가 달려있어야 Bean으로 만든다. 그래서 외부라이브러리에는 @ComponentScan을 사용할 수 없다. 그럴때는 <a href="## Java config를-이용한-방법">Java Config</a> 방법을 사용한다.</p>
 
-          
-        
       
     </div>
 
@@ -455,180 +451,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/28/Dependency-Injection-DI/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jonghun.park">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jjj's park">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/11/28/Dependency-Injection-DI/" class="post-title-link" itemprop="http://yoursite.com/index.html">Dependency Injection(DI)</a>
-              
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
+              <a href="/2018/11/28/Dependency-Injection-DI/" rel="next" title="Dependency Injection(DI)">
+                <i class="fa fa-chevron-left"></i> Dependency Injection(DI)
+              </a>
             
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">작성일</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-11-28 18:43:30" itemprop="dateCreated datePublished" datetime="2018-11-28T18:43:30+09:00">2018-11-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-11-29 14:56:15" itemprop="dateModified" datetime="2018-11-29T14:56:15+09:00">2018-11-29</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p> 객체간의 의존관계를 맺어준다는 의미이다. 그걸 개발자가 해주는것이 아니라 spring IoC 컨데이너에게 제어권을 넘겨 스스로 관계를 맺게 한다.</p>
-<h3 id="Engine-java"><a href="#Engine-java" class="headerlink" title="Engine.java"></a>Engine.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Engine</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Engine</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Engine 생성자"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">exec</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"엔진이 동작합니다."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Car-java"><a href="#Car-java" class="headerlink" title="Car.java"></a>Car.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">	Engine v8;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Car</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Car 생성자"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setEngine</span><span class="params">(Engine e)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.v8 = e;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"엔진을 이용하여 달립니다."</span>);</span><br><span class="line">		v8.exec();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Spring-사용-전"><a href="#Spring-사용-전" class="headerlink" title="Spring 사용 전 :"></a>Spring 사용 전 :</h2><h3 id="Main-java"><a href="#Main-java" class="headerlink" title="Main.java"></a>Main.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	Engine e = <span class="keyword">new</span> Engine();</span><br><span class="line">	Car c = <span class="keyword">new</span> Car();</span><br><span class="line">	c.setEngine( e );</span><br><span class="line">	c.run();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Spring-사용-후"><a href="#Spring-사용-후" class="headerlink" title="Spring 사용 후 :"></a>Spring 사용 후 :</h2><p>.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"e"</span> <span class="attr">class</span>=<span class="string">"kr.or.connect.diexam01.Engine"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"car"</span> <span class="attr">class</span>=<span class="string">"kr.or.connect.diexam01.Car"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"engine"</span> <span class="attr">ref</span>=<span class="string">"e"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>위의 xml설정은 다음과 같은 의미를 갖는다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Engine e = <span class="keyword">new</span> Engine();</span><br><span class="line">Car c = <span class="keyword">new</span> Car();</span><br><span class="line">c.setEngine( e );</span><br></pre></td></tr></table></figure>
-<h3 id="ApplicationContextExam02-java"><a href="#ApplicationContextExam02-java" class="headerlink" title="ApplicationContextExam02.java"></a>ApplicationContextExam02.java</h3><p>위의 xml 설정파일을 읽어서 실행하는 부분</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.support.ClassPathXmlApplicationContext;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationContextExam02</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		ApplicationContext ac = <span class="keyword">new</span> ClassPathXmlApplicationContext( </span><br><span class="line">				<span class="string">"classpath:applicationContext.xml"</span>); </span><br><span class="line"></span><br><span class="line">		Car car = (Car)ac.getBean(<span class="string">"car"</span>);</span><br><span class="line">		car.run();</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">##Result##</span></span><br><span class="line"><span class="comment">Engine 생성자</span></span><br><span class="line"><span class="comment">Car 생성자</span></span><br><span class="line"><span class="comment">엔진을 이용하여 달립니다.</span></span><br><span class="line"><span class="comment">엔진이 동작합니다.</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<p>작성된 xml은 컴파일 타임에 spring이 싱글톤으로 객체를 생성해준다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Engine 생성자</span></span><br><span class="line"><span class="comment">Car 생성자</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<p>그리고, Car.run() 메소드를 호출하면 나머지 결과가 나온다.</p>
-<p>이렇게 하면 실행클래스의 코드는 Car라는 클래스만 알아도 어떤 엔진을 사용할지 몰라도 된다. </p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://www.edwith.org/boostcourse-web/lecture/20657/" target="_blank" rel="noopener">https://www.edwith.org/boostcourse-web/lecture/20657/</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -638,176 +482,15 @@
   </article>
 
 
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/23/hello-world/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jonghun.park">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jjj's park">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/11/23/hello-world/" class="post-title-link" itemprop="http://yoursite.com/index.html">Hello World</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">작성일</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-11-23 18:35:20" itemprop="dateCreated datePublished" datetime="2018-11-23T18:35:20+09:00">2018-11-23</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-11-26 09:34:45" itemprop="dateModified" datetime="2018-11-26T09:34:45+09:00">2018-11-26</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -828,8 +511,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            목차
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            흝어보기
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -916,6 +608,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-config를-이용한-방법"><span class="nav-number">1.</span> <span class="nav-text">Java config를 이용한 방법</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ApplicationConfig-java"><span class="nav-number">1.1.</span> <span class="nav-text">ApplicationConfig.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ApplicationContextExam03-java"><span class="nav-number">1.2.</span> <span class="nav-text">ApplicationContextExam03.java</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#더-간단한-방법이-있다"><span class="nav-number">2.</span> <span class="nav-text">더 간단한 방법이 있다.</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ApplicationConfig2-java"><span class="nav-number">2.1.</span> <span class="nav-text">ApplicationConfig2.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Engine-java"><span class="nav-number">2.2.</span> <span class="nav-text">Engine.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Car-java"><span class="nav-number">2.3.</span> <span class="nav-text">Car.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ApplicationContextExam04-java"><span class="nav-number">2.4.</span> <span class="nav-text">ApplicationContextExam04.java</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1044,6 +752,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
 
   
 
