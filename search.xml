@@ -3,6 +3,28 @@
   
     
     <entry>
+      <title>test</title>
+      <link href="/2019/03/27/test/"/>
+      <url>/2019/03/27/test/</url>
+      
+        <content type="html"><![CDATA[<p><img src="/Users/bagjonghun/Desktop/my-blog/source/_posts/test/applicationContext.png" alt="applicationContext"></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    <entry>
+      <title>item8. equals를 재정의할 때는 일반 규약을 따르라</title>
+      <link href="/2019/03/27/item8-equals%EB%A5%BC-%EC%9E%AC%EC%A0%95%EC%9D%98%ED%95%A0-%EB%95%8C%EB%8A%94-%EC%9D%BC%EB%B0%98-%EA%B7%9C%EC%95%BD%EC%9D%84-%EB%94%B0%EB%A5%B4%EB%9D%BC/"/>
+      <url>/2019/03/27/item8-equals%EB%A5%BC-%EC%9E%AC%EC%A0%95%EC%9D%98%ED%95%A0-%EB%95%8C%EB%8A%94-%EC%9D%BC%EB%B0%98-%EA%B7%9C%EC%95%BD%EC%9D%84-%EB%94%B0%EB%A5%B4%EB%9D%BC/</url>
+      
+        <content type="html"><![CDATA[<ul><li>instance of</li><li>getClass()</li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    <entry>
       <title>item6. 유효기간이 지난 객체 참조는 폐기하라</title>
       <link href="/2019/03/25/item6-%EC%9C%A0%ED%9A%A8%EA%B8%B0%EA%B0%84%EC%9D%B4-%EC%A7%80%EB%82%9C-%EA%B0%9D%EC%B2%B4-%EC%B0%B8%EC%A1%B0%EB%8A%94-%ED%8F%90%EA%B8%B0%ED%95%98%EB%9D%BC/"/>
       <url>/2019/03/25/item6-%EC%9C%A0%ED%9A%A8%EA%B8%B0%EA%B0%84%EC%9D%B4-%EC%A7%80%EB%82%9C-%EA%B0%9D%EC%B2%B4-%EC%B0%B8%EC%A1%B0%EB%8A%94-%ED%8F%90%EA%B8%B0%ED%95%98%EB%9D%BC/</url>
