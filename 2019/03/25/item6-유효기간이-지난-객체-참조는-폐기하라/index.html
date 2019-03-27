@@ -108,24 +108,24 @@
 
 
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="디스크 페이징  obsolete reference  GC의 동작원리Stop-the-world : GC를 실행하기위해 다른 쓰레드들이 작업을 멈추는 것. 이 시간을 적게 하는 것이 성능을 나타낸다. GC는 2가지의 가설에 의해 설계 되었다. 1. 대부분의 객체는 금방 접근불가능상태가 된다. (객체의 유효기간이 짧다) 2. 오래된 객체는 새로 생긴 객체 참조">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2018/11/26/hello-world/index.html">
+<meta property="og:title" content="item6. 유효기간이 지난 객체 참조는 폐기하라">
+<meta property="og:url" content="http://yoursite.com/2019/03/25/item6-유효기간이-지난-객체-참조는-폐기하라/index.html">
 <meta property="og:site_name" content="jjj&#39;s park">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="디스크 페이징  obsolete reference  GC의 동작원리Stop-the-world : GC를 실행하기위해 다른 쓰레드들이 작업을 멈추는 것. 이 시간을 적게 하는 것이 성능을 나타낸다. GC는 2가지의 가설에 의해 설계 되었다. 1. 대부분의 객체는 금방 접근불가능상태가 된다. (객체의 유효기간이 짧다) 2. 오래된 객체는 새로 생긴 객체 참조">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2018-11-26T00:34:44.000Z">
+<meta property="og:updated_time" content="2019-03-25T03:47:04.073Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="item6. 유효기간이 지난 객체 참조는 폐기하라">
+<meta name="twitter:description" content="디스크 페이징  obsolete reference  GC의 동작원리Stop-the-world : GC를 실행하기위해 다른 쓰레드들이 작업을 멈추는 것. 이 시간을 적게 하는 것이 성능을 나타낸다. GC는 2가지의 가설에 의해 설계 되었다. 1. 대부분의 객체는 금방 접근불가능상태가 된다. (객체의 유효기간이 짧다) 2. 오래된 객체는 새로 생긴 객체 참조">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/26/hello-world/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/25/item6-유효기간이-지난-객체-참조는-폐기하라/">
 
 
 
@@ -135,7 +135,7 @@
   };
 </script>
 
-  <title>Hello World | jjj's park</title>
+  <title>item6. 유효기간이 지난 객체 참조는 폐기하라 | jjj's park</title>
   
 
 
@@ -317,7 +317,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/26/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/25/item6-유효기간이-지난-객체-참조는-폐기하라/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="jonghun.park">
@@ -334,7 +334,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World
+          <h1 class="post-title" itemprop="name headline">item6. 유효기간이 지난 객체 참조는 폐기하라
               
             
           </h1>
@@ -359,9 +359,13 @@
                 
               
 
-              <time title="Post created: 2018-11-26 09:34:44" itemprop="dateCreated datePublished" datetime="2018-11-26T09:34:44+09:00">2018-11-26</time>
+              <time title="Post created: 2019-03-25 11:17:38 / Updated at: 12:47:04" itemprop="dateCreated datePublished" datetime="2019-03-25T11:17:38+09:00">2019-03-25</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -393,15 +397,50 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <ul>
+<li><p>디스크 페이징</p>
+</li>
+<li><p>obsolete reference</p>
+</li>
+<li><h1 id="GC의-동작원리"><a href="#GC의-동작원리" class="headerlink" title="GC의 동작원리"></a>GC의 동작원리</h1><p>Stop-the-world : GC를 실행하기위해 다른 쓰레드들이 작업을 멈추는 것. 이 시간을 적게 하는 것이 성능을 나타낸다.</p>
+<p>GC는 2가지의 가설에 의해 설계 되었다.</p>
+<pre><code>1. 대부분의 객체는 금방 접근불가능상태가 된다. (객체의 유효기간이 짧다)
+2. 오래된 객체는 새로 생긴 객체 참조를 적게한다.
+</code></pre><p>그래서 <strong>HotSpot VM(JVM 종류 중 하나)</strong>에서는 Old, Young영역으로 물리적 공간이 나뉘어 있다.</p>
+</li>
+</ul>
+<h2 id="Young영역"><a href="#Young영역" class="headerlink" title="Young영역"></a>Young영역</h2><blockquote>
+<p>Eden, Survivor, Survivor</p>
+</blockquote>
+<pre><code>1. 새로생긴 객체는 eden에 저장된다.
+2. GC로 Eden에서 살아남은 객체는 Survivor에 저장된다. 
+3. 한쪽의 Survivor이 다 차면, 그 중 살아남은 객체는 다른 Survivor에 저장된다.
+4. 혹은 Old Generation으로 이동한다. 이때 다 차있었던 Survivor은 비어있는 상태가 된다.
+</code></pre>  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">HotSpot VM에서는 빠른 메모리 할당을 위해 2가지를 사용한다.</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; Bump-the-pointer, TLABs(Thread-Local-Allocation-Buffers)</span></span><br><span class="line"></span><br><span class="line">Bump-the-pointer는 stack처럼 새로운 객체가 할당될때, 맨위에 있는 마지막 객체를 추적해서 Eden에 새로운 객체가 할당될 수 있는지 없는지만 판단한다. 하지만 이는 단일 쓰레드 환경일 때이다. 멀티쓰레드 환경일때는 TLABs를 이용한다.</span><br><span class="line"></span><br><span class="line">멀티쓰레드 환경일때에는 Eden에 저장하려면 lock가 걸릴 수 밖에 없다. 이를 해결한 것이 TLABs이다. 각각의 Thread가 Eden의 덩어리를 갖게 하는 것인데.. 그럼 동기화는 어떻게 하는 걸까?</span><br></pre></td></tr></table></figure>
+<h2 id="Old영역에-대한-GC"><a href="#Old영역에-대한-GC" class="headerlink" title="Old영역에 대한 GC"></a>Old영역에 대한 GC</h2><blockquote>
+<p>기본적으로 데이터가 가득차면 GC를 실행한다. 방식은 5가지 방식이 있다.(JDK 7)</p>
+</blockquote>
+<ul>
+<li>Serial GC - mark-sweep-compact 알고리즘 사용 (코어 수가 적을때 적합)<ol>
+<li>살아있는 객체를 식별</li>
+<li>힙의 앞 부분부터 확인하여 살아있는것만 남긴다. </li>
+<li>살아남은 객체를 힙의 앞으로 쭉땡겨서 객체가 있는 부분과 없는 부분으로 나눈다.</li>
+</ol>
+</li>
+<li>Parallel GC - Serial GC랑 방식은 같으나 GC 쓰레드가 여러개이다. (코어가 많을때 유리)</li>
+<li>Parallel Old GC - ?</li>
+<li>Concurrent Mark &amp; Sweep GC<ol>
+<li><strong>클래스 로더</strong>에서 가까운 객체 중 살아있는 것을 찾는다. </li>
+</ol>
+</li>
+<li>G1(Garbage First) GC</li>
+</ul>
+<h3 id="Serial-GC"><a href="#Serial-GC" class="headerlink" title="Serial GC"></a>Serial GC</h3><ul>
+<li>사용하지 않는 참조들을 null로 바꾸면 GC는 반환해도 좋은 객체인지 판별할 수 있게 된다.</li>
+</ul>
+<ul>
+<li>Background thread</li>
+</ul>
 
       
     </div>
@@ -432,15 +471,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/03/16/IoC-Container-신석기-시대/" rel="next" title="IoC-Container-신석기-시대">
+                <i class="fa fa-chevron-left"></i> IoC-Container-신석기-시대
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/28/Dependency-Injection-DI/" rel="prev" title="Dependency Injection(DI)">
-                Dependency Injection(DI) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -594,7 +633,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GC의-동작원리"><span class="nav-number">1.</span> <span class="nav-text">GC의 동작원리</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Young영역"><span class="nav-number">1.1.</span> <span class="nav-text">Young영역</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Old영역에-대한-GC"><span class="nav-number">1.2.</span> <span class="nav-text">Old영역에 대한 GC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Serial-GC"><span class="nav-number">1.2.1.</span> <span class="nav-text">Serial GC</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
