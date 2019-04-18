@@ -314,512 +314,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/27/item8-equals를-재정의할-때는-일반-규약을-따르라/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jonghun.park">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jjj's park">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/27/item8-equals를-재정의할-때는-일반-규약을-따르라/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">item8. equals를 재정의할 때는 일반 규약을 따르라</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">작성일</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2019-03-27 10:43:59 / Updated at: 10:58:11" itemprop="dateCreated datePublished" datetime="2019-03-27T10:43:59+09:00">2019-03-27</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>instance of</li>
-<li>getClass()</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/25/item6-유효기간이-지난-객체-참조는-폐기하라/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jonghun.park">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jjj's park">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/25/item6-유효기간이-지난-객체-참조는-폐기하라/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">item6. 유효기간이 지난 객체 참조는 폐기하라</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">작성일</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2019-03-25 11:17:38 / Updated at: 12:47:04" itemprop="dateCreated datePublished" datetime="2019-03-25T11:17:38+09:00">2019-03-25</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>디스크 페이징</p>
-</li>
-<li><p>obsolete reference</p>
-</li>
-<li><h1 id="GC의-동작원리"><a href="#GC의-동작원리" class="headerlink" title="GC의 동작원리"></a>GC의 동작원리</h1><p>Stop-the-world : GC를 실행하기위해 다른 쓰레드들이 작업을 멈추는 것. 이 시간을 적게 하는 것이 성능을 나타낸다.</p>
-<p>GC는 2가지의 가설에 의해 설계 되었다.</p>
-<pre><code>1. 대부분의 객체는 금방 접근불가능상태가 된다. (객체의 유효기간이 짧다)
-2. 오래된 객체는 새로 생긴 객체 참조를 적게한다.
-</code></pre><p>그래서 <strong>HotSpot VM(JVM 종류 중 하나)</strong>에서는 Old, Young영역으로 물리적 공간이 나뉘어 있다.</p>
-</li>
-</ul>
-<h2 id="Young영역"><a href="#Young영역" class="headerlink" title="Young영역"></a>Young영역</h2><blockquote>
-<p>Eden, Survivor, Survivor</p>
-</blockquote>
-<pre><code>1. 새로생긴 객체는 eden에 저장된다.
-2. GC로 Eden에서 살아남은 객체는 Survivor에 저장된다. 
-3. 한쪽의 Survivor이 다 차면, 그 중 살아남은 객체는 다른 Survivor에 저장된다.
-4. 혹은 Old Generation으로 이동한다. 이때 다 차있었던 Survivor은 비어있는 상태가 된다.
-</code></pre>  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">HotSpot VM에서는 빠른 메모리 할당을 위해 2가지를 사용한다.</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; Bump-the-pointer, TLABs(Thread-Local-Allocation-Buffers)</span></span><br><span class="line"></span><br><span class="line">Bump-the-pointer는 stack처럼 새로운 객체가 할당될때, 맨위에 있는 마지막 객체를 추적해서 Eden에 새로운 객체가 할당될 수 있는지 없는지만 판단한다. 하지만 이는 단일 쓰레드 환경일 때이다. 멀티쓰레드 환경일때는 TLABs를 이용한다.</span><br><span class="line"></span><br><span class="line">멀티쓰레드 환경일때에는 Eden에 저장하려면 lock가 걸릴 수 밖에 없다. 이를 해결한 것이 TLABs이다. 각각의 Thread가 Eden의 덩어리를 갖게 하는 것인데.. 그럼 동기화는 어떻게 하는 걸까?</span><br></pre></td></tr></table></figure>
-<h2 id="Old영역에-대한-GC"><a href="#Old영역에-대한-GC" class="headerlink" title="Old영역에 대한 GC"></a>Old영역에 대한 GC</h2><blockquote>
-<p>기본적으로 데이터가 가득차면 GC를 실행한다. 방식은 5가지 방식이 있다.(JDK 7)</p>
-</blockquote>
-<ul>
-<li>Serial GC - mark-sweep-compact 알고리즘 사용 (코어 수가 적을때 적합)<ol>
-<li>살아있는 객체를 식별</li>
-<li>힙의 앞 부분부터 확인하여 살아있는것만 남긴다. </li>
-<li>살아남은 객체를 힙의 앞으로 쭉땡겨서 객체가 있는 부분과 없는 부분으로 나눈다.</li>
-</ol>
-</li>
-<li>Parallel GC - Serial GC랑 방식은 같으나 GC 쓰레드가 여러개이다. (코어가 많을때 유리)</li>
-<li>Parallel Old GC - ?</li>
-<li>Concurrent Mark &amp; Sweep GC<ol>
-<li><strong>클래스 로더</strong>에서 가까운 객체 중 살아있는 것을 찾는다. </li>
-</ol>
-</li>
-<li>G1(Garbage First) GC</li>
-</ul>
-<h3 id="Serial-GC"><a href="#Serial-GC" class="headerlink" title="Serial GC"></a>Serial GC</h3><ul>
-<li>사용하지 않는 참조들을 null로 바꾸면 GC는 반환해도 좋은 객체인지 판별할 수 있게 된다.</li>
-</ul>
-<ul>
-<li>Background thread</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/20/item3-private-생성자나-enum-자료형은-싱글턴-패턴을-따르도록-설계하라/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jonghun.park">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jjj's park">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/20/item3-private-생성자나-enum-자료형은-싱글턴-패턴을-따르도록-설계하라/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">item3 private 생성자나 enum 자료형은 싱글턴 패턴을 따르도록 설계하라</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">작성일</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2019-03-20 10:16:28" itemprop="dateCreated datePublished" datetime="2019-03-20T10:16:28+09:00">2019-03-20</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2019-04-18 21:25:16" itemprop="dateModified" datetime="2019-04-18T21:25:16+09:00">2019-04-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>Reflection</li>
-<li>Serializable</li>
-<li>Transient</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/16/IoC-Container-신석기-시대/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2115,6 +1609,534 @@ DispatcherServlet는 다음과 같이 동작한다:
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/06/객체지향-프로그래밍/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonghun.park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jjj's park">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/12/06/객체지향-프로그래밍/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">객체지향 프로그래밍</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2018-12-06 12:47:36" itemprop="dateCreated datePublished" datetime="2018-12-06T12:47:36+09:00">2018-12-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2019-04-18 23:09:33" itemprop="dateModified" datetime="2019-04-18T23:09:33+09:00">2019-04-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>관계성있는 객체들의 집합이라는 관점으로 접근하는 software 디자인.</p>
+</blockquote>
+<h2 id="프로토타입기반-프로그래밍"><a href="#프로토타입기반-프로그래밍" class="headerlink" title="프로토타입기반 프로그래밍"></a>프로토타입기반 프로그래밍</h2><h2 id="JS-객체지향-프로그래밍"><a href="#JS-객체지향-프로그래밍" class="headerlink" title="JS 객체지향 프로그래밍"></a>JS 객체지향 프로그래밍</h2><blockquote>
+<p>JS는 프로토타입 기반 언어이다.</p>
+</blockquote>
+<p>그래서 function()을 class로 사용한다.</p>
+<h3 id="The-Class"><a href="#The-Class" class="headerlink" title="The Class"></a>The Class</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="The-Object-Class-Instance"><a href="#The-Object-Class-Instance" class="headerlink" title="The Object(Class Instance)"></a>The Object(Class Instance)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Persion</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="keyword">var</span> person2 = <span class="keyword">new</span> Person();</span><br></pre></td></tr></table></figure>
+<h3 id="The-Constructor"><a href="#The-Constructor" class="headerlink" title="The Constructor"></a>The Constructor</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Persion</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">'Person instantiated'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="keyword">var</span> person2 = <span class="keyword">new</span> Person();</span><br></pre></td></tr></table></figure>
+<h3 id="The-Property-Object-attribute"><a href="#The-Property-Object-attribute" class="headerlink" title="The Property(Object attribute)"></a>The Property(Object attribute)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">gender</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.gender = gender;</span><br><span class="line">  alert(<span class="string">'Person instantiated'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">'Male'</span>);</span><br><span class="line"><span class="keyword">var</span> person2 = <span class="keyword">new</span> Person(<span class="string">'Female'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//display the person1 gender</span></span><br><span class="line">alert(<span class="string">'person1 is a '</span> + person1.gender); <span class="comment">// person1 is a Male</span></span><br></pre></td></tr></table></figure>
+<h3 id="The-methods"><a href="#The-methods" class="headerlink" title="The methods"></a>The methods</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">gender</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.gender = gender;</span><br><span class="line">  alert(<span class="string">'Person instantiated'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  alert (<span class="string">'hello'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">'Male'</span>);</span><br><span class="line"><span class="keyword">var</span> person2 = <span class="keyword">new</span> Person(<span class="string">'Female'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// call the Person sayHello method.</span></span><br><span class="line">person1.sayHello(); <span class="comment">// hello</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">gender</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.gender = gender;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.sayGender = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  alert(<span class="keyword">this</span>.gender);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">'Male'</span>);</span><br><span class="line"><span class="keyword">var</span> genderTeller = person1.sayGender;</span><br><span class="line"></span><br><span class="line">person1.sayGender(); <span class="comment">// alerts 'Male'</span></span><br><span class="line">genderTeller(); <span class="comment">// alerts undefined</span></span><br><span class="line">alert(genderTeller === person1.sayGender); <span class="comment">// alerts true</span></span><br><span class="line">alert(genderTeller === Person.prototype.sayGender); <span class="comment">// alerts true</span></span><br></pre></td></tr></table></figure>
+<p>genderTeller(); // alerts undefined </p>
+<p>위의 이유는 gengerTeller()를 호출할때, sayGender의 this가 정의 되어 있지 않기 때문이다. 그래서 해결하기 위해 다음과 같은 방법을 사용한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">genderTeller.call(person1); <span class="comment">//alerts 'Male'</span></span><br></pre></td></tr></table></figure>
+<h3 id="Inheritance"><a href="#Inheritance" class="headerlink" title="Inheritance"></a>Inheritance</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// define the Person Class</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.walk = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  alert (<span class="string">'I am walking!'</span>);</span><br><span class="line">&#125;;</span><br><span class="line">Person.prototype.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  alert (<span class="string">'hello'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// define the Student class</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Call the parent constructor</span></span><br><span class="line">  Person.call(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// inherit Person</span></span><br><span class="line">Student.prototype = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line"><span class="comment">// correct the constructor pointer because it points to Person</span></span><br><span class="line">Student.prototype.constructor = Student;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// replace the sayHello method</span></span><br><span class="line">Student.prototype.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  alert(<span class="string">'hi, I am a student'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// add sayGoodBye method</span></span><br><span class="line">Student.prototype.sayGoodBye = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  alert(<span class="string">'goodBye'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> student1 = <span class="keyword">new</span> Student();</span><br><span class="line">student1.sayHello();</span><br><span class="line">student1.walk();</span><br><span class="line">student1.sayGoodBye();</span><br><span class="line"></span><br><span class="line"><span class="comment">// check inheritance</span></span><br><span class="line">alert(student1 <span class="keyword">instanceof</span> Person); <span class="comment">// true </span></span><br><span class="line">alert(student1 <span class="keyword">instanceof</span> Student); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/29/Dependency-Injection-java-config/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonghun.park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jjj's park">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/11/29/Dependency-Injection-java-config/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">Dependency Injection(java config)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2018-11-29 13:13:55 / Updated at: 14:56:20" itemprop="dateCreated datePublished" datetime="2018-11-29T13:13:55+09:00">2018-11-29</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/spring-framework/" itemprop="url" rel="index"><span itemprop="name">spring_framework</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>DI(의존성 주입)을 적용하는 방법은 <a href="https://jjjpark.github.io/2018/11/28/Dependency-Injection-DI/" target="_blank" rel="noopener">xml을 이용한 DI</a> 뿐만아니라 java config파일을 만들어서 DI를 적용시키는 방법이 있다.</p>
+<h2 id="Java-config를-이용한-방법"><a href="#Java-config를-이용한-방법" class="headerlink" title="Java config를 이용한 방법"></a>Java config를 이용한 방법</h2><h3 id="ApplicationConfig-java"><a href="#ApplicationConfig-java" class="headerlink" title="ApplicationConfig.java"></a>ApplicationConfig.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationConfig</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Car <span class="title">car</span><span class="params">(Engine e)</span> </span>&#123;</span><br><span class="line">		Car c = <span class="keyword">new</span> Car();</span><br><span class="line">		c.setEngine(e);</span><br><span class="line">		<span class="keyword">return</span> c;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Engine <span class="title">engine</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Engine();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>@Configuration - spring에서 사용하는 설정 클래스</p>
+<p>@Bean - bean으로 등록하겠다.(bean은 컴파일 시간에 객체가 만들어져서 싱글톤으로 관리된다.)</p>
+<h3 id="ApplicationContextExam03-java"><a href="#ApplicationContextExam03-java" class="headerlink" title="ApplicationContextExam03.java"></a>ApplicationContextExam03.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.AnnotationConfigApplicationContext;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationContextExam03</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		ApplicationContext ac = <span class="keyword">new</span> AnnotationConfigApplicationContext(ApplicationConfig.class);</span><br><span class="line">		   </span><br><span class="line">		Car car = (Car)ac.getBean(<span class="string">"car"</span>);</span><br><span class="line">		car.run();</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>하지만, </p>
+<h2 id="더-간단한-방법이-있다"><a href="#더-간단한-방법이-있다" class="headerlink" title="더 간단한 방법이 있다."></a>더 간단한 방법이 있다.</h2><h3 id="ApplicationConfig2-java"><a href="#ApplicationConfig2-java" class="headerlink" title="ApplicationConfig2.java"></a>ApplicationConfig2.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(<span class="string">"kr.or.connect.diexam01"</span>)</span><br><span class="line">	<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationConfig2</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>@ComponentScan(“kr.or.connect.diexam01”) - 명시된 package를 돌면서 @Component가 붙은 것을 bean으로 만든다.</p>
+<h3 id="Engine-java"><a href="#Engine-java" class="headerlink" title="Engine.java"></a>Engine.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Engine</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Engine</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Engine 생성자"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">exec</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"엔진이 동작합니다."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Car-java"><a href="#Car-java" class="headerlink" title="Car.java"></a>Car.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> Engine v8;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Car</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Car 생성자"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"엔진을 이용하여 달립니다."</span>);</span><br><span class="line">		v8.exec();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>@Autowired - Engine이라는 bean이 있으면 현재 클래스에 주입한다.(DI 적용)</p>
+<h3 id="ApplicationContextExam04-java"><a href="#ApplicationContextExam04-java" class="headerlink" title="ApplicationContextExam04.java"></a>ApplicationContextExam04.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.AnnotationConfigApplicationContext;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationContextExam04</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		ApplicationContext ac = <span class="keyword">new</span> AnnotationConfigApplicationContext(ApplicationConfig2.class);</span><br><span class="line">		   </span><br><span class="line">		Car car = ac.getBean(Car.class);</span><br><span class="line">		car.run();</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>물론, <a href="##더-간단한-방법이-있다.">간단한 방법이 </a> 편하지만, @ComponentScan은 @Component가 달려있어야 Bean으로 만든다. 그래서 외부라이브러리에는 @ComponentScan을 사용할 수 없다. 그럴때는 <a href="## Java config를-이용한-방법">Java Config</a> 방법을 사용한다.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/28/Dependency-Injection-DI/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonghun.park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jjj's park">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/11/28/Dependency-Injection-DI/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">Dependency Injection(DI)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2018-11-28 18:43:30" itemprop="dateCreated datePublished" datetime="2018-11-28T18:43:30+09:00">2018-11-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2018-11-29 14:56:14" itemprop="dateModified" datetime="2018-11-29T14:56:14+09:00">2018-11-29</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p> 객체간의 의존관계를 맺어준다는 의미이다. 그걸 개발자가 해주는것이 아니라 spring IoC 컨데이너에게 제어권을 넘겨 스스로 관계를 맺게 한다.</p>
+<h3 id="Engine-java"><a href="#Engine-java" class="headerlink" title="Engine.java"></a>Engine.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Engine</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Engine</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Engine 생성자"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">exec</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"엔진이 동작합니다."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Car-java"><a href="#Car-java" class="headerlink" title="Car.java"></a>Car.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">	Engine v8;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Car</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Car 생성자"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setEngine</span><span class="params">(Engine e)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.v8 = e;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"엔진을 이용하여 달립니다."</span>);</span><br><span class="line">		v8.exec();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Spring-사용-전"><a href="#Spring-사용-전" class="headerlink" title="Spring 사용 전 :"></a>Spring 사용 전 :</h2><h3 id="Main-java"><a href="#Main-java" class="headerlink" title="Main.java"></a>Main.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	Engine e = <span class="keyword">new</span> Engine();</span><br><span class="line">	Car c = <span class="keyword">new</span> Car();</span><br><span class="line">	c.setEngine( e );</span><br><span class="line">	c.run();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Spring-사용-후"><a href="#Spring-사용-후" class="headerlink" title="Spring 사용 후 :"></a>Spring 사용 후 :</h2><p>.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"e"</span> <span class="attr">class</span>=<span class="string">"kr.or.connect.diexam01.Engine"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"car"</span> <span class="attr">class</span>=<span class="string">"kr.or.connect.diexam01.Car"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"engine"</span> <span class="attr">ref</span>=<span class="string">"e"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>위의 xml설정은 다음과 같은 의미를 갖는다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Engine e = <span class="keyword">new</span> Engine();</span><br><span class="line">Car c = <span class="keyword">new</span> Car();</span><br><span class="line">c.setEngine( e );</span><br></pre></td></tr></table></figure>
+<h3 id="ApplicationContextExam02-java"><a href="#ApplicationContextExam02-java" class="headerlink" title="ApplicationContextExam02.java"></a>ApplicationContextExam02.java</h3><p>위의 xml 설정파일을 읽어서 실행하는 부분</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.support.ClassPathXmlApplicationContext;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationContextExam02</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		ApplicationContext ac = <span class="keyword">new</span> ClassPathXmlApplicationContext( </span><br><span class="line">				<span class="string">"classpath:applicationContext.xml"</span>); </span><br><span class="line"></span><br><span class="line">		Car car = (Car)ac.getBean(<span class="string">"car"</span>);</span><br><span class="line">		car.run();</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">##Result##</span></span><br><span class="line"><span class="comment">Engine 생성자</span></span><br><span class="line"><span class="comment">Car 생성자</span></span><br><span class="line"><span class="comment">엔진을 이용하여 달립니다.</span></span><br><span class="line"><span class="comment">엔진이 동작합니다.</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p>작성된 xml은 컴파일 타임에 spring이 싱글톤으로 객체를 생성해준다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Engine 생성자</span></span><br><span class="line"><span class="comment">Car 생성자</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p>그리고, Car.run() 메소드를 호출하면 나머지 결과가 나온다.</p>
+<p>이렇게 하면 실행클래스의 코드는 Car라는 클래스만 알아도 어떤 엔진을 사용할지 몰라도 된다. </p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://www.edwith.org/boostcourse-web/lecture/20657/" target="_blank" rel="noopener">https://www.edwith.org/boostcourse-web/lecture/20657/</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -2162,7 +2184,7 @@ DispatcherServlet는 다음과 같이 동작한다:
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">포스트</span>
                   </a>
                 </div>
@@ -2187,7 +2209,7 @@ DispatcherServlet는 다음과 같이 동작한다:
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">카테고리</span>
                   
                 </div>
