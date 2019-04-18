@@ -3,6 +3,34 @@
   
     
     <entry>
+      <title>객체지향 프로그래밍</title>
+      <link href="/2019/04/18/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-1/"/>
+      <url>/2019/04/18/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-1/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    <entry>
+      <title>middleware</title>
+      <link href="/2019/04/18/middleware/"/>
+      <url>/2019/04/18/middleware/</url>
+      
+        <content type="html"><![CDATA[<p>JBoss - middleware</p><p>middleware - software와 software를 이어주는 것</p><p>로마의 수로에 비유한다. 예를들어 was로그들을 가져와서 그 로그를 바탕으로 다른 software를 실행시켜주는 software를 말한다.</p><p>JBoss - 서버를 실행, 종료같은 관리하는 기능을 제공한다.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> computer science </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
       <title>Filebeat, Logstash, Elasticsearch 설치하기(centos)</title>
       <link href="/2019/04/17/Filebeat-Logstash-Elasticsearch-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0-centos/"/>
       <url>/2019/04/17/Filebeat-Logstash-Elasticsearch-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0-centos/</url>
@@ -66,17 +94,6 @@
           <category> spring framework </category>
           
       </categories>
-      
-      
-    </entry>
-    
-    <entry>
-      <title></title>
-      <link href="/2019/03/31/middleware/"/>
-      <url>/2019/03/31/middleware/</url>
-      
-        <content type="html"><![CDATA[<p>JBoss - middleware</p><p>middleware - software와 software를 이어주는 것</p><p>로마의 수로에 비유한다. 예를들어 was로그들을 가져와서 그 로그를 바탕으로 다른 software를 실행시켜주는 software를 말한다.</p><p>JBoss - 서버를 실행, 종료같은 관리하는 기능을 제공한다.</p>]]></content>
-      
       
       
     </entry>
