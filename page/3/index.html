@@ -314,6 +314,178 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/29/Dependency-Injection-java-config/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonghun.park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jjj's park">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/11/29/Dependency-Injection-java-config/" class="post-title-link" itemprop="http://yoursite.com/page/3/index.html">Dependency Injection(java config)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2018-11-29 13:13:55 / Updated at: 14:56:20" itemprop="dateCreated datePublished" datetime="2018-11-29T13:13:55+09:00">2018-11-29</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/spring-framework/" itemprop="url" rel="index"><span itemprop="name">spring_framework</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>DI(의존성 주입)을 적용하는 방법은 <a href="https://jjjpark.github.io/2018/11/28/Dependency-Injection-DI/" target="_blank" rel="noopener">xml을 이용한 DI</a> 뿐만아니라 java config파일을 만들어서 DI를 적용시키는 방법이 있다.</p>
+<h2 id="Java-config를-이용한-방법"><a href="#Java-config를-이용한-방법" class="headerlink" title="Java config를 이용한 방법"></a>Java config를 이용한 방법</h2><h3 id="ApplicationConfig-java"><a href="#ApplicationConfig-java" class="headerlink" title="ApplicationConfig.java"></a>ApplicationConfig.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationConfig</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Car <span class="title">car</span><span class="params">(Engine e)</span> </span>&#123;</span><br><span class="line">		Car c = <span class="keyword">new</span> Car();</span><br><span class="line">		c.setEngine(e);</span><br><span class="line">		<span class="keyword">return</span> c;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Engine <span class="title">engine</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Engine();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>@Configuration - spring에서 사용하는 설정 클래스</p>
+<p>@Bean - bean으로 등록하겠다.(bean은 컴파일 시간에 객체가 만들어져서 싱글톤으로 관리된다.)</p>
+<h3 id="ApplicationContextExam03-java"><a href="#ApplicationContextExam03-java" class="headerlink" title="ApplicationContextExam03.java"></a>ApplicationContextExam03.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.AnnotationConfigApplicationContext;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationContextExam03</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		ApplicationContext ac = <span class="keyword">new</span> AnnotationConfigApplicationContext(ApplicationConfig.class);</span><br><span class="line">		   </span><br><span class="line">		Car car = (Car)ac.getBean(<span class="string">"car"</span>);</span><br><span class="line">		car.run();</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>하지만, </p>
+<h2 id="더-간단한-방법이-있다"><a href="#더-간단한-방법이-있다" class="headerlink" title="더 간단한 방법이 있다."></a>더 간단한 방법이 있다.</h2><h3 id="ApplicationConfig2-java"><a href="#ApplicationConfig2-java" class="headerlink" title="ApplicationConfig2.java"></a>ApplicationConfig2.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(<span class="string">"kr.or.connect.diexam01"</span>)</span><br><span class="line">	<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationConfig2</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>@ComponentScan(“kr.or.connect.diexam01”) - 명시된 package를 돌면서 @Component가 붙은 것을 bean으로 만든다.</p>
+<h3 id="Engine-java"><a href="#Engine-java" class="headerlink" title="Engine.java"></a>Engine.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Engine</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Engine</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Engine 생성자"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">exec</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"엔진이 동작합니다."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Car-java"><a href="#Car-java" class="headerlink" title="Car.java"></a>Car.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> Engine v8;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Car</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Car 생성자"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"엔진을 이용하여 달립니다."</span>);</span><br><span class="line">		v8.exec();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>@Autowired - Engine이라는 bean이 있으면 현재 클래스에 주입한다.(DI 적용)</p>
+<h3 id="ApplicationContextExam04-java"><a href="#ApplicationContextExam04-java" class="headerlink" title="ApplicationContextExam04.java"></a>ApplicationContextExam04.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.AnnotationConfigApplicationContext;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationContextExam04</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		ApplicationContext ac = <span class="keyword">new</span> AnnotationConfigApplicationContext(ApplicationConfig2.class);</span><br><span class="line">		   </span><br><span class="line">		Car car = ac.getBean(Car.class);</span><br><span class="line">		car.run();</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>물론, <a href="##더-간단한-방법이-있다.">간단한 방법이 </a> 편하지만, @ComponentScan은 @Component가 달려있어야 Bean으로 만든다. 그래서 외부라이브러리에는 @ComponentScan을 사용할 수 없다. 그럴때는 <a href="## Java config를-이용한-방법">Java Config</a> 방법을 사용한다.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/28/Dependency-Injection-DI/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -660,7 +832,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">포스트</span>
                   </a>
                 </div>
@@ -683,7 +855,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">카테고리</span>
                   
                 </div>

@@ -130,6 +130,23 @@
     </entry>
     
     <entry>
+      <title>item3 private 생성자나 enum 자료형은 싱글턴 패턴을 따르도록 설계하라</title>
+      <link href="/2019/03/20/item3-private-%EC%83%9D%EC%84%B1%EC%9E%90%EB%82%98-enum-%EC%9E%90%EB%A3%8C%ED%98%95%EC%9D%80-%EC%8B%B1%EA%B8%80%ED%84%B4-%ED%8C%A8%ED%84%B4%EC%9D%84-%EB%94%B0%EB%A5%B4%EB%8F%84%EB%A1%9D-%EC%84%A4%EA%B3%84%ED%95%98%EB%9D%BC/"/>
+      <url>/2019/03/20/item3-private-%EC%83%9D%EC%84%B1%EC%9E%90%EB%82%98-enum-%EC%9E%90%EB%A3%8C%ED%98%95%EC%9D%80-%EC%8B%B1%EA%B8%80%ED%84%B4-%ED%8C%A8%ED%84%B4%EC%9D%84-%EB%94%B0%EB%A5%B4%EB%8F%84%EB%A1%9D-%EC%84%A4%EA%B3%84%ED%95%98%EB%9D%BC/</url>
+      
+        <content type="html"><![CDATA[<ul><li>Reflection</li><li>Serializable</li><li>Transient</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> java </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
       <title>IoC Container 신석기시대</title>
       <link href="/2019/03/16/IoC-Container-%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A5%E1%86%A8%E1%84%80%E1%85%B5-%E1%84%89%E1%85%B5%E1%84%83%E1%85%A2/"/>
       <url>/2019/03/16/IoC-Container-%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A5%E1%86%A8%E1%84%80%E1%85%B5-%E1%84%89%E1%85%B5%E1%84%83%E1%85%A2/</url>
