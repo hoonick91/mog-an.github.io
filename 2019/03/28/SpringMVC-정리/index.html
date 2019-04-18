@@ -108,20 +108,24 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="jjj&#39;s park">
-<meta property="og:url" content="http://yoursite.com/categories/Spring-framework/index.html">
+  <meta name="description" content="DispatcherServlet 초기화  다양한 interface를 전략으로 가져와 사용한다. 기본적으로 등록된 @Bean들을 사용한다.   없으면 기본 전략을 사용한다.  Spring boot는 java application안에 tomcat에서 동작한다. Spring은 tomcat에 servlet을 등록한다.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringMVC 정리">
+<meta property="og:url" content="http://yoursite.com/2019/03/28/SpringMVC-정리/index.html">
 <meta property="og:site_name" content="jjj&#39;s park">
+<meta property="og:description" content="DispatcherServlet 초기화  다양한 interface를 전략으로 가져와 사용한다. 기본적으로 등록된 @Bean들을 사용한다.   없으면 기본 전략을 사용한다.  Spring boot는 java application안에 tomcat에서 동작한다. Spring은 tomcat에 servlet을 등록한다.">
 <meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2019-03-28T00:02:13.432Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jjj&#39;s park">
+<meta name="twitter:title" content="SpringMVC 정리">
+<meta name="twitter:description" content="DispatcherServlet 초기화  다양한 interface를 전략으로 가져와 사용한다. 기본적으로 등록된 @Bean들을 사용한다.   없으면 기본 전략을 사용한다.  Spring boot는 java application안에 tomcat에서 동작한다. Spring은 tomcat에 servlet을 등록한다.">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/Spring-framework/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/28/SpringMVC-정리/">
 
 
 
@@ -131,7 +135,7 @@
   };
 </script>
 
-  <title>카테고리: Spring framework | jjj's park</title>
+  <title>SpringMVC 정리 | jjj's park</title>
   
 
 
@@ -180,7 +184,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -234,7 +238,7 @@
         
         
           
-          <li class="menu-item menu-item-categories menu-item-active">
+          <li class="menu-item menu-item-categories">
 
     
     
@@ -273,22 +277,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -313,57 +301,179 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Spring framework<small>카테고리</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/28/SpringMVC-정리/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonghun.park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jjj's park">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/03/05/왜-Spring인가/" itemprop="url">
-              
-                <span itemprop="name">왜 Spring인가?</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">SpringMVC 정리
+              
+            
+          </h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-05T20:31:56+09:00" content="2019-03-05">
-          03-05
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
 
-    </header>
-  </article>
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-03-28 08:51:50 / Updated at: 09:02:13" itemprop="dateCreated datePublished" datetime="2019-03-28T08:51:50+09:00">2019-03-28</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>DispatcherServlet 초기화</p>
+<ol>
+<li>다양한 interface를 전략으로 가져와 사용한다.<ul>
+<li>기본적으로 등록된 @Bean들을 사용한다.</li>
+</ul>
+</li>
+<li>없으면 기본 전략을 사용한다.</li>
+</ol>
+<p>Spring boot는 java application안에 tomcat에서 동작한다.</p>
+<p>Spring은 tomcat에 servlet을 등록한다.</p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/27/test/" rel="next" title="test">
+                <i class="fa fa-chevron-left"></i> test
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/31/middleware/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -602,6 +712,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
 
   
 
@@ -621,43 +735,6 @@
 
 
 
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-</body>
-</html>
 
 
 

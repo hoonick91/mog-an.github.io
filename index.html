@@ -314,6 +314,1092 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/17/Filebeat-Logstash-Elasticsearch-설치하기-centos/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonghun.park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jjj's park">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/17/Filebeat-Logstash-Elasticsearch-설치하기-centos/" class="post-title-link" itemprop="http://yoursite.com/index.html">Filebeat, Logstash, Elasticsearch 설치하기(centos)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-04-17 18:51:50 / Updated at: 19:13:55" itemprop="dateCreated datePublished" datetime="2019-04-17T18:51:50+09:00">2019-04-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Setup-FLE-based-by-centos"><a href="#Setup-FLE-based-by-centos" class="headerlink" title="Setup FLE based by centos"></a>Setup FLE based by centos</h1><p>Centos 처음 설치했을때 외부인터넷과 연결이 되는지 체크해야한다. centos에서 외부인터넷 연결이 되는지 <figure class="highlight plain"><figcaption><span>ping google.com``` 로 확인할 수 있고, 외부에서는 ```ping centos주소(ip addr을 통해 얻을 수 있다.)``` 로 확인할 수 있다. virtualbox의 인터넷연결은   장치 - 네트워크 연결 - 어댑터 브릿지</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">​	NAT</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Filebeat 설치</span><br><span class="line"></span><br><span class="line">Logstash 설치</span><br><span class="line"></span><br><span class="line">Elasticsearch 설치</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 실행</span><br><span class="line"></span><br><span class="line">&gt; Filebeat, Logstash, Elasticsearch는 모두 Service를 이용하여 실행, 재실행, 종료를 할 수 있다.</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">$&gt; service filebeat start</span><br><span class="line">$&gt; service logstash start</span><br><span class="line">$&gt; service elasticsearch start</span><br></pre></td></tr></table></figure></p>
+<p>Filebeat는 설정값인 filebeat.yml을 기반으로 실행할 수 있다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>&gt; pwd</span><br><span class="line">/usr/share/filebeat/</span><br><span class="line"><span class="meta">$</span>&gt; ./filebeat -f /etc/filebeat/filbeat.yml</span><br></pre></td></tr></table></figure>
+<h3 id="Logstash-실행"><a href="#Logstash-실행" class="headerlink" title="Logstash 실행"></a>Logstash 실행</h3><blockquote>
+<p>Service를 이용한 실행</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service logstash start</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>logstash.conf를 기반으로 logstash 실행</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/share/logstash</span><br><span class="line">./logstash -f /etc/logstash/con.d/logstash.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>&gt; vi logstash.conf</span><br></pre></td></tr></table></figure>
+<h3 id="Elasticsearch-실행"><a href="#Elasticsearch-실행" class="headerlink" title="Elasticsearch 실행"></a>Elasticsearch 실행</h3><p>ping</p>
+<p>ps -ef | grep logstash</p>
+<p>cd /var/log/logstash</p>
+<p>cd /etc/logstash/con.d/logstash.conf</p>
+<p>tail -f</p>
+<p>Netstat -ant</p>
+<p>Firewall</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/04/elasticsearch-용어/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonghun.park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jjj's park">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/04/elasticsearch-용어/" class="post-title-link" itemprop="http://yoursite.com/index.html">elasticsearch 용어</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-04-04 17:27:16 / Updated at: 17:34:00" itemprop="dateCreated datePublished" datetime="2019-04-04T17:27:16+09:00">2019-04-04</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="indexing"><a href="#indexing" class="headerlink" title="indexing"></a>indexing</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">row row this boat</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this apple macbook</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">log row</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>단어</th>
+<th>doc</th>
+<th>positions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>row</td>
+<td>0</td>
+<td>[0, 1]</td>
+</tr>
+<tr>
+<td></td>
+<td>1</td>
+<td>[0]</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/02/Spring-동작원리/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonghun.park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jjj's park">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/02/Spring-동작원리/" class="post-title-link" itemprop="http://yoursite.com/index.html">Spring 동작원리</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-04-02 19:06:59 / Updated at: 20:09:07" itemprop="dateCreated datePublished" datetime="2019-04-02T19:06:59+09:00">2019-04-02</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>not pojo = Servlet </p>
+<p>Servlet에 맞는 클래스를 만들어야 실행된다.</p>
+<p>Servlet이 복잡해서 Spring을 이용하여 POJO로 개발한다.</p>
+<p>BeanFactory를 상속받아서 ApplicationContext 구현</p>
+<blockquote>
+<p>ApplicationContext는 인터페이스? BeanFactory를 상속받아?</p>
+</blockquote>
+<p>Tomcat(WAS)</p>
+<ul>
+<li>DispatcherServlet과 spring Conainer와의 관계</li>
+<li>Component-scan할라면 annotation driven이 있어야한다.</li>
+</ul>
+<p>ContextLoaderListener이 AnnotationConfigWebApplicationContext 설정값을 가지고, RootWebApplicationContext를 만들고, DispatcherServlet은 servlet-context.xml을 가지고 각각의 ApplicationContext를 만든다. 이 ApplicationContext는 Root WebApplicationContext를 상속한다.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/31/SpringMVC-동작원리/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonghun.park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jjj's park">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/31/SpringMVC-동작원리/" class="post-title-link" itemprop="http://yoursite.com/index.html">SpringMVC 동작원리</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-03-31 14:32:19 / Updated at: 16:26:09" itemprop="dateCreated datePublished" datetime="2019-03-31T14:32:19+09:00">2019-03-31</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Spring Boot</p>
+<p>Servlet 기반 application이다.</p>
+<ul>
+<li>init</li>
+<li>doGet, doPost</li>
+<li>destory<ul>
+<li>DispatcherServlet<ul>
+<li>초기화시 여러 인터페이스들을 이용한다. (빈을 찾아서 전략으로 사용한다.) 없다면 DispatcherServlet.properties에 있는 기본전략을 사용한다.</li>
+<li>web.xml이 없어도 구현이 가능하다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Servlet Container가 필요하다.</p>
+<ol>
+<li>요청이 DispatcherServlet으로 들어온다.</li>
+<li>interface전략을 사용해서 초기화한다.(각 요청에 대한 bean)</li>
+<li>handlerMapping을 이용하여 handler를 찾아준다.</li>
+<li>handlerAdapter를 이용하여 handlerMapping으로 찾아준 handler를 실행시켜준다.<ul>
+<li>이때 reflection을 이용하여 사용된다.</li>
+</ul>
+</li>
+</ol>
+<p>Spring boot를 사용하지 않으면 @Bean에 들어가는 메소드가 중요하다. 하지만 기본 @Bean이 없다면 DispatcherServlet.properties에 있는 설정들이 들어간다. ViewResolver같은 것을 스스로 등록해야한다. </p>
+<p>Spring boot를 사용하면, java application안에 imbedded tomcat에 servlet을 등록해준다. 기본적인 전략도 boot가 등록해준다. spring boot는 더 많은 것들을 기본 @Bean으로 등록해논다. 가령 ViewResolver와 같은 경우</p>
+<h2 id="HandlerMapping"><a href="#HandlerMapping" class="headerlink" title="HandlerMapping"></a>HandlerMapping</h2><blockquote>
+<h2 id="초기에-initHandlerMappings로-Bean에-등록된-모든-HandlerMapping을-가져온다"><a href="#초기에-initHandlerMappings로-Bean에-등록된-모든-HandlerMapping을-가져온다" class="headerlink" title="초기에 initHandlerMappings로 Bean에 등록된 모든 HandlerMapping을 가져온다."></a>초기에 initHandlerMappings로 Bean에 등록된 모든 HandlerMapping을 가져온다.</h2></blockquote>
+<p>handlerMapping이 등록된 클래스를 돌면서 RequestMappingHandlerMapping.getHandler(request)를 요청한다. 각 클래스(RequestMappingHandlerMapping -&gt; RequestMappingInfoHandlerMapping -&gt; AbstractHandlerMethodMapping<requestmappinginfo> -&gt; AbstractHandlerMapping)</requestmappinginfo></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="meta">@Nullable</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> HandlerExecutionChain <span class="title">getHandler</span><span class="params">(HttpServletRequest request)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">...</span><br><span class="line">		HandlerExecutionChain executionChain = getHandlerExecutionChain(handler, request);</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> HandlerExecutionChain <span class="title">getHandlerExecutionChain</span><span class="params">(Object handler, HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">		HandlerExecutionChain chain = (handler <span class="keyword">instanceof</span> HandlerExecutionChain ?</span><br><span class="line">				(HandlerExecutionChain) handler : <span class="keyword">new</span> HandlerExecutionChain(handler));</span><br><span class="line"></span><br><span class="line">		String lookupPath = <span class="keyword">this</span>.urlPathHelper.getLookupPathForRequest(request);</span><br><span class="line">		<span class="keyword">for</span> (HandlerInterceptor interceptor : <span class="keyword">this</span>.adaptedInterceptors) &#123;</span><br><span class="line">			<span class="keyword">if</span> (interceptor <span class="keyword">instanceof</span> MappedInterceptor) &#123;</span><br><span class="line">				MappedInterceptor mappedInterceptor = (MappedInterceptor) interceptor;</span><br><span class="line">				<span class="keyword">if</span> (mappedInterceptor.matches(lookupPath, <span class="keyword">this</span>.pathMatcher)) &#123;</span><br><span class="line">					chain.addInterceptor(mappedInterceptor.getInterceptor());</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				chain.addInterceptor(interceptor);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> chain;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>BeanFactory에 있는 interceptor들은 <code>this.adaptedInterceptors</code>에 들어있다. 이 인터셉터들이 사용자가 요청한 url과 맞는지 확인하여 맞으면 HandlerExceptionChain을 반환한다. 아마 Beanfactory에는 @Controller, @RequestMapping으로 만들어진 Bean들이 있을 것같다. 결국 반환된 HandlerExceptionChain은 DispatcherServlet에서 null인지 아닌지 최종 검사를 하게 되고, 다시 그 <code>HandlerExceptionChain.getHandler()</code> 로 반환된 값을 HandlerAdapter의 param으로 넘김다. </p>
+<p>여기 HandlerExceptionChain에 무언가 chain적인 비밀이 있는 것 같다.</p>
+<h2 id="HandlerAdapter"><a href="#HandlerAdapter" class="headerlink" title="HandlerAdapter"></a>HandlerAdapter</h2><blockquote>
+<p>초기에 Bean에 등록된 모든 HandlerAdapter을 가져온다.</p>
+</blockquote>
+<p>handlerAdapter중에 for문 돌면서 해당 요청에 대한 handlerMapping이용해 찾은 handler를 처리할 수 있는 HandlerAdapter을 찾고, 찾으면 handlerAdapter.handle를 호출한다. (<code>mv = ha.handle(processedRequest, response, mappedHandler.getHandler())</code>)</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/31/동작원리/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonghun.park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jjj's park">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/31/동작원리/" class="post-title-link" itemprop="http://yoursite.com/index.html">동작원리</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-03-31 14:32:07" itemprop="dateCreated datePublished" datetime="2019-03-31T14:32:07+09:00">2019-03-31</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/31/middleware/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonghun.park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jjj's park">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/31/middleware/" class="post-title-link" itemprop="http://yoursite.com/index.html">제목 없음</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-03-31 14:26:10" itemprop="dateCreated datePublished" datetime="2019-03-31T14:26:10+09:00">2019-03-31</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>JBoss - middleware</p>
+<p>middleware - software와 software를 이어주는 것</p>
+<p>로마의 수로에 비유한다. 예를들어 was로그들을 가져와서 그 로그를 바탕으로 다른 software를 실행시켜주는 software를 말한다.</p>
+<p>JBoss - 서버를 실행, 종료같은 관리하는 기능을 제공한다.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/28/SpringMVC-정리/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonghun.park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jjj's park">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/28/SpringMVC-정리/" class="post-title-link" itemprop="http://yoursite.com/index.html">SpringMVC 정리</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-03-28 08:51:50 / Updated at: 09:02:13" itemprop="dateCreated datePublished" datetime="2019-03-28T08:51:50+09:00">2019-03-28</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>DispatcherServlet 초기화</p>
+<ol>
+<li>다양한 interface를 전략으로 가져와 사용한다.<ul>
+<li>기본적으로 등록된 @Bean들을 사용한다.</li>
+</ul>
+</li>
+<li>없으면 기본 전략을 사용한다.</li>
+</ol>
+<p>Spring boot는 java application안에 tomcat에서 동작한다.</p>
+<p>Spring은 tomcat에 servlet을 등록한다.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/27/test/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -359,7 +1445,7 @@
                 
               
 
-              <time title="Post created: 2019-03-27 19:18:44 / Updated at: 19:20:19" itemprop="dateCreated datePublished" datetime="2019-03-27T19:18:44+09:00">2019-03-27</time>
+              <time title="Post created: 2019-03-27 19:18:44 / Updated at: 19:22:47" itemprop="dateCreated datePublished" datetime="2019-03-27T19:18:44+09:00">2019-03-27</time>
             
 
             
@@ -399,7 +1485,7 @@
       
         
           
-            <p><img src="/Users/bagjonghun/Desktop/my-blog/source/_posts/test/applicationContext.png" alt="applicationContext"></p>
+            <p><img src="/Users/bagjonghun/Desktop/my-blog/source/_posts/test/listenerAndFilter.png" alt="listenerAndFilter"></p>
 
           
         
@@ -771,1321 +1857,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/16/IoC-Container-신석기-시대/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jonghun.park">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jjj's park">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/16/IoC-Container-신석기-시대/" class="post-title-link" itemprop="http://yoursite.com/index.html">IoC Container 신석기시대</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">작성일</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2019-03-16 12:42:01" itemprop="dateCreated datePublished" datetime="2019-03-16T12:42:01+09:00">2019-03-16</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2019-03-27 09:23:50" itemprop="dateModified" datetime="2019-03-27T09:23:50+09:00">2019-03-27</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="IoC-Container란"><a href="#IoC-Container란" class="headerlink" title="IoC Container란?"></a>IoC Container란?</h2><p>우선 Container는 무언가를 주체적으로 관리한다. 예를 들어 Servlet Container는 Servlet의 생성 소멸 등을 관리한다. 그리고 IoC란 제어의 역전 즉, 기존에 Client가 객체를 생성하고 소멸시킨(소멸은 GC가 한다) 일들을 Container가 한다는 것이다. 그럼 어떤것이 할까? Application Context가 한다. Application Context에 bean을 등록시켜서 Container가 관리할 수 있게 해준다. 이 ApplciaitonContext가 생성, 소멸할때 발생하는 이벤트를 받는 것이 ContextLoaderListener이고 이때 ContextLoaderListener이 ContextLoader를 실행시켜서 필요한 이벤트를 발생시킨다. 이 ContextLoader에 각종 param을 넣어줄 수 가 있다. </p>
-<p><br></p>
-<h3 id="Context-Loader-Listener"><a href="#Context-Loader-Listener" class="headerlink" title="Context-Loader-Listener"></a>Context-Loader-Listener</h3><p>Root webApplicationContext가 생성될때, ContextLoaderListener가 호출된다. (여기서 Root ApplicationContext는 다른 Servlet에서 공유할 수 있다.) 그러면 dispatcher-servlet는 root webApplicationContext를 상속해서, dispatcher-servlet안에서만 쓸 수 있는 applicationContext를 만든다. </p>
-<blockquote>
-<p>Root webApplicationContext는 ApplicationContext를 상속받는다.</p>
-</blockquote>
-<p>Spring의 root webApplicationContext가 start up, shut down될떄 사용하는 bootstrap listener?(bootstrap - 외부의 입력없이 스스로 실행되는 것)</p>
-<h3 id="Context-Loader"><a href="#Context-Loader" class="headerlink" title="Context-Loader"></a>Context-Loader</h3><p>Context-Loader-Listener에 의해서 호출되어서, ApplicationContext를 init하는 것이다.</p>
-<p><img src="/Users/bagjonghun/Desktop/my-blog/source/_images/applicationContext.png" alt="image"></p>
-<p>그래서 정리하자면 최초의 ApplicationContext가 생성이 될때, ContextLoaderListener가 바라보고있다가 생성되면 init method를 실행시켜서 ApplicationContext에 대한 설정값을 넣어줄 수 있다. 그때 <strong>contextClass</strong>를 param으로 받아서 설정값을 넣어주는데, </p>
-<p>이때 param으로 들어가는 <strong>AnnotationConfigWebApplicationContext은</strong> WebApplicationContext의 구현체로 annotation이 붙은 클래스를(<figure class="highlight plain"><figcaption><span>input으로 사용하게 해준다.</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### AnnotationConfigWebApplicationContext</span><br><span class="line"></span><br><span class="line">```xml</span><br><span class="line">&lt;!--web.xml--&gt;</span><br><span class="line">&lt;context-param&gt;</span><br><span class="line">    &lt;param-name&gt;contextClass&lt;/param-name&gt;</span><br><span class="line">    &lt;param-value&gt;org.springframework.web.context.support.AnnotationConfigWebApplicationContext&lt;/param-value&gt;</span><br><span class="line">&lt;/context-param&gt;</span><br></pre></td></tr></table></figure></p>
-<p>여기서 contextClass는 ContextLoader의 예약어이다. ContextLoader는 contextClass라는 이름을 가진 param을 읽어온다. 그래서 @Configuration annotation이 붙은 함수를 읽어와서 설정파일로 만들어 준다. 즉, java파일을 config파일로 만들어주는 것이 바로 AnnotationConfigWebApplicationContext이다. </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ContextLoader.java</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">protected</span> Class&lt;?&gt; determineContextClass(ServletContext servletContext) &#123;</span><br><span class="line">    String contextClassName = servletContext.getInitParameter(<span class="string">"contextClass"</span>);</span><br><span class="line">    <span class="keyword">if</span> (contextClassName != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> Cla...</span><br></pre></td></tr></table></figure>
-<p><br></p>
-<h3 id="contextConfigLocation"><a href="#contextConfigLocation" class="headerlink" title="contextConfigLocation"></a>contextConfigLocation</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--web.xml--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>me.jjjpark.AppConfig<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>말 그대로 Context의 Config파일의 위치를 알려주는 것이다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ContextLoader.java</span></span><br><span class="line">...</span><br><span class="line">    wac.setServletContext(sc);</span><br><span class="line">    configLocationParam = sc.getInitParameter(<span class="string">"contextConfigLocation"</span>);</span><br><span class="line">    <span class="keyword">if</span> (configLocationParam != <span class="keyword">null</span>) &#123;</span><br><span class="line">    	wac.setConfigLocation(configLocationParam);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>이제 다만, Servlet이 불편한 점이 /url 하나가 추가될 때마다 서블릿 설정이 추가된다.</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>me.jjjpark.HelloServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">  </span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/hello<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/15/SpringMVC-청동기-시대/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jonghun.park">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jjj's park">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/15/SpringMVC-청동기-시대/" class="post-title-link" itemprop="http://yoursite.com/index.html">SpringMVC 청동기시대</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">작성일</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2019-03-15 08:20:47" itemprop="dateCreated datePublished" datetime="2019-03-15T08:20:47+09:00">2019-03-15</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2019-03-27 09:24:28" itemprop="dateModified" datetime="2019-03-27T09:24:28+09:00">2019-03-27</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="DispatcherServlet-java"><a href="#DispatcherServlet-java" class="headerlink" title="DispatcherServlet.java"></a>DispatcherServlet.java</h2><p><img src="https://justforchangesake.files.wordpress.com/2014/05/spring-request-lifecycle.jpg" width="450px"></p>
-<p>출처: <a href="https://justforchangesake.files.wordpress.com/2014/05/spring-request-lifecycle.jpg" target="_blank" rel="noopener">https://justforchangesake.files.wordpress.com/2014/05/spring-request-lifecycle.jpg</a></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--web.xml--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>app<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextClass<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>org.springframework.web.context.support.AnnotationConfigWebApplicationContext<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>me.jjjpark.WebConfig<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>요청 처리과정</p>
-</blockquote>
-<ol>
-<li><p>요청을 분석해서 multipart인지? 뭐 다른 요청인지 요청을 분석한다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//dispatcherServlet.java</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doDispatch</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">   processedRequest = checkMultipart(request);</span><br><span class="line">   multipartRequestParsed = (processedRequest != request);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>요청을 처리할 수 있는 핸들러를 찾아온다.(handlerMapping - interface)</p>
-<p>요청이 /app/hello라고 했을때, 이 요청은 @RequestMapping의 @GetMapping(“/hello”)에서 처리할 수 있다. 그래서 RequestMappingHandlerMapping이 처리할 것이다.</p>
-<ul>
-<li>BeanNameUrlHandlerMapping</li>
-<li>RequestMappingHandlerMapping - @Controller안의 @RequestMapping이 붙은 method-level로 부터 <strong>RequestMappingInfo</strong> instance를 생성한다.</li>
-</ul>
-</li>
-<li><p>handler를 실행할 수 있는 handlerAdapter을 찾아온다.</p>
-<ul>
-<li>HttpRequestHandlerAdapter</li>
-<li>SimpleControllerHandlerAdapter</li>
-<li>RequestMappingHandlerAdapter</li>
-</ul>
-</li>
-<li><p>java의 reflection을 이용하여 handlerMethod를 실행 <code>invokeHandlerMethod(request, response, handlerMethod)</code></p>
-</li>
-<li><p>Return값을 처리할 수 있는, HandlerMethodReturnValueHandler를 찾는다.</p>
-</li>
-</ol>
-<h3 id="View가-있을-경우-DispatcherServlet-2부"><a href="#View가-있을-경우-DispatcherServlet-2부" class="headerlink" title="View가 있을 경우 (DispatcherServlet 2부)"></a>View가 있을 경우 (DispatcherServlet 2부)</h3>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/08/Servlet-동작원리-구석기-시대/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jonghun.park">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jjj's park">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/08/Servlet-동작원리-구석기-시대/" class="post-title-link" itemprop="http://yoursite.com/index.html">Servlet 동작원리 구석기시대</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">작성일</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2019-03-08 19:14:58" itemprop="dateCreated datePublished" datetime="2019-03-08T19:14:58+09:00">2019-03-08</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2019-03-27 09:24:16" itemprop="dateModified" datetime="2019-03-27T09:24:16+09:00">2019-03-27</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Spring-Framework/" itemprop="url" rel="index"><span itemprop="name">Spring Framework</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p><strong>IDE</strong> - intellij, <strong>Build tool</strong> - maven, <strong>Archetype</strong> - maven-webapp</p>
-</blockquote>
-<h1 id="Servlet-project"><a href="#Servlet-project" class="headerlink" title="Servlet project"></a>Servlet project</h1><ol>
-<li><p>pom.xml에 우리가 사용할 java servlet을 추가 해주었다.</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javax.servlet-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol start="2">
-<li><p>Main-java-me.jjjpark 패키지를 만든다. 그리고, HelloServlet를 작성해 주었다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"init()"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"doGet"</span>);</span><br><span class="line">        resp.getWriter().println(<span class="string">"&lt;html&gt;"</span>);</span><br><span class="line">        resp.getWriter().println(<span class="string">"&lt;body&gt;"</span>);</span><br><span class="line">        resp.getWriter().println(<span class="string">"&lt;h1&gt;Hello Servlet~!&lt;/h1&gt;"</span>);</span><br><span class="line">        resp.getWriter().println(<span class="string">"&lt;/body&gt;"</span>);</span><br><span class="line">        resp.getWriter().println(<span class="string">"&lt;/html&gt;"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"destroy()"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>여기서 init(), destroy() method는 HttpServlet의 super class인 <strong>GenericServlet</strong>의 메소드 이다. <strong>HttpServlet</strong>은 <strong>GenericServlet</strong>에서 Http기능을 추가해 구현한 클래스이다.</p>
-</li>
-</ol>
-<ol start="3">
-<li><p>방금 만든 Servlet을 web.xml에 등록해준다.</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE web-app PUBLIC</span></span><br><span class="line"><span class="meta"> "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"</span></span><br><span class="line"><span class="meta"> "http://java.sun.com/dtd/web-app_2_3.dtd" &gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">web-app</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">display-name</span>&gt;</span>Archetype Created Web Application<span class="tag">&lt;/<span class="name">display-name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>me.jjjpark.HelloServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/hello<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>그리고 실행한 후 <a href="http://localhost:8080/hello로" target="_blank" rel="noopener">http://localhost:8080/hello로</a> 요청을 보내면 </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">init() <span class="comment">// 처음에 한번 생성된다.</span></span><br><span class="line">doGet()</span><br><span class="line">destory() <span class="comment">// when tomcat shutdown</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>?? SrpingMvc lifecycle 도는 코드 보기</li>
-</ul>
-<h2 id="Servlet-Listener-amp-Servlet-Filter"><a href="#Servlet-Listener-amp-Servlet-Filter" class="headerlink" title="Servlet Listener &amp; Servlet Filter"></a>Servlet Listener &amp; Servlet Filter</h2><p><img src="../_images/listenerAndFilter.png" alt="image"></p>
-<h3 id="Servlet-Listener"><a href="#Servlet-Listener" class="headerlink" title="Servlet Listener"></a>Servlet Listener</h3><ul>
-<li>Context의 attribute, life cycle의 변화에 따라 이벤트를 발생 시킨다.</li>
-<li>여러 Servlet에서 공통적으로 사용되는 것을 Servlet Context에 넣어 놓고, servlet이 가져다 쓸 수 있다. </li>
-<li>Servlet Container가 구동되고, Servlet Context가 만들어지면 Servlet Listener의 <figure class="highlight plain"><figcaption><span>sce)```가 실행된다. 그리고 servlet이 destroyed된 후에 ```contextDestroye(ServletContextEvent sce)``` 가 실행된다. 이 처럼 Listener는 Context의 상태를 보고 있다가 변화가 감지되면 이벤트를 발생시킨다. 그래서 이때, Context에 param같은 것을 설정해줄 수 있게 된다.</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1. MyListener.java를 만든다.</span><br><span class="line"></span><br><span class="line">   ```java</span><br><span class="line">   public class MyListener implements ServletContextListener &#123;</span><br><span class="line">       @Override</span><br><span class="line">       public void contextInitialized(ServletContextEvent sce) &#123;</span><br><span class="line">           System.out.println(&quot;Context Initialized&quot;);</span><br><span class="line">           sce.getServletContext().setAttribute(&quot;name&quot;, &quot;jhoon&quot;);</span><br><span class="line">       &#125;</span><br><span class="line">   </span><br><span class="line">       @Override</span><br><span class="line">       public void contextDestroyed(ServletContextEvent sce) &#123;</span><br><span class="line">           System.out.println(&quot;Context Destroyed&quot;);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<ol start="2">
-<li><p>web.xml에 등록한다.</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE web-app PUBLIC</span></span><br><span class="line"><span class="meta"> "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"</span></span><br><span class="line"><span class="meta"> "http://java.sun.com/dtd/web-app_2_3.dtd" &gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">web-app</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">display-name</span>&gt;</span>Archetype Created Web Application<span class="tag">&lt;/<span class="name">display-name</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>me.jjjpark.MyListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>me.jjjpark.HelloServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/hello<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="Servlet-Filter"><a href="#Servlet-Filter" class="headerlink" title="Servlet Filter"></a>Servlet Filter</h3><ul>
-<li>아무것도 안해도 Filter는 init이 된다.</li>
-<li>사용자한테 요청이 들어왔을 때, Servlet의 init() method를 실행 시키고 Filter갔다가 doGet(Servlet)에게 간다.</li>
-<li>Servlet, Filter, Listener 순으로 detroyed 된다.</li>
-<li>filter-mapping를 통해 여러 Servlet에 Filter를 적용할 수 있고, url-pattern을 통해 url을 기준으로 삼을 수 있다.( 여러개의 servlet에 filter를 적용해야 할 경우 이용한다. )</li>
-</ul>
-<p>만들기 순서 (구동 순서 아님)</p>
-<ol>
-<li><p>MyFilter.java를 만든다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyFilter</span> <span class="keyword">implements</span> <span class="title">Filter</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(FilterConfig filterConfig)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Filter init"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doFilter</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Filter"</span>);</span><br><span class="line">        filterChain.doFilter(servletRequest, servletResponse);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Filter Destroy"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>doFilter에서 Filter는 chainning하여 실행되므로 다음 Filter에게 param을 넘겨야 한다.</p>
-</li>
-</ol>
-<ol start="2">
-<li><p>web.xml에 추가한다.</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE web-app PUBLIC</span></span><br><span class="line"><span class="meta"> "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"</span></span><br><span class="line"><span class="meta"> "http://java.sun.com/dtd/web-app_2_3.dtd" &gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">web-app</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">display-name</span>&gt;</span>Archetype Created Web Application<span class="tag">&lt;/<span class="name">display-name</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>myFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>me.jjjpark.MyFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>myFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>me.jjjpark.MyListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>me.jjjpark.HelloServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/hello<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="Servlet-Context"><a href="#Servlet-Context" class="headerlink" title="Servlet Context"></a>Servlet Context</h3><ul>
-<li>Servlet보다 먼저 생성된다. 그리고 나중에 destoryed 된다. 여러 Servlet에서 사용되는 공통적인 것을 모아 놓는다. 가령 DB Connection같은 경우</li>
-<li>Servlet는 HttpServlet을 상속하고, HttpServlet은 GenericServlet을 상속하는데 GenericServlet는 getServletContext()를 구현하고 있어서 Servlet에서 getServletContext() 메소드를 사용할 수 있다.</li>
-<li>GenericServlet이 init될 때, ServletConfig를 parameter로 받아 Config를 저장한다.</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/07/Spring-Bean-설정/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jonghun.park">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jjj's park">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/07/Spring-Bean-설정/" class="post-title-link" itemprop="http://yoursite.com/index.html">Spring Bean 설정</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">작성일</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2019-03-07 18:10:01" itemprop="dateCreated datePublished" datetime="2019-03-07T18:10:01+09:00">2019-03-07</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2019-03-11 08:21:47" itemprop="dateModified" datetime="2019-03-11T08:21:47+09:00">2019-03-11</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>기존 설정은 WebConfig.java에 @Bean을 이용하여 직접 handelerMapping, handlerAdaptor 설정했다. WebConfig에 따로 설정하지 않으면, dispatcherServlet.properties에서 가져온다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> HandlerMapping <span class="title">handlerMapping</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        RequestMappingHandlerMapping handlerMapping = <span class="keyword">new</span> RequestMappingHandlerMapping();</span><br><span class="line">        handlerMapping.setInterceptors(); <span class="comment">// 각각의 설정들</span></span><br><span class="line">        <span class="keyword">return</span> handlerMapping;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>@EnableWebMvc를 이용하면 기본적인 설정이 들어있다. (Delegation 구조로 되어있다.)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan</span></span><br><span class="line"><span class="meta">@EnableWebMvc</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebConfig</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>이는 Delegation구조로 되어 있기 때문에 사용자에게 WebMvcConfigurer라는 인터페이스를 제공한다. 사용자는 그래서 자유롭게 조작할 수 있다.</p>
-<p><code>implement WebMvcConfigurer</code> Spring boot에서도 사용한다.</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/왜-Spring인가/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jonghun.park">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jjj's park">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/05/왜-Spring인가/" class="post-title-link" itemprop="http://yoursite.com/index.html">왜 Spring인가?</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">작성일</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2019-03-05 20:31:56" itemprop="dateCreated datePublished" datetime="2019-03-05T20:31:56+09:00">2019-03-05</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2019-03-06 23:29:54" itemprop="dateModified" datetime="2019-03-06T23:29:54+09:00">2019-03-06</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Spring-framework/" itemprop="url" rel="index"><span itemprop="name">Spring framework</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>라이브러리 사용을 위해 jar을 직접 넣어주지 않고, maven이나 gradle로 관리한다.</p>
-</li>
-<li><p>계정 정보와 같은 설정정보들을 servlet-context.xml에서 공통으로 관리할 수 있다.</p>
-<ul>
-<li><p>servlet-context.xml - web application요청을 받기 위한 controller나 view(View Resolver)를 어떻게 처리할 것인지 설정하는 파일</p>
-</li>
-<li><p>root-context.xml - Business layer를 관리하기 위한 설정 (DB와 관련된 공통으로 사용할 수 있는 설정)</p>
-</li>
-<li><p>위 두 context는 DispatcherServlet안에서 적용된다.</p>
-<hr>
-<h3 id="DispatcherServlet"><a href="#DispatcherServlet" class="headerlink" title="DispatcherServlet"></a>DispatcherServlet</h3><blockquote>
-<p>front controller pattern을 사용하여 처리 로직을 공유한다. 실제 일은 설정할 수 있는 대표 component에 의해서 수행된다. 그래서 DispatcherServlet는 xml이나 java로 선언이 되어져야 한다.</p>
-</blockquote>
-<p>DispatcherServlet는 WebApplicationContext( ApplicationContext가 확장된 것)으로 설정한다. WebApplicationContext는 연관된 Servelet Context, Servlet사이의 링크를 가지고 있다.  대부분의 application은 WebApplicationContext하나만으로 충분하다. 하지만 좀 자세히 들여다 보면 <strong>Root WebApplicationContext</strong>가 있다.</p>
-<p><strong>Root WebApplicationContext</strong>는 다른 여러 DispatcherServlet와 공유해서 사용할 수 있고, 자식 WebApplicationContext를 가질 수도 있다.</p>
-<p><strong>Root WebApplicationContext</strong>는 보통 repositories, business services와 같은 다른 다양한 Servlet과 공유할 수 있는 Servlet을 가지고 있다.</p>
-</li>
-</ul>
-</li>
-</ol>
-<pre><code>### 1.1.3 Web MVC Config
-
-DispatcherServlet은 request를 처리해서 적절한 response로 넘겨줄 특별한 beans이 있다.
-
-Application은 request를 처리하기 위해 Special Bean Type의 Beans을 선언한다. DispatcherServlet은 special bean을 WebApplicationContext에서 찾고, 없으면 ```DispatcherServlet.properties```에 있는 것을 반환한다.
-
-
-
-### 1.1.4. Servlet Config
-
-### 1.1.5. Processing
-
-DispatcherServlet는 다음과 같이 동작한다:
-
-- WebApplicationContext에서 요청과 관련된 controller나 다른 elements를 찾는다.
-</code></pre><h2 id="다시-돌아와서"><a href="#다시-돌아와서" class="headerlink" title="다시 돌아와서"></a>다시 돌아와서</h2><p>서블릿 컨테이너 ( 웹 컨테이너, WAS, tomcat )</p>
-<blockquote>
-<p>서블릿을 웹서버에 올리기만 하면 처리할 수 없는데, 이 서블릿을 관리해주는 컨테이너가 서블릿 컨테이너 이다. 서블릿 컨테이너는 서블릿 클래스의 인스턴스화, 초기화를 시킨다. 그리고 clinent의 요청에 따라 적절한 servlet을 mapping시켜준다. (이때 web.xml을 참고하여 적절한 servlet를 mapping시켜준다.) servlet이 사망하면 GC를 실행시켜준다.</p>
-</blockquote>
-<p>또 Tomcat이 우리가 작성한 java파일을 class로 만들어서 메모리에 올려준다.</p>
-<p>서블릿 컨테이너는 요청이 올떄마다 서블릿을 생성하는것이 아니라, 기존에 만들어 졌던것을 다시 사용한다. </p>
-<p>그리고 요청마다 쓰레드를 생성하기 때문에 동시에 여러 클라이언트의 요청을 처리할 수 있다. </p>
-<p>서블릿은 처음에 딱한번 init() 메소드를 실행한다. 그래서 딱 한번만 실행해도 되는 것은 여기에서 실행한다. 웹 컨테이너(톰캣)을 이용할 때, 첫 요청의 init()이 굉장히 오래걸릴 수 있어서 웹 컨테이너가 로드될때init()작업을 실행해줄 수 있는데, 이때 web.xml에 설정해주면 된다. web.xml은 웹 컨테이너가 적절한 servlet를 찾을 수 있도록 하는 xml파일이다.</p>
-<h2 id="Spring-Container-IoC-Container-DI-Container…"><a href="#Spring-Container-IoC-Container-DI-Container…" class="headerlink" title="Spring Container(IoC Container, DI Container…)"></a>Spring Container(IoC Container, DI Container…)</h2><p><img src="https://img1.daumcdn.net/thumb/R1920x0/?fname=http%3A%2F%2Fcfile24.uf.tistory.com%2Fimage%2F2236F14757BBD251199156" alt="image"></p>
-<p>이처럼 SpringMVC도 Servlet Container가 관리하는 servlet이다.SpringMVC로의 모든 요청과 응답은 DispatcherServlet이 처리한다.  (front controller parttern) </p>
-<ol>
-<li>URL요청이 온다.</li>
-<li>DispatcherServlet은 HandlerMapping를 통해 알맞은 Handler를 찾는다. </li>
-<li>HandlerAdapter로 찾은 Handler를 실행 시켜준다.</li>
-</ol>
-<p>POJO와 configuration들을 Spring Container에 주입하면 POJO는 Bean으로 등록된고 사용할 수 있게 된다. 여기서 Bean은 싱글톤이다.</p>
-<p>Spring Container는 2가지 유형의 Container를 제공한다. </p>
-<ol>
-<li>BeanFactory</li>
-<li>ApplicationContext -&gt; BeanFactory (ApplicationContext는 BeanFactory를 상속받는다.)</li>
-</ol>
-<p><strong>BeanFactory</strong>는 applicationContext.xml에 있는 bean들을 생성하고 관리한다. 또한 clinent로 부터 요청이 들어올때 객체를 생성한다.( Lazy-loading )</p>
-<p>이를 확장한 것이 <strong>ApplicationContext</strong> <strong>Container</strong>이다. 트랜잭션관리나 다국어처리와 같은 확장된 기능을 담당한다.</p>
-<p>즉, Spring Container는 xml에 있는 Bean 설정들을 이용해 Bean을 생성하고 관리한다.</p>
-<h3 id="IoC란-제어의-역전이다-왜-제어의-역전일까"><a href="#IoC란-제어의-역전이다-왜-제어의-역전일까" class="headerlink" title="IoC란 제어의 역전이다. 왜 제어의 역전일까?"></a>IoC란 제어의 역전이다. 왜 제어의 역전일까?</h3><p>기존에 로봇 class안에 로봇이 공격할 수 있는 패턴에 대한 함수들이 있었다. 그래서 사용자가 새로운 공격을 할려면 <strong>직접</strong> 함수를 추가해 주어야 했다. 하지만 IoC는 이미 공격 전략들을 다 만들어 놓고, applicationContext라는 곳에 공격전략(beans.xml)을 넣어주면 applicationContext안에서 생성자를 이용하거나, 혹은 setter를 이용해서 알아서 다 만들어준다. 그리고 사용자의 applicationContext의 getBean이라는 메소드를 이용하여 이미 만들어진 Bean을 사용할 수 있기 떄문에 제어의 역전이라고 부른다.</p>
-<h3 id="DI-의존성-주입"><a href="#DI-의존성-주입" class="headerlink" title="DI - 의존성 주입"></a>DI - 의존성 주입</h3><p>의존성이란? class A 내부에서 <code>new B()</code>로 새로운 객체를 만들어 주었다면 둘은 의존관계를 갖는다. 이 의존성을 내부가 아닌 외부에서 넣어주는 것을 의존성 주입이라고 한다. 의존성을 주입하는 방법에는 여러가지가 있다.</p>
-<ol>
-<li>xml을 이용한 주입<ul>
-<li>생성자를 이용</li>
-<li>setter method를 이용</li>
-</ul>
-</li>
-<li>@Autowired annotation을 이용한 주입</li>
-</ol>
-<p>그렇다면 DI는 왜 하는 것일까?</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/12/javascript-Strategy-pattern-적용하기/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jonghun.park">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jjj's park">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/12/javascript-Strategy-pattern-적용하기/" class="post-title-link" itemprop="http://yoursite.com/index.html">javascript Strategy pattern 적용하기</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">작성일</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-12-12 16:55:35 / Updated at: 17:04:58" itemprop="dateCreated datePublished" datetime="2018-12-12T16:55:35+09:00">2018-12-12</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>JSbridge개발 도중, 새로운 native의 기능이 추가될 때마다 javascript를 수정하는 일이 빈번하게 발생했다. 예를 들어 카메라를 불러오는 code를 작성고, 새롭게 마이크를 불러오는 code를 작성하는 경우 이다.</p>
-<p>처음 허접같아 보이는 코드는 다음과 같다.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> call = <span class="function"><span class="keyword">function</span>(<span class="params">funcName, options</span>)</span>&#123;</span><br><span class="line">    jsWebview.call(funcName, options, <span class="string">'null'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"toastBtn"</span>);</span><br><span class="line"><span class="keyword">var</span> thumImg = <span class="built_in">document</span>.getElementById(<span class="string">"thumbnailImg"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> showThumnail = <span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;</span><br><span class="line">    thumImg.children[<span class="number">0</span>].children[<span class="number">0</span>].src =response;</span><br><span class="line">    call(<span class="string">"showToast"</span>, <span class="string">"11"</span>, <span class="string">"null"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">btn.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    showThumnail();</span><br><span class="line">    <span class="keyword">var</span> val = <span class="built_in">document</span>.getElementById(<span class="string">"email"</span>).value;</span><br><span class="line">    <span class="built_in">console</span>.log(val);</span><br><span class="line">    call(<span class="string">'showToast'</span>, val , <span class="string">'null'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">thumImg.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   call(<span class="string">"takePicture"</span>, <span class="string">'null'</span>, <span class="string">'null'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>JSbridge역할을 하는 함수를 공통으로 만들고, 각 event가 발생할 때마다 호출한다. 그리고 showThumnail이라는 native로 부터 callback을 받는 부분을 따로 만들어 준다. </p>
-<p>코드의 가독성이 떨어지고, 유지보수가 힘들고, javascript 처음 짜본사람처럼 보인다. </p>
-<p>그래서, strategy pattern을 이용하여, 개선하게 되었다.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/*********************************************************</span></span><br><span class="line"><span class="comment">    Context</span></span><br><span class="line"><span class="comment">**********************************************************/</span> </span><br><span class="line"><span class="keyword">var</span> AndroidNative = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.androidFunc = <span class="string">""</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">AndroidNative.prototype.setStrategy = <span class="function"><span class="keyword">function</span> (<span class="params">androidFunc</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.androidFunc = androidFunc;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">AndroidNative.prototype.excute = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.androidFunc.excute();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*********************************************************</span></span><br><span class="line"><span class="comment">    Strategy</span></span><br><span class="line"><span class="comment">**********************************************************/</span> </span><br><span class="line"><span class="keyword">var</span> Camera = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.thumImg = <span class="built_in">document</span>.getElementById(<span class="string">"thumbnailImg"</span>);</span><br><span class="line">    <span class="keyword">this</span>.thumText = <span class="built_in">document</span>.getElementById(<span class="string">"thumbnailText"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.excute = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">//generate trx_id</span></span><br><span class="line">        <span class="keyword">return</span> jsWebview.call(<span class="string">"takePicture"</span>, <span class="string">"null"</span>, <span class="string">"null"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Callback</span></span><br><span class="line">    <span class="keyword">this</span>.showThumnail = <span class="function"><span class="keyword">function</span> (<span class="params">response</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.thumImg.src = <span class="string">"data:image/png;base64, "</span> + response;</span><br><span class="line">        <span class="keyword">this</span>.thumText.innerHTML = <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Toast = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.message = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">this</span>.btn = <span class="built_in">document</span>.getElementById(<span class="string">"toastBtn"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.setMessage = <span class="function"><span class="keyword">function</span> (<span class="params">message</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.message = message;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.excute = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> jsWebview.call(<span class="string">"showToast"</span>, <span class="keyword">this</span>.message, <span class="string">"null"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*********************************************************</span></span><br><span class="line"><span class="comment">    Client</span></span><br><span class="line"><span class="comment">**********************************************************/</span> </span><br><span class="line"><span class="keyword">var</span> androidNative = <span class="keyword">new</span> AndroidNative();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> toast = <span class="keyword">new</span> Toast();</span><br><span class="line"><span class="keyword">var</span> camera = <span class="keyword">new</span> Camera();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">toast.btn.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> val = <span class="built_in">document</span>.getElementById(<span class="string">"email"</span>).value;</span><br><span class="line">    toast.setMessage(val);</span><br><span class="line"></span><br><span class="line">    androidNative.setStrategy(toast);</span><br><span class="line">    androidNative.excute();</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">camera.thumImg.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    androidNative.setStrategy(camera);</span><br><span class="line">    androidNative.excute();</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>사용할 기능의 이름을 가진 객체를 만들어 그 내부에서 callback이나 DOM조작을 위한 객체들을 관리한다. androidNative는 Strategy pattern에서 Context역할을 한다.</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/07/Spring-S3-연동하기/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jonghun.park">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jjj's park">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/07/Spring-S3-연동하기/" class="post-title-link" itemprop="http://yoursite.com/index.html">Spring S3 연동하기</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">작성일</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-12-07 16:49:58" itemprop="dateCreated datePublished" datetime="2018-12-07T16:49:58+09:00">2018-12-07</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-12-12 16:55:42" itemprop="dateModified" datetime="2018-12-12T16:55:42+09:00">2018-12-12</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.amazonaws<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aws-java-sdk<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.9.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="FileUploadController-java"><a href="#FileUploadController-java" class="headerlink" title="FileUploadController.java"></a>FileUploadController.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NewFileUploadController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = LoggerFactory.getLogger(NewFileUploadController.class);</span><br><span class="line"></span><br><span class="line">    S3Util s3 = <span class="keyword">new</span> S3Util();</span><br><span class="line">    String bucketName = <span class="string">"bucketName"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/upload"</span>, method = RequestMethod.POST, produces = <span class="string">"text/plain;charset=UTF-8"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">uploadImage</span><span class="params">(MultipartFile file)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        </span><br><span class="line">        String uploadpath = <span class="string">"assetList"</span>;</span><br><span class="line"></span><br><span class="line">        ResponseEntity&lt;String&gt; img_path = <span class="keyword">new</span> ResponseEntity&lt;&gt;(</span><br><span class="line">                UploadFileUtils.uploadFile(uploadpath, file.getOriginalFilename(), file.getBytes()),</span><br><span class="line">                HttpStatus.CREATED);</span><br><span class="line"></span><br><span class="line">        String certificatePath = (String) img_path.getBody();</span><br><span class="line">        <span class="keyword">return</span> certificatePath;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="S3Utill-java"><a href="#S3Utill-java" class="headerlink" title="S3Utill .java"></a>S3Utill .java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">S3Util</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String accessKey = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">private</span> String secretKey = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">private</span> AmazonS3 conn;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// connection 맺는 생성자</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">S3Util</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        AWSCredentials credentials = <span class="keyword">new</span> BasicAWSCredentials(accessKey, secretKey);</span><br><span class="line">        ClientConfiguration clientConfig = <span class="keyword">new</span> ClientConfiguration();</span><br><span class="line">        clientConfig.setProtocol(Protocol.HTTP);</span><br><span class="line">        <span class="keyword">this</span>.conn = <span class="keyword">new</span> AmazonS3Client(credentials, clientConfig);</span><br><span class="line">        conn.setEndpoint(<span class="string">"s3.ap-northeast-2.amazonaws.com"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// fileUpload 메서드</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fileUpload</span><span class="params">(String bucketName, String fileName, <span class="keyword">byte</span>[] fileData)</span> <span class="keyword">throws</span> FileNotFoundException </span>&#123;</span><br><span class="line">        String filePath = (fileName).replace(File.separatorChar, <span class="string">'/'</span>);</span><br><span class="line">        ObjectMetadata metadata = <span class="keyword">new</span> ObjectMetadata();</span><br><span class="line"></span><br><span class="line">        metadata.setContentLength(fileData.length);</span><br><span class="line">        ByteArrayInputStream byteArrayInputStream = <span class="keyword">new</span> ByteArrayInputStream(fileData);</span><br><span class="line"></span><br><span class="line">        conn.putObject(bucketName, filePath, byteArrayInputStream, metadata);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="UploadFileUtils-java"><a href="#UploadFileUtils-java" class="headerlink" title="UploadFileUtils.java"></a>UploadFileUtils.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UploadFileUtils</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = LoggerFactory.getLogger(UploadFileUtils.class);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">uploadFile</span><span class="params">(String uploadPath, String savedName, String originalName, <span class="keyword">byte</span>[] byteData)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">        S3Util s3 = <span class="keyword">new</span> S3Util();</span><br><span class="line">        String bucketName = <span class="string">"bucketName"</span>;</span><br><span class="line"></span><br><span class="line">        String uploadedFileName = <span class="keyword">null</span>;</span><br><span class="line">        uploadedFileName = savedName.replace(File.separatorChar, <span class="string">'/'</span>);</span><br><span class="line"></span><br><span class="line">        s3.fileUpload(bucketName, uploadPath+<span class="string">"/"</span>+uploadedFileName, byteData);</span><br><span class="line"></span><br><span class="line">        logger.info(uploadedFileName);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> uploadedFileName;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="FileUploadController-java-1"><a href="#FileUploadController-java-1" class="headerlink" title="FileUploadController.java"></a>FileUploadController.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NewFileUploadController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    S3Util s3 = <span class="keyword">new</span> S3Util();</span><br><span class="line">    String bucketName = <span class="string">"hybridbucket"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/fileUpload"</span>, method = RequestMethod.POST)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">uploadAjaxCertificate</span><span class="params">(MultipartFile file)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        </span><br><span class="line">        String uploadpath = <span class="string">"user_image"</span>;</span><br><span class="line">        ResponseEntity&lt;String&gt; img_path = <span class="keyword">new</span> ResponseEntity&lt;&gt;(</span><br><span class="line">                UploadFileUtils.uploadFile(uploadpath, file.getOriginalFilename(), file.getBytes()),</span><br><span class="line">                HttpStatus.CREATED);</span><br><span class="line"></span><br><span class="line">        String certificatePath = (String) img_path.getBody();</span><br><span class="line">        logger.info(certificatePath);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> certificatePath;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="출처"><a href="#출처" class="headerlink" title="출처"></a>출처</h2><p><a href="https://shj7242.github.io/2017/12/28/Spring34/" target="_blank" rel="noopener">https://shj7242.github.io/2017/12/28/Spring34/</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -2128,7 +1904,7 @@ DispatcherServlet는 다음과 같이 동작한다:
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">포스트</span>
                   </a>
                 </div>

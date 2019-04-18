@@ -108,20 +108,24 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="jjj&#39;s park">
-<meta property="og:url" content="http://yoursite.com/categories/Spring-framework/index.html">
+  <meta name="description" content="not pojo = Servlet  Servlet에 맞는 클래스를 만들어야 실행된다. Servlet이 복잡해서 Spring을 이용하여 POJO로 개발한다. BeanFactory를 상속받아서 ApplicationContext 구현  ApplicationContext는 인터페이스? BeanFactory를 상속받아?  Tomcat(WAS)  DispatcherS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring 동작원리">
+<meta property="og:url" content="http://yoursite.com/2019/04/02/Spring-동작원리/index.html">
 <meta property="og:site_name" content="jjj&#39;s park">
+<meta property="og:description" content="not pojo = Servlet  Servlet에 맞는 클래스를 만들어야 실행된다. Servlet이 복잡해서 Spring을 이용하여 POJO로 개발한다. BeanFactory를 상속받아서 ApplicationContext 구현  ApplicationContext는 인터페이스? BeanFactory를 상속받아?  Tomcat(WAS)  DispatcherS">
 <meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2019-04-02T11:09:07.367Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jjj&#39;s park">
+<meta name="twitter:title" content="Spring 동작원리">
+<meta name="twitter:description" content="not pojo = Servlet  Servlet에 맞는 클래스를 만들어야 실행된다. Servlet이 복잡해서 Spring을 이용하여 POJO로 개발한다. BeanFactory를 상속받아서 ApplicationContext 구현  ApplicationContext는 인터페이스? BeanFactory를 상속받아?  Tomcat(WAS)  DispatcherS">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/Spring-framework/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/02/Spring-동작원리/">
 
 
 
@@ -131,7 +135,7 @@
   };
 </script>
 
-  <title>카테고리: Spring framework | jjj's park</title>
+  <title>Spring 동작원리 | jjj's park</title>
   
 
 
@@ -180,7 +184,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -234,7 +238,7 @@
         
         
           
-          <li class="menu-item menu-item-categories menu-item-active">
+          <li class="menu-item menu-item-categories">
 
     
     
@@ -273,22 +277,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -313,57 +301,182 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Spring framework<small>카테고리</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/02/Spring-동작원리/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonghun.park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jjj's park">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/03/05/왜-Spring인가/" itemprop="url">
-              
-                <span itemprop="name">왜 Spring인가?</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Spring 동작원리
+              
+            
+          </h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-05T20:31:56+09:00" content="2019-03-05">
-          03-05
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
 
-    </header>
-  </article>
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-04-02 19:06:59 / Updated at: 20:09:07" itemprop="dateCreated datePublished" datetime="2019-04-02T19:06:59+09:00">2019-04-02</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>not pojo = Servlet </p>
+<p>Servlet에 맞는 클래스를 만들어야 실행된다.</p>
+<p>Servlet이 복잡해서 Spring을 이용하여 POJO로 개발한다.</p>
+<p>BeanFactory를 상속받아서 ApplicationContext 구현</p>
+<blockquote>
+<p>ApplicationContext는 인터페이스? BeanFactory를 상속받아?</p>
+</blockquote>
+<p>Tomcat(WAS)</p>
+<ul>
+<li>DispatcherServlet과 spring Conainer와의 관계</li>
+<li>Component-scan할라면 annotation driven이 있어야한다.</li>
+</ul>
+<p>ContextLoaderListener이 AnnotationConfigWebApplicationContext 설정값을 가지고, RootWebApplicationContext를 만들고, DispatcherServlet은 servlet-context.xml을 가지고 각각의 ApplicationContext를 만든다. 이 ApplicationContext는 Root WebApplicationContext를 상속한다.</p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/31/SpringMVC-동작원리/" rel="next" title="SpringMVC 동작원리">
+                <i class="fa fa-chevron-left"></i> SpringMVC 동작원리
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/04/elasticsearch-용어/" rel="prev" title="elasticsearch 용어">
+                elasticsearch 용어 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -602,6 +715,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
 
   
 
@@ -621,43 +738,6 @@
 
 
 
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-</body>
-</html>
 
 
 
