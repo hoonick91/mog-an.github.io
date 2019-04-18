@@ -115,12 +115,12 @@
 <meta property="og:site_name" content="jjj&#39;s park">
 <meta property="og:description" content="IoC Container란?우선 Container는 무언가를 주체적으로 관리한다. 예를 들어 Servlet Container는 Servlet의 생성 소멸 등을 관리한다. 그리고 IoC란 제어의 역전 즉, 기존에 Client가 객체를 생성하고 소멸시킨(소멸은 GC가 한다) 일들을 Container가 한다는 것이다. 그럼 어떤것이 할까? Application">
 <meta property="og:locale" content="ko">
-<meta property="og:image" content="http://yoursite.com/Users/bagjonghun/Desktop/my-blog/source/_images/applicationContext.png">
-<meta property="og:updated_time" content="2019-03-27T00:23:50.661Z">
+<meta property="og:image" content="http://yoursite.com/images/applicationContext.png">
+<meta property="og:updated_time" content="2019-04-18T10:29:20.345Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IoC Container 신석기시대">
 <meta name="twitter:description" content="IoC Container란?우선 Container는 무언가를 주체적으로 관리한다. 예를 들어 Servlet Container는 Servlet의 생성 소멸 등을 관리한다. 그리고 IoC란 제어의 역전 즉, 기존에 Client가 객체를 생성하고 소멸시킨(소멸은 GC가 한다) 일들을 Container가 한다는 것이다. 그럼 어떤것이 할까? Application">
-<meta name="twitter:image" content="http://yoursite.com/Users/bagjonghun/Desktop/my-blog/source/_images/applicationContext.png">
+<meta name="twitter:image" content="http://yoursite.com/images/applicationContext.png">
 
 
 
@@ -378,7 +378,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-03-27 09:23:50" itemprop="dateModified" datetime="2019-03-27T09:23:50+09:00">2019-03-27</time>
+                <time title="Updated at: 2019-04-18 19:29:20" itemprop="dateModified" datetime="2019-04-18T19:29:20+09:00">2019-04-18</time>
               
             
           </span>
@@ -419,7 +419,7 @@
 </blockquote>
 <p>Spring의 root webApplicationContext가 start up, shut down될떄 사용하는 bootstrap listener?(bootstrap - 외부의 입력없이 스스로 실행되는 것)</p>
 <h3 id="Context-Loader"><a href="#Context-Loader" class="headerlink" title="Context-Loader"></a>Context-Loader</h3><p>Context-Loader-Listener에 의해서 호출되어서, ApplicationContext를 init하는 것이다.</p>
-<p><img src="/Users/bagjonghun/Desktop/my-blog/source/_images/applicationContext.png" alt="image"></p>
+<p><img src="/images/applicationContext.png" alt="image"></p>
 <p>그래서 정리하자면 최초의 ApplicationContext가 생성이 될때, ContextLoaderListener가 바라보고있다가 생성되면 init method를 실행시켜서 ApplicationContext에 대한 설정값을 넣어줄 수 있다. 그때 <strong>contextClass</strong>를 param으로 받아서 설정값을 넣어주는데, </p>
 <p>이때 param으로 들어가는 <strong>AnnotationConfigWebApplicationContext은</strong> WebApplicationContext의 구현체로 annotation이 붙은 클래스를(<figure class="highlight plain"><figcaption><span>input으로 사용하게 해준다.</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### AnnotationConfigWebApplicationContext</span><br><span class="line"></span><br><span class="line">```xml</span><br><span class="line">&lt;!--web.xml--&gt;</span><br><span class="line">&lt;context-param&gt;</span><br><span class="line">    &lt;param-name&gt;contextClass&lt;/param-name&gt;</span><br><span class="line">    &lt;param-value&gt;org.springframework.web.context.support.AnnotationConfigWebApplicationContext&lt;/param-value&gt;</span><br><span class="line">&lt;/context-param&gt;</span><br></pre></td></tr></table></figure></p>
 <p>여기서 contextClass는 ContextLoader의 예약어이다. ContextLoader는 contextClass라는 이름을 가진 param을 읽어온다. 그래서 @Configuration annotation이 붙은 함수를 읽어와서 설정파일로 만들어 준다. 즉, java파일을 config파일로 만들어주는 것이 바로 AnnotationConfigWebApplicationContext이다. </p>
@@ -542,7 +542,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">포스트</span>
                   </a>
                 </div>
@@ -563,7 +563,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">카테고리</span>
                   
                 </div>
