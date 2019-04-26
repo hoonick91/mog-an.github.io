@@ -108,17 +108,17 @@
 
 
 
-  <meta name="description" content="Setup FLE based by centosCentos 처음 설치했을때 외부인터넷과 연결이 되는지 체크해야한다. centos에서 외부인터넷 연결이 되는지 ping google.com``` 로 확인할 수 있고, 외부에서는 ```ping centos주소(ip addr을 통해 얻을 수 있다.)``` 로 확인할 수 있다. virtualbox의 인터넷연결은   장">
+  <meta name="description" content="Centos 처음 설치했을때 외부인터넷과 연결이 되는지 체크해야한다. centos에서 외부인터넷 연결이 되는지 $&amp;gt; ping google.com 로 확인할 수 있고, 외부에서는 ping centos주소(ip addr을 통해 얻을 수 있다.) 로 확인할 수 있다.  virtualbox의 인터넷연결은  장치 - 네트워크 연결 - 어댑터 브릿지 Filebe">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Filebeat, Logstash, Elasticsearch 설치하기(centos)">
 <meta property="og:url" content="http://yoursite.com/2019/04/17/Filebeat-Logstash-Elasticsearch-설치하기-centos/index.html">
 <meta property="og:site_name" content="jjj&#39;s park">
-<meta property="og:description" content="Setup FLE based by centosCentos 처음 설치했을때 외부인터넷과 연결이 되는지 체크해야한다. centos에서 외부인터넷 연결이 되는지 ping google.com``` 로 확인할 수 있고, 외부에서는 ```ping centos주소(ip addr을 통해 얻을 수 있다.)``` 로 확인할 수 있다. virtualbox의 인터넷연결은   장">
+<meta property="og:description" content="Centos 처음 설치했을때 외부인터넷과 연결이 되는지 체크해야한다. centos에서 외부인터넷 연결이 되는지 $&amp;gt; ping google.com 로 확인할 수 있고, 외부에서는 ping centos주소(ip addr을 통해 얻을 수 있다.) 로 확인할 수 있다.  virtualbox의 인터넷연결은  장치 - 네트워크 연결 - 어댑터 브릿지 Filebe">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2019-04-18T14:38:43.263Z">
+<meta property="og:updated_time" content="2019-04-26T06:21:03.525Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Filebeat, Logstash, Elasticsearch 설치하기(centos)">
-<meta name="twitter:description" content="Setup FLE based by centosCentos 처음 설치했을때 외부인터넷과 연결이 되는지 체크해야한다. centos에서 외부인터넷 연결이 되는지 ping google.com``` 로 확인할 수 있고, 외부에서는 ```ping centos주소(ip addr을 통해 얻을 수 있다.)``` 로 확인할 수 있다. virtualbox의 인터넷연결은   장">
+<meta name="twitter:description" content="Centos 처음 설치했을때 외부인터넷과 연결이 되는지 체크해야한다. centos에서 외부인터넷 연결이 되는지 $&amp;gt; ping google.com 로 확인할 수 있고, 외부에서는 ping centos주소(ip addr을 통해 얻을 수 있다.) 로 확인할 수 있다.  virtualbox의 인터넷연결은  장치 - 네트워크 연결 - 어댑터 브릿지 Filebe">
 
 
 
@@ -376,7 +376,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-04-18 23:38:43" itemprop="dateModified" datetime="2019-04-18T23:38:43+09:00">2019-04-18</time>
+                <time title="Updated at: 2019-04-26 15:21:03" itemprop="dateModified" datetime="2019-04-26T15:21:03+09:00">2019-04-26</time>
               
             
           </span>
@@ -427,7 +427,15 @@
       
 
       
-        <h1 id="Setup-FLE-based-by-centos"><a href="#Setup-FLE-based-by-centos" class="headerlink" title="Setup FLE based by centos"></a>Setup FLE based by centos</h1><p>Centos 처음 설치했을때 외부인터넷과 연결이 되는지 체크해야한다. centos에서 외부인터넷 연결이 되는지 <figure class="highlight plain"><figcaption><span>ping google.com``` 로 확인할 수 있고, 외부에서는 ```ping centos주소(ip addr을 통해 얻을 수 있다.)``` 로 확인할 수 있다. virtualbox의 인터넷연결은   장치 - 네트워크 연결 - 어댑터 브릿지</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">​	NAT</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Filebeat 설치</span><br><span class="line"></span><br><span class="line">Logstash 설치</span><br><span class="line"></span><br><span class="line">Elasticsearch 설치</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 실행</span><br><span class="line"></span><br><span class="line">&gt; Filebeat, Logstash, Elasticsearch는 모두 Service를 이용하여 실행, 재실행, 종료를 할 수 있다.</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">$&gt; service filebeat start</span><br><span class="line">$&gt; service logstash start</span><br><span class="line">$&gt; service elasticsearch start</span><br></pre></td></tr></table></figure></p>
+        <p>Centos 처음 설치했을때 외부인터넷과 연결이 되는지 체크해야한다. centos에서 외부인터넷 연결이 되는지 $&gt; ping google.com 로 확인할 수 있고, 외부에서는 ping centos주소(ip addr을 통해 얻을 수 있다.) 로 확인할 수 있다. </p>
+<p>virtualbox의 인터넷연결은  장치 - 네트워크 연결 - 어댑터 브릿지</p>
+<p>Filebeat 설치</p>
+<p>Logstash 설치</p>
+<p>Elasticsearch 설치</p>
+<h2 id="실행"><a href="#실행" class="headerlink" title="실행"></a>실행</h2><blockquote>
+<p>Filebeat, Logstash, Elasticsearch는 모두 Service를 이용하여 실행, 재실행, 종료를 할 수 있다.</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>&gt; service filebeat start</span><br><span class="line"><span class="meta">$</span>&gt; service logstash start</span><br><span class="line"><span class="meta">$</span>&gt; service elasticsearch start</span><br></pre></td></tr></table></figure>
 <p>Filebeat는 설정값인 filebeat.yml을 기반으로 실행할 수 있다.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>&gt; pwd</span><br><span class="line">/usr/share/filebeat/</span><br><span class="line"><span class="meta">$</span>&gt; ./filebeat -f /etc/filebeat/filbeat.yml</span><br></pre></td></tr></table></figure>
 <h3 id="Logstash-실행"><a href="#Logstash-실행" class="headerlink" title="Logstash 실행"></a>Logstash 실행</h3><blockquote>
@@ -558,7 +566,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">포스트</span>
                   </a>
                 </div>
@@ -650,7 +658,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Setup-FLE-based-by-centos"><span class="nav-number">1.</span> <span class="nav-text">Setup FLE based by centos</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Logstash-실행"><span class="nav-number">1.0.1.</span> <span class="nav-text">Logstash 실행</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Elasticsearch-실행"><span class="nav-number">1.0.2.</span> <span class="nav-text">Elasticsearch 실행</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#실행"><span class="nav-number">1.</span> <span class="nav-text">실행</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Logstash-실행"><span class="nav-number">1.1.</span> <span class="nav-text">Logstash 실행</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Elasticsearch-실행"><span class="nav-number">1.2.</span> <span class="nav-text">Elasticsearch 실행</span></a></li></ol></li></ol></div>
             
 
           </div>

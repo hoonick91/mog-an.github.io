@@ -116,7 +116,7 @@
 <meta property="og:description" content="초보라면, 기능적으로 완성한 다음 어떻게 하면 객체지향적으로 개선할 수 있을지 고민하면 좋다.  객체는 클래스에 정의된 내용대로 메모리에 생성되는 것  JDK - java 프로그램 생성 (java 소프트웨어 개발 도구) JVM - 프로그램을 실행하는 자바 플랫폼 JRE - JVM을 생서하는 디스크 상의 부분 ( java 코드를 실행하기 위한 도구)   1">
 <meta property="og:locale" content="ko">
 <meta property="og:image" content="http://yoursite.com/images/jdk.png">
-<meta property="og:updated_time" content="2019-04-19T00:10:01.056Z">
+<meta property="og:updated_time" content="2019-04-21T11:16:14.650Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="객체지향 프로그래밍">
 <meta name="twitter:description" content="초보라면, 기능적으로 완성한 다음 어떻게 하면 객체지향적으로 개선할 수 있을지 고민하면 좋다.  객체는 클래스에 정의된 내용대로 메모리에 생성되는 것  JDK - java 프로그램 생성 (java 소프트웨어 개발 도구) JVM - 프로그램을 실행하는 자바 플랫폼 JRE - JVM을 생서하는 디스크 상의 부분 ( java 코드를 실행하기 위한 도구)   1">
@@ -378,7 +378,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-04-19 09:10:01" itemprop="dateModified" datetime="2019-04-19T09:10:01+09:00">2019-04-19</time>
+                <time title="Updated at: 2019-04-21 20:16:14" itemprop="dateModified" datetime="2019-04-21T20:16:14+09:00">2019-04-21</time>
               
             
           </span>
@@ -443,7 +443,7 @@
 <p>static - is static variable. When class is loaded into memory, static vairable with.<br>method - we should validate the variable.</p>
 <h3 id="Memory-structure-in-JVM"><a href="#Memory-structure-in-JVM" class="headerlink" title="Memory structure in JVM"></a>Memory structure in JVM</h3><p><strong>method area</strong> - if class is used when program is running, JVM store *.class(this class file) in this method area. Then static variable store in.</p>
 <p><strong>call stack</strong> - This provides the memory required for method operations.</p>
-<p>heap** - All instance when program is running is stored in heap.</p>
+<p><strong>heap</strong> - All instance when program is running is stored in heap.</p>
 <p>반복문보다 재귀호출이 더 오래걸리는 이유는 call stack에 parameter복사와 복귀주소 저장 등, 추가로 시간이 걸리기 때문이다. 그래서 반복문은 stack overflow error를 발생하지 않고, unreachable statement error를 발생시킨다.</p>
 <h3 id="클래스-메서드-인스턴스-메서드"><a href="#클래스-메서드-인스턴스-메서드" class="headerlink" title="클래스 메서드 인스턴스 메서드"></a>클래스 메서드 인스턴스 메서드</h3><ol>
 <li>모든 Instance에 공통으로 사용되는 것에 static을 붙인다.</li>
@@ -467,7 +467,68 @@
 <li>initialization block - instance variable은 생성자를 이용하고, 모든 생성자에서 공통으로 초기화 해야되는 것은 초기화 block를 이용한다.</li>
 <li>constructor initialization</li>
 </ul>
-<p>​    </p>
+<h2 id="상속"><a href="#상속" class="headerlink" title="상속"></a>상속</h2><ul>
+<li>멤버변수만 초기화 된다.  </li>
+<li>private, default는 상속은 되는데 접근을 제한하는 것이다.</li>
+<li>형제관계인 클래스는 없다. 오로지 부모와 자식 뿐!</li>
+</ul>
+<h3 id="클래스간의-관계"><a href="#클래스간의-관계" class="headerlink" title="클래스간의 관계"></a>클래스간의 관계</h3><ul>
+<li>포함관계(~has)</li>
+<li>상속관계(~is)</li>
+</ul>
+<h3 id="단일상속"><a href="#단일상속" class="headerlink" title="단일상속"></a>단일상속</h3><ul>
+<li>클래스간의 관계가 복잡해지고, 상속받은 클래스의 멤버변수 명이 같다면 구별이 힘들다.</li>
+</ul>
+<h3 id="Override"><a href="#Override" class="headerlink" title="Override"></a>Override</h3><ul>
+<li><p>조상클래스에 정의된 method를 자식클래스에 재정의 하는 것.</p>
+<h4 id="condition"><a href="#condition" class="headerlink" title="condition"></a>condition</h4><ul>
+<li>접근제어자는 조상클래스보다 좁게 불가능</li>
+<li>throw는 조상보다 더 많이 던질 수 없다.</li>
+<li>인스턴스 -&gt; static method, static method -&gt; 인스턴스 method로 변경할 수 없다.</li>
+</ul>
+</li>
+</ul>
+<h2 id=""><a href="#" class="headerlink" title=" "></a> </h2><h3 id="super"><a href="#super" class="headerlink" title="super"></a>super</h3><ul>
+<li><p>super.name - 조상클래스의 name 멤버변수를 참조한다.</p>
+</li>
+<li><p>super() - 조상 클래스의 생성자를 호출한다.</p>
+<blockquote>
+<p>모든 클래스의 생성자 첫출에는 this() or super()가 호출해야 한다. 자식클래스에서 부모클래스의 멤버변수를 사용할 수 있으므로 생성자로 미리 초기화를 해주어야한다.₩</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="package"><a href="#package" class="headerlink" title="package"></a>package</h3><ul>
+<li>package명은 소문자로 한다.</li>
+<li>import static java.lang.System.out; 와 같이 static을 사용하면 클래스 이름을 생략할 수 있다.</li>
+</ul>
+<h3 id="modifier"><a href="#modifier" class="headerlink" title="modifier"></a>modifier</h3><p>final</p>
+<ul>
+<li>클래스 - 자손클래스 정의 못함</li>
+<li>매서드 - override 못함</li>
+<li>변수 - 수정 못함(상수)</li>
+</ul>
+<blockquote>
+<p>인스턴스 변수의 경우 생성자에서 초기화가 가능하다.</p>
+</blockquote>
+<h3 id="추상클래스"><a href="#추상클래스" class="headerlink" title="추상클래스"></a>추상클래스</h3><ul>
+<li>인스턴스 생성 불가능</li>
+</ul>
+<h3 id="다형성"><a href="#다형성" class="headerlink" title="다형성"></a>다형성</h3><p>한 타입의 참조변수로 여러 타입의 객체를 참조할 수 있도록 다형성을 프로그램적으로 구현하였다.</p>
+<ul>
+<li><p>부모의 참조변수 타입에 자식의 인스턴스 주소를 저장해도 부모의 멤버변수 만 사용할 수 있다. (업캐스팅)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Car car = <span class="keyword">null</span>;</span><br><span class="line">FireEngine fe2 = <span class="keyword">null</span>;</span><br><span class="line">fe2 = (FireEngine) car; <span class="comment">// 가능</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Car car = <span class="keyword">new</span> Car();</span><br><span class="line">FireEngine fe = <span class="keyword">null</span>;</span><br><span class="line">fe = (FireEngine) car; <span class="comment">// ClassCastException: car</span></span><br></pre></td></tr></table></figure>
+<p>참조변수끼리의 형변환은 가능하지만,<br>조상타입의 인스턴스를 자식 타입의 참조변수에 저장하는 것은 불가능 하다.</p>
+</li>
+</ul>
+<h3 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h3><ul>
+<li>형변환 가능여부를 판단하여 알려준다.</li>
+</ul>
+<h3 id="Interface"><a href="#Interface" class="headerlink" title="Interface"></a>Interface</h3><ul>
+<li>모든 멤버변수는 public static final 이고, 생략할 수 있다.</li>
+<li>implement하는 클래스가 interface의 일부만 구현한다면 abstract를 붙여주어야 한다.</li>
+<li>리턴타입이 인터페이스라는 것은 그 메서드가 인터페이스를 구현한 클래스의 인스턴스를 반환한다는 것을 말한다.</li>
+</ul>
 
       
     </div>
@@ -507,6 +568,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/21/예외처리/" rel="prev" title="예외처리">
+                예외처리 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -576,7 +641,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">포스트</span>
                   </a>
                 </div>
@@ -668,7 +733,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Memory-structure-in-JVM"><span class="nav-number">1.</span> <span class="nav-text">Memory structure in JVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#클래스-메서드-인스턴스-메서드"><span class="nav-number">2.</span> <span class="nav-text">클래스 메서드 인스턴스 메서드</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Overloading"><span class="nav-number">3.</span> <span class="nav-text">Overloading</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Variable-arguments"><span class="nav-number">4.</span> <span class="nav-text">Variable arguments</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Constructor"><span class="nav-number">5.</span> <span class="nav-text">Constructor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Init-vaiable"><span class="nav-number">6.</span> <span class="nav-text">Init vaiable</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Memory-structure-in-JVM"><span class="nav-number">1.</span> <span class="nav-text">Memory structure in JVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#클래스-메서드-인스턴스-메서드"><span class="nav-number">2.</span> <span class="nav-text">클래스 메서드 인스턴스 메서드</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Overloading"><span class="nav-number">3.</span> <span class="nav-text">Overloading</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Variable-arguments"><span class="nav-number">4.</span> <span class="nav-text">Variable arguments</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Constructor"><span class="nav-number">5.</span> <span class="nav-text">Constructor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Init-vaiable"><span class="nav-number">6.</span> <span class="nav-text">Init vaiable</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#상속"><span class="nav-number"></span> <span class="nav-text">상속</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#클래스간의-관계"><span class="nav-number">1.</span> <span class="nav-text">클래스간의 관계</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#단일상속"><span class="nav-number">2.</span> <span class="nav-text">단일상속</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Override"><span class="nav-number">3.</span> <span class="nav-text">Override</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#condition"><span class="nav-number">3.1.</span> <span class="nav-text">condition</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number"></span> <span class="nav-text"> </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#super"><span class="nav-number">1.</span> <span class="nav-text">super</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#package"><span class="nav-number">2.</span> <span class="nav-text">package</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#modifier"><span class="nav-number">3.</span> <span class="nav-text">modifier</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#추상클래스"><span class="nav-number">4.</span> <span class="nav-text">추상클래스</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#다형성"><span class="nav-number">5.</span> <span class="nav-text">다형성</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#instanceof"><span class="nav-number">6.</span> <span class="nav-text">instanceof</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Interface"><span class="nav-number">7.</span> <span class="nav-text">Interface</span></a></li></ol></li></div>
             
 
           </div>

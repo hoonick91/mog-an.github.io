@@ -314,6 +314,172 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/21/예외처리/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonghun.park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jjj's park">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/21/예외처리/" class="post-title-link" itemprop="http://yoursite.com/index.html">예외처리</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-04-21 19:51:17 / Updated at: 20:16:06" itemprop="dateCreated datePublished" datetime="2019-04-21T19:51:17+09:00">2019-04-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="catch-block"><a href="#catch-block" class="headerlink" title="catch block"></a>catch block</h2><blockquote>
+<p>예외가 발생하면 발생한 예외에 해당하는 인스턴스가 생성되고, catch block을 거치면서 instanceof로 검사한다. true가 나오면 그 구문에서 예외를 처리한다.</p>
+</blockquote>
+<ul>
+<li>‘|’ 를 이용해서 multicatchblock을 형성할 수 있다.</li>
+</ul>
+<h4 id="finally"><a href="#finally" class="headerlink" title="finally"></a>finally</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;&#125;</span><br><span class="line"><span class="keyword">catch</span>&#123;&#125;</span><br><span class="line"><span class="keyword">finally</span>&#123;</span><br><span class="line">	<span class="keyword">try</span>&#123;</span><br><span class="line">		dis.close();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/18/객체지향-프로그래밍-1/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -376,7 +542,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-04-19 09:10:01" itemprop="dateModified" datetime="2019-04-19T09:10:01+09:00">2019-04-19</time>
+                <time title="Updated at: 2019-04-21 20:16:14" itemprop="dateModified" datetime="2019-04-21T20:16:14+09:00">2019-04-21</time>
               
             
           </span>
@@ -443,7 +609,7 @@
 <p>static - is static variable. When class is loaded into memory, static vairable with.<br>method - we should validate the variable.</p>
 <h3 id="Memory-structure-in-JVM"><a href="#Memory-structure-in-JVM" class="headerlink" title="Memory structure in JVM"></a>Memory structure in JVM</h3><p><strong>method area</strong> - if class is used when program is running, JVM store *.class(this class file) in this method area. Then static variable store in.</p>
 <p><strong>call stack</strong> - This provides the memory required for method operations.</p>
-<p>heap** - All instance when program is running is stored in heap.</p>
+<p><strong>heap</strong> - All instance when program is running is stored in heap.</p>
 <p>반복문보다 재귀호출이 더 오래걸리는 이유는 call stack에 parameter복사와 복귀주소 저장 등, 추가로 시간이 걸리기 때문이다. 그래서 반복문은 stack overflow error를 발생하지 않고, unreachable statement error를 발생시킨다.</p>
 <h3 id="클래스-메서드-인스턴스-메서드"><a href="#클래스-메서드-인스턴스-메서드" class="headerlink" title="클래스 메서드 인스턴스 메서드"></a>클래스 메서드 인스턴스 메서드</h3><ol>
 <li>모든 Instance에 공통으로 사용되는 것에 static을 붙인다.</li>
@@ -467,7 +633,68 @@
 <li>initialization block - instance variable은 생성자를 이용하고, 모든 생성자에서 공통으로 초기화 해야되는 것은 초기화 block를 이용한다.</li>
 <li>constructor initialization</li>
 </ul>
-<p>​    </p>
+<h2 id="상속"><a href="#상속" class="headerlink" title="상속"></a>상속</h2><ul>
+<li>멤버변수만 초기화 된다.  </li>
+<li>private, default는 상속은 되는데 접근을 제한하는 것이다.</li>
+<li>형제관계인 클래스는 없다. 오로지 부모와 자식 뿐!</li>
+</ul>
+<h3 id="클래스간의-관계"><a href="#클래스간의-관계" class="headerlink" title="클래스간의 관계"></a>클래스간의 관계</h3><ul>
+<li>포함관계(~has)</li>
+<li>상속관계(~is)</li>
+</ul>
+<h3 id="단일상속"><a href="#단일상속" class="headerlink" title="단일상속"></a>단일상속</h3><ul>
+<li>클래스간의 관계가 복잡해지고, 상속받은 클래스의 멤버변수 명이 같다면 구별이 힘들다.</li>
+</ul>
+<h3 id="Override"><a href="#Override" class="headerlink" title="Override"></a>Override</h3><ul>
+<li><p>조상클래스에 정의된 method를 자식클래스에 재정의 하는 것.</p>
+<h4 id="condition"><a href="#condition" class="headerlink" title="condition"></a>condition</h4><ul>
+<li>접근제어자는 조상클래스보다 좁게 불가능</li>
+<li>throw는 조상보다 더 많이 던질 수 없다.</li>
+<li>인스턴스 -&gt; static method, static method -&gt; 인스턴스 method로 변경할 수 없다.</li>
+</ul>
+</li>
+</ul>
+<h2 id=""><a href="#" class="headerlink" title=" "></a> </h2><h3 id="super"><a href="#super" class="headerlink" title="super"></a>super</h3><ul>
+<li><p>super.name - 조상클래스의 name 멤버변수를 참조한다.</p>
+</li>
+<li><p>super() - 조상 클래스의 생성자를 호출한다.</p>
+<blockquote>
+<p>모든 클래스의 생성자 첫출에는 this() or super()가 호출해야 한다. 자식클래스에서 부모클래스의 멤버변수를 사용할 수 있으므로 생성자로 미리 초기화를 해주어야한다.₩</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="package"><a href="#package" class="headerlink" title="package"></a>package</h3><ul>
+<li>package명은 소문자로 한다.</li>
+<li>import static java.lang.System.out; 와 같이 static을 사용하면 클래스 이름을 생략할 수 있다.</li>
+</ul>
+<h3 id="modifier"><a href="#modifier" class="headerlink" title="modifier"></a>modifier</h3><p>final</p>
+<ul>
+<li>클래스 - 자손클래스 정의 못함</li>
+<li>매서드 - override 못함</li>
+<li>변수 - 수정 못함(상수)</li>
+</ul>
+<blockquote>
+<p>인스턴스 변수의 경우 생성자에서 초기화가 가능하다.</p>
+</blockquote>
+<h3 id="추상클래스"><a href="#추상클래스" class="headerlink" title="추상클래스"></a>추상클래스</h3><ul>
+<li>인스턴스 생성 불가능</li>
+</ul>
+<h3 id="다형성"><a href="#다형성" class="headerlink" title="다형성"></a>다형성</h3><p>한 타입의 참조변수로 여러 타입의 객체를 참조할 수 있도록 다형성을 프로그램적으로 구현하였다.</p>
+<ul>
+<li><p>부모의 참조변수 타입에 자식의 인스턴스 주소를 저장해도 부모의 멤버변수 만 사용할 수 있다. (업캐스팅)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Car car = <span class="keyword">null</span>;</span><br><span class="line">FireEngine fe2 = <span class="keyword">null</span>;</span><br><span class="line">fe2 = (FireEngine) car; <span class="comment">// 가능</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Car car = <span class="keyword">new</span> Car();</span><br><span class="line">FireEngine fe = <span class="keyword">null</span>;</span><br><span class="line">fe = (FireEngine) car; <span class="comment">// ClassCastException: car</span></span><br></pre></td></tr></table></figure>
+<p>참조변수끼리의 형변환은 가능하지만,<br>조상타입의 인스턴스를 자식 타입의 참조변수에 저장하는 것은 불가능 하다.</p>
+</li>
+</ul>
+<h3 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h3><ul>
+<li>형변환 가능여부를 판단하여 알려준다.</li>
+</ul>
+<h3 id="Interface"><a href="#Interface" class="headerlink" title="Interface"></a>Interface</h3><ul>
+<li>모든 멤버변수는 public static final 이고, 생략할 수 있다.</li>
+<li>implement하는 클래스가 interface의 일부만 구현한다면 abstract를 붙여주어야 한다.</li>
+<li>리턴타입이 인터페이스라는 것은 그 메서드가 인터페이스를 구현한 클래스의 인스턴스를 반환한다는 것을 말한다.</li>
+</ul>
 
           
         
@@ -749,7 +976,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-04-18 23:38:43" itemprop="dateModified" datetime="2019-04-18T23:38:43+09:00">2019-04-18</time>
+                <time title="Updated at: 2019-04-26 15:21:03" itemprop="dateModified" datetime="2019-04-26T15:21:03+09:00">2019-04-26</time>
               
             
           </span>
@@ -802,7 +1029,15 @@
       
         
           
-            <h1 id="Setup-FLE-based-by-centos"><a href="#Setup-FLE-based-by-centos" class="headerlink" title="Setup FLE based by centos"></a>Setup FLE based by centos</h1><p>Centos 처음 설치했을때 외부인터넷과 연결이 되는지 체크해야한다. centos에서 외부인터넷 연결이 되는지 <figure class="highlight plain"><figcaption><span>ping google.com``` 로 확인할 수 있고, 외부에서는 ```ping centos주소(ip addr을 통해 얻을 수 있다.)``` 로 확인할 수 있다. virtualbox의 인터넷연결은   장치 - 네트워크 연결 - 어댑터 브릿지</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">​	NAT</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Filebeat 설치</span><br><span class="line"></span><br><span class="line">Logstash 설치</span><br><span class="line"></span><br><span class="line">Elasticsearch 설치</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 실행</span><br><span class="line"></span><br><span class="line">&gt; Filebeat, Logstash, Elasticsearch는 모두 Service를 이용하여 실행, 재실행, 종료를 할 수 있다.</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">$&gt; service filebeat start</span><br><span class="line">$&gt; service logstash start</span><br><span class="line">$&gt; service elasticsearch start</span><br></pre></td></tr></table></figure></p>
+            <p>Centos 처음 설치했을때 외부인터넷과 연결이 되는지 체크해야한다. centos에서 외부인터넷 연결이 되는지 $&gt; ping google.com 로 확인할 수 있고, 외부에서는 ping centos주소(ip addr을 통해 얻을 수 있다.) 로 확인할 수 있다. </p>
+<p>virtualbox의 인터넷연결은  장치 - 네트워크 연결 - 어댑터 브릿지</p>
+<p>Filebeat 설치</p>
+<p>Logstash 설치</p>
+<p>Elasticsearch 설치</p>
+<h2 id="실행"><a href="#실행" class="headerlink" title="실행"></a>실행</h2><blockquote>
+<p>Filebeat, Logstash, Elasticsearch는 모두 Service를 이용하여 실행, 재실행, 종료를 할 수 있다.</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>&gt; service filebeat start</span><br><span class="line"><span class="meta">$</span>&gt; service logstash start</span><br><span class="line"><span class="meta">$</span>&gt; service elasticsearch start</span><br></pre></td></tr></table></figure>
 <p>Filebeat는 설정값인 filebeat.yml을 기반으로 실행할 수 있다.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>&gt; pwd</span><br><span class="line">/usr/share/filebeat/</span><br><span class="line"><span class="meta">$</span>&gt; ./filebeat -f /etc/filebeat/filbeat.yml</span><br></pre></td></tr></table></figure>
 <h3 id="Logstash-실행"><a href="#Logstash-실행" class="headerlink" title="Logstash 실행"></a>Logstash 실행</h3><blockquote>
@@ -1947,221 +2182,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/25/item6-유효기간이-지난-객체-참조는-폐기하라/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jonghun.park">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jjj's park">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/25/item6-유효기간이-지난-객체-참조는-폐기하라/" class="post-title-link" itemprop="http://yoursite.com/index.html">item6. 유효기간이 지난 객체 참조는 폐기하라</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">작성일</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2019-03-25 11:17:38" itemprop="dateCreated datePublished" datetime="2019-03-25T11:17:38+09:00">2019-03-25</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2019-04-18 23:38:43" itemprop="dateModified" datetime="2019-04-18T23:38:43+09:00">2019-04-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/effective-java/" itemprop="url" rel="index"><span itemprop="name">effective java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>디스크 페이징</p>
-</li>
-<li><p>obsolete reference</p>
-</li>
-<li><h1 id="GC의-동작원리"><a href="#GC의-동작원리" class="headerlink" title="GC의 동작원리"></a>GC의 동작원리</h1><p>Stop-the-world : GC를 실행하기위해 다른 쓰레드들이 작업을 멈추는 것. 이 시간을 적게 하는 것이 성능을 나타낸다.</p>
-<p>GC는 2가지의 가설에 의해 설계 되었다.</p>
-<pre><code>1. 대부분의 객체는 금방 접근불가능상태가 된다. (객체의 유효기간이 짧다)
-2. 오래된 객체는 새로 생긴 객체 참조를 적게한다.
-</code></pre><p>그래서 <strong>HotSpot VM(JVM 종류 중 하나)</strong>에서는 Old, Young영역으로 물리적 공간이 나뉘어 있다.</p>
-</li>
-</ul>
-<h2 id="Young영역"><a href="#Young영역" class="headerlink" title="Young영역"></a>Young영역</h2><blockquote>
-<p>Eden, Survivor, Survivor</p>
-</blockquote>
-<pre><code>1. 새로생긴 객체는 eden에 저장된다.
-2. GC로 Eden에서 살아남은 객체는 Survivor에 저장된다. 
-3. 한쪽의 Survivor이 다 차면, 그 중 살아남은 객체는 다른 Survivor에 저장된다.
-4. 혹은 Old Generation으로 이동한다. 이때 다 차있었던 Survivor은 비어있는 상태가 된다.
-</code></pre>  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">HotSpot VM에서는 빠른 메모리 할당을 위해 2가지를 사용한다.</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; Bump-the-pointer, TLABs(Thread-Local-Allocation-Buffers)</span></span><br><span class="line"></span><br><span class="line">Bump-the-pointer는 stack처럼 새로운 객체가 할당될때, 맨위에 있는 마지막 객체를 추적해서 Eden에 새로운 객체가 할당될 수 있는지 없는지만 판단한다. 하지만 이는 단일 쓰레드 환경일 때이다. 멀티쓰레드 환경일때는 TLABs를 이용한다.</span><br><span class="line"></span><br><span class="line">멀티쓰레드 환경일때에는 Eden에 저장하려면 lock가 걸릴 수 밖에 없다. 이를 해결한 것이 TLABs이다. 각각의 Thread가 Eden의 덩어리를 갖게 하는 것인데.. 그럼 동기화는 어떻게 하는 걸까?</span><br></pre></td></tr></table></figure>
-<h2 id="Old영역에-대한-GC"><a href="#Old영역에-대한-GC" class="headerlink" title="Old영역에 대한 GC"></a>Old영역에 대한 GC</h2><blockquote>
-<p>기본적으로 데이터가 가득차면 GC를 실행한다. 방식은 5가지 방식이 있다.(JDK 7)</p>
-</blockquote>
-<ul>
-<li>Serial GC - mark-sweep-compact 알고리즘 사용 (코어 수가 적을때 적합)<ol>
-<li>살아있는 객체를 식별</li>
-<li>힙의 앞 부분부터 확인하여 살아있는것만 남긴다. </li>
-<li>살아남은 객체를 힙의 앞으로 쭉땡겨서 객체가 있는 부분과 없는 부분으로 나눈다.</li>
-</ol>
-</li>
-<li>Parallel GC - Serial GC랑 방식은 같으나 GC 쓰레드가 여러개이다. (코어가 많을때 유리)</li>
-<li>Parallel Old GC - ?</li>
-<li>Concurrent Mark &amp; Sweep GC<ol>
-<li><strong>클래스 로더</strong>에서 가까운 객체 중 살아있는 것을 찾는다. </li>
-</ol>
-</li>
-<li>G1(Garbage First) GC</li>
-</ul>
-<h3 id="Serial-GC"><a href="#Serial-GC" class="headerlink" title="Serial GC"></a>Serial GC</h3><ul>
-<li>사용하지 않는 참조들을 null로 바꾸면 GC는 반환해도 좋은 객체인지 판별할 수 있게 된다.</li>
-</ul>
-<ul>
-<li>Background thread</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2209,7 +2229,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">포스트</span>
                   </a>
                 </div>
