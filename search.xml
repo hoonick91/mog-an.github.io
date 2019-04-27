@@ -3,6 +3,23 @@
   
     
     <entry>
+      <title>가상화, 그리고 docker</title>
+      <link href="/2019/04/26/%E1%84%80%E1%85%A1%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AA,%20%E1%84%80%E1%85%B3%E1%84%85%E1%85%B5%E1%84%80%E1%85%A9%20docker/"/>
+      <url>/2019/04/26/%E1%84%80%E1%85%A1%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AA,%20%E1%84%80%E1%85%B3%E1%84%85%E1%85%B5%E1%84%80%E1%85%A9%20docker/</url>
+      
+        <content type="html"><![CDATA[<ul><li>가상머신은 성능상 너무 후지다.</li><li>docker는 프로세스의 격리된 공간을 만들어 주는 도구이다.</li><li>다양한 프로그램, 실행환경을 추상화하고, 동일한 인터페이스를 제공해 프로그램의 배포 및 관리를 단순하게 해준다.</li></ul><p>docker 역시 가상화 기술 중 하나인데 기존방식과는 다른점이 있다. 그렇다면 여기서 <u><strong>가상화</strong></u>는 무엇일까?</p><ul><li><p>가상화 : 기존의 서버하나에 하나의 application이 운영되었는데, 한 서버에 여러 application을 이용할수 있도록 하는 작업, 컴퓨터 리소스의 추상화를 일컫는다. </p><p><img src="https://github.com/jjjpark/test/blob/master/Untitled%20Diagram.png?raw=true" alt="image"></p></li></ul><ol><li>처음에는 호스트 OS위에 게스트 OS 전체를 가상화 했다. 하지만 무겁고 느림</li><li>KVM, Xen이 등장했지만 결국 OS를 설치하여 가상화 하는 방법이어서 성능문제가 발생</li><li><strong>프로세스 격리하는 방식의 등장(Docker)</strong></li></ol><p>docker에서 중요한 개념은 바로 <u><strong>이미지</strong></u> 이다. 이미지는 컨테이너 실행에 필요한 파일과 설정값등을 포함하고 있다. 그리고 변하지 않는다.(Immutable)</p><h3 id="가상화의-주요-용어"><a href="#가상화의-주요-용어" class="headerlink" title="가상화의 주요 용어"></a>가상화의 주요 용어</h3><ul><li>호스트 시스템 : CPU, 메모리, HDD를 장착한 물리적인 시스템 자체</li><li>가상화 운영체제(하이퍼 바이저) : 호스트 시스템 위에 설치되어 가상 머신들이 하드웨어 리소스를 공유하여 사용할 수 있게끔 스케줄링하는 일을 한다.</li><li>가상머신 : 하이퍼바이저에 의해 생성된 가상 하드웨어를 말한다.</li><li>게스트 운영체제 : 가상머신위에 설치된 운영체제를 말한다.</li></ul><h3 id="가상화의-기능"><a href="#가상화의-기능" class="headerlink" title="가상화의 기능"></a>가상화의 기능</h3><ul><li>공유 : 다수의 가상자원들이 하나의 동일한 물리자원과 연결하는 것</li><li>풀링 : 여러개의 물리적 자원으로 하나의 가상 자원을 만든다. (가상디스크??)</li><li>에뮬레이션 : </li><li>캡슐화</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> docker </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
       <title>예외처리</title>
       <link href="/2019/04/21/%EC%98%88%EC%99%B8%EC%B2%98%EB%A6%AC/"/>
       <url>/2019/04/21/%EC%98%88%EC%99%B8%EC%B2%98%EB%A6%AC/</url>
@@ -63,7 +80,7 @@
       
       <categories>
           
-          <category> elk </category>
+          <category> elastic-stack </category>
           
       </categories>
       
@@ -80,7 +97,7 @@
       
       <categories>
           
-          <category> ELK </category>
+          <category> elastic-stack </category>
           
       </categories>
       
