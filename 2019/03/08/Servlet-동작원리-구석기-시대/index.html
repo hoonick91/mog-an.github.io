@@ -115,12 +115,12 @@
 <meta property="og:site_name" content="jjj&#39;s park">
 <meta property="og:description" content="IDE - intellij, Build tool - maven, Archetype - maven-webapp  Servlet project pom.xml에 우리가 사용할 java servlet을 추가 해주었다. 1234567&amp;lt;!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api">
 <meta property="og:locale" content="ko">
-<meta property="og:image" content="http://yoursite.com/images/listenerAndFilter.png">
-<meta property="og:updated_time" content="2019-04-18T14:38:43.292Z">
+<meta property="og:image" content="https://github.com/jjjpark/draw-io-images/blob/master/listenerFilter.png?raw=true">
+<meta property="og:updated_time" content="2019-05-22T10:53:00.426Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Servlet 동작원리 구석기시대">
 <meta name="twitter:description" content="IDE - intellij, Build tool - maven, Archetype - maven-webapp  Servlet project pom.xml에 우리가 사용할 java servlet을 추가 해주었다. 1234567&amp;lt;!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api">
-<meta name="twitter:image" content="http://yoursite.com/images/listenerAndFilter.png">
+<meta name="twitter:image" content="https://github.com/jjjpark/draw-io-images/blob/master/listenerFilter.png?raw=true">
 
 
 
@@ -378,7 +378,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-04-18 23:38:43" itemprop="dateModified" datetime="2019-04-18T23:38:43+09:00">2019-04-18</time>
+                <time title="Updated at: 2019-05-22 19:53:00" itemprop="dateModified" datetime="2019-05-22T19:53:00+09:00">2019-05-22</time>
               
             
           </span>
@@ -453,7 +453,7 @@
 <ul>
 <li>?? SrpingMvc lifecycle 도는 코드 보기</li>
 </ul>
-<h2 id="Servlet-Listener-amp-Servlet-Filter"><a href="#Servlet-Listener-amp-Servlet-Filter" class="headerlink" title="Servlet Listener &amp; Servlet Filter"></a>Servlet Listener &amp; Servlet Filter</h2><p><img src="/images/listenerAndFilter.png" alt="image"></p>
+<h2 id="Servlet-Listener-amp-Servlet-Filter"><a href="#Servlet-Listener-amp-Servlet-Filter" class="headerlink" title="Servlet Listener &amp; Servlet Filter"></a>Servlet Listener &amp; Servlet Filter</h2><p><img src="https://github.com/jjjpark/draw-io-images/blob/master/listenerFilter.png?raw=true" alt="image"></p>
 <h3 id="Servlet-Listener"><a href="#Servlet-Listener" class="headerlink" title="Servlet Listener"></a>Servlet Listener</h3><ul>
 <li>Context의 attribute, life cycle의 변화에 따라 이벤트를 발생 시킨다.</li>
 <li>여러 Servlet에서 공통적으로 사용되는 것을 Servlet Context에 넣어 놓고, servlet이 가져다 쓸 수 있다. </li>
@@ -469,6 +469,7 @@
 <li>사용자한테 요청이 들어왔을 때, Servlet의 init() method를 실행 시키고 Filter갔다가 doGet(Servlet)에게 간다.</li>
 <li>Servlet, Filter, Listener 순으로 detroyed 된다.</li>
 <li>filter-mapping를 통해 여러 Servlet에 Filter를 적용할 수 있고, url-pattern을 통해 url을 기준으로 삼을 수 있다.( 여러개의 servlet에 filter를 적용해야 할 경우 이용한다. )</li>
+<li>vs HandlerAdapter - interceptor</li>
 </ul>
 <p>만들기 순서 (구동 순서 아님)</p>
 <ol>
@@ -517,7 +518,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/07/Spring-Bean-설정/" rel="next" title="Bean 설정">
+              <a href="/2019/03/07/설정 Spring-Bean-설정/" rel="next" title="Bean 설정">
                 <i class="fa fa-chevron-left"></i> Bean 설정
               </a>
             
@@ -599,7 +600,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">포스트</span>
                   </a>
                 </div>
@@ -628,7 +629,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">카테고리</span>
                   
                 </div>

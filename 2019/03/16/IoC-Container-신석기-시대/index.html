@@ -115,12 +115,12 @@
 <meta property="og:site_name" content="jjj&#39;s park">
 <meta property="og:description" content="IoC Container란?우선 Container는 무언가를 주체적으로 관리한다. 예를 들어 Servlet Container는 Servlet의 생성 소멸 등을 관리한다. 그리고 IoC란 제어의 역전 즉, 기존에 Client가 객체를 생성하고 소멸시킨(소멸은 GC가 한다) 일들을 Container가 한다는 것이다. 그럼 어떤것이 할까? Application">
 <meta property="og:locale" content="ko">
-<meta property="og:image" content="http://yoursite.com/images/applicationContext.png">
-<meta property="og:updated_time" content="2019-04-18T14:38:43.262Z">
+<meta property="og:image" content="https://docs.spring.io/spring/docs/current/spring-framework-reference/images/mvc-context-hierarchy.png">
+<meta property="og:updated_time" content="2019-05-22T11:29:58.197Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IoC Container 신석기시대">
 <meta name="twitter:description" content="IoC Container란?우선 Container는 무언가를 주체적으로 관리한다. 예를 들어 Servlet Container는 Servlet의 생성 소멸 등을 관리한다. 그리고 IoC란 제어의 역전 즉, 기존에 Client가 객체를 생성하고 소멸시킨(소멸은 GC가 한다) 일들을 Container가 한다는 것이다. 그럼 어떤것이 할까? Application">
-<meta name="twitter:image" content="http://yoursite.com/images/applicationContext.png">
+<meta name="twitter:image" content="https://docs.spring.io/spring/docs/current/spring-framework-reference/images/mvc-context-hierarchy.png">
 
 
 
@@ -378,7 +378,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-04-18 23:38:43" itemprop="dateModified" datetime="2019-04-18T23:38:43+09:00">2019-04-18</time>
+                <time title="Updated at: 2019-05-22 20:29:58" itemprop="dateModified" datetime="2019-05-22T20:29:58+09:00">2019-05-22</time>
               
             
           </span>
@@ -430,23 +430,29 @@
 
       
         <h2 id="IoC-Container란"><a href="#IoC-Container란" class="headerlink" title="IoC Container란?"></a>IoC Container란?</h2><p>우선 Container는 무언가를 주체적으로 관리한다. 예를 들어 Servlet Container는 Servlet의 생성 소멸 등을 관리한다. 그리고 IoC란 제어의 역전 즉, 기존에 Client가 객체를 생성하고 소멸시킨(소멸은 GC가 한다) 일들을 Container가 한다는 것이다. 그럼 어떤것이 할까? Application Context가 한다. Application Context에 bean을 등록시켜서 Container가 관리할 수 있게 해준다. 이 ApplciaitonContext가 생성, 소멸할때 발생하는 이벤트를 받는 것이 ContextLoaderListener이고 이때 ContextLoaderListener이 ContextLoader를 실행시켜서 필요한 이벤트를 발생시킨다. 이 ContextLoader에 각종 param을 넣어줄 수 가 있다. </p>
+<p>IoC Container는 2가지가 있다.</p>
+<ol>
+<li>BeanFactory</li>
+<li>ApplicationContext</li>
+</ol>
+<p>BeanFactory가 Bean을 만든다.(@Component annotaion이 붙은 것이라든지…등) 여러번 호출되는 요청을 요청마다 인스턴스를 만들 면 손해이므로 한번만 만들고 만들어진 인스턴스를 재사용한다. 이것이 Bean으로 만드는 것의 이점이다. 이처럼 자동으로 인스턴스를 만들고 사용이 끝난 인스턴스는 알아서 없애준다. 이는 IoC Container의 역할이다. </p>
 <p><br></p>
-<h3 id="Context-Loader-Listener"><a href="#Context-Loader-Listener" class="headerlink" title="Context-Loader-Listener"></a>Context-Loader-Listener</h3><p>Root webApplicationContext가 생성될때, ContextLoaderListener가 호출된다. (여기서 Root ApplicationContext는 다른 Servlet에서 공유할 수 있다.) 그러면 dispatcher-servlet는 root webApplicationContext를 상속해서, dispatcher-servlet안에서만 쓸 수 있는 applicationContext를 만든다. </p>
+<h3 id="Context-Loader-Listener"><a href="#Context-Loader-Listener" class="headerlink" title="Context-Loader-Listener"></a>Context-Loader-Listener</h3><p><img src="https://docs.spring.io/spring/docs/current/spring-framework-reference/images/mvc-context-hierarchy.png" alt="image"></p>
+<p>ApplicationContext 생성될때, ContextLoaderListener가 호출된다. (여기서 Root ApplicationContext는 다른 Servlet에서 공유할 수 있다.) 그러면 dispatcher-servlet는 Root webApplicationContext를 상속해서, dispatcher-servlet안에서만 쓸 수 있는 webApplicationContext를 만든다. </p>
+<p>즉 ContextLoaderListner은 두개의 dispatcherServlet에서 공유가능한 Root ApplicationContext가 생성될 때 이벤트를 발생시킨다.</p>
 <blockquote>
 <p>Root webApplicationContext는 ApplicationContext를 상속받는다.</p>
 </blockquote>
 <p>Spring의 root webApplicationContext가 start up, shut down될떄 사용하는 bootstrap listener?(bootstrap - 외부의 입력없이 스스로 실행되는 것)</p>
-<h3 id="Context-Loader"><a href="#Context-Loader" class="headerlink" title="Context-Loader"></a>Context-Loader</h3><p>Context-Loader-Listener에 의해서 호출되어서, ApplicationContext를 init하는 것이다.</p>
-<p><img src="/images/applicationContext.png" alt="image"></p>
-<p>그래서 정리하자면 최초의 ApplicationContext가 생성이 될때, ContextLoaderListener가 바라보고있다가 생성되면 init method를 실행시켜서 ApplicationContext에 대한 설정값을 넣어줄 수 있다. 그때 <strong>contextClass</strong>를 param으로 받아서 설정값을 넣어주는데, </p>
-<p>이때 param으로 들어가는 <strong>AnnotationConfigWebApplicationContext은</strong> WebApplicationContext의 구현체로 annotation이 붙은 클래스를(<figure class="highlight plain"><figcaption><span>input으로 사용하게 해준다.</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### AnnotationConfigWebApplicationContext</span><br><span class="line"></span><br><span class="line">```xml</span><br><span class="line">&lt;!--web.xml--&gt;</span><br><span class="line">&lt;context-param&gt;</span><br><span class="line">    &lt;param-name&gt;contextClass&lt;/param-name&gt;</span><br><span class="line">    &lt;param-value&gt;org.springframework.web.context.support.AnnotationConfigWebApplicationContext&lt;/param-value&gt;</span><br><span class="line">&lt;/context-param&gt;</span><br></pre></td></tr></table></figure></p>
-<p>여기서 contextClass는 ContextLoader의 예약어이다. ContextLoader는 contextClass라는 이름을 가진 param을 읽어온다. 그래서 @Configuration annotation이 붙은 함수를 읽어와서 설정파일로 만들어 준다. 즉, java파일을 config파일로 만들어주는 것이 바로 AnnotationConfigWebApplicationContext이다. </p>
+<h3 id="Context-Loader"><a href="#Context-Loader" class="headerlink" title="Context-Loader"></a>Context-Loader</h3><p>ContextLoader는 WebApplicationContext를 생성하는 class이다. 이를 상속해서 WebApplicationContext가 생성될때 호출되는 함수가 ContextLoaderListener에 속해있다. </p>
+<p>WebApplicationContext는 생성되면서 여러가지 설정값을 을 넣어줄 수 있는데, 그때 <strong>contextClass</strong>를 param으로 넣을 수 있다. 이때 들어가는 contextClass가 <strong>AnnotationConfigWebApplicationContext은</strong>이다. 이는 WebApplicationContext의 구현체로 annotation이 붙은 클래스를(<figure class="highlight plain"><figcaption><span>input으로 사용하게 해준다.</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ContextLoaderListener이 AnnotationConfigWebApplicationContext 설정값을 가지고, RootWebApplicationContext를 만들고, DispatcherServlet은 servlet-context.xml을 가지고 각각의 ApplicationContext를 만든다. 이 ApplicationContext는 Root WebApplicationContext를 상속한다.</span><br><span class="line"></span><br><span class="line">### AnnotationConfigWebApplicationContext</span><br><span class="line"></span><br><span class="line">```xml</span><br><span class="line">&lt;!--web.xml--&gt;</span><br><span class="line">&lt;context-param&gt;</span><br><span class="line">    &lt;param-name&gt;contextClass&lt;/param-name&gt;</span><br><span class="line">    &lt;param-value&gt;org.springframework.web.context.support.AnnotationConfigWebApplicationContext&lt;/param-value&gt;</span><br><span class="line">&lt;/context-param&gt;</span><br></pre></td></tr></table></figure></p>
+<p>여기서 contextClass는 ContextLoader의 예약어이다. ContextLoader는 contextClass라는 이름을 가진 param을 읽어온다. 그래서 @Configuration annotation이 붙은 함수를 읽어와서 설정파일로 만들어 준다. </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ContextLoader.java</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">protected</span> Class&lt;?&gt; determineContextClass(ServletContext servletContext) &#123;</span><br><span class="line">    String contextClassName = servletContext.getInitParameter(<span class="string">"contextClass"</span>);</span><br><span class="line">    <span class="keyword">if</span> (contextClassName != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> Cla...</span><br></pre></td></tr></table></figure>
 <p><br></p>
 <h3 id="contextConfigLocation"><a href="#contextConfigLocation" class="headerlink" title="contextConfigLocation"></a>contextConfigLocation</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--web.xml--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>me.jjjpark.AppConfig<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>말 그대로 Context의 Config파일의 위치를 알려주는 것이다.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ContextLoader.java</span></span><br><span class="line">...</span><br><span class="line">    wac.setServletContext(sc);</span><br><span class="line">    configLocationParam = sc.getInitParameter(<span class="string">"contextConfigLocation"</span>);</span><br><span class="line">    <span class="keyword">if</span> (configLocationParam != <span class="keyword">null</span>) &#123;</span><br><span class="line">    	wac.setConfigLocation(configLocationParam);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>이제 다만, Servlet이 불편한 점이 /url 하나가 추가될 때마다 서블릿 설정이 추가된다.</p>
+<h2 id="불편한-점"><a href="#불편한-점" class="headerlink" title="불편한 점"></a>불편한 점</h2><p>이제 Servlet이 불편한 점은 /url 하나가 추가될 때마다 서블릿 설정이 추가된다.</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>me.jjjpark.HelloServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">  </span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/hello<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
       
@@ -560,7 +566,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">포스트</span>
                   </a>
                 </div>
@@ -589,7 +595,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">카테고리</span>
                   
                 </div>
@@ -652,7 +660,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#IoC-Container란"><span class="nav-number">1.</span> <span class="nav-text">IoC Container란?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Context-Loader-Listener"><span class="nav-number">1.1.</span> <span class="nav-text">Context-Loader-Listener</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Context-Loader"><span class="nav-number">1.2.</span> <span class="nav-text">Context-Loader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#contextConfigLocation"><span class="nav-number">1.3.</span> <span class="nav-text">contextConfigLocation</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#IoC-Container란"><span class="nav-number">1.</span> <span class="nav-text">IoC Container란?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Context-Loader-Listener"><span class="nav-number">1.1.</span> <span class="nav-text">Context-Loader-Listener</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Context-Loader"><span class="nav-number">1.2.</span> <span class="nav-text">Context-Loader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#contextConfigLocation"><span class="nav-number">1.3.</span> <span class="nav-text">contextConfigLocation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#불편한-점"><span class="nav-number">2.</span> <span class="nav-text">불편한 점</span></a></li></ol></div>
             
 
           </div>

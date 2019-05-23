@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="DispatcherServlet.java 출처: https://justforchangesake.files.wordpress.com/2014/05/spring-request-lifecycle.jpg 12345678910111213&amp;lt;!--web.xml--&amp;gt;&amp;lt;servlet&amp;gt;    &amp;lt;servlet-name&amp;gt;app&amp;lt;/servle">
+  <meta name="description" content="DispatcherServlet.java 기존의 URL 요청하나마다 Servlet을 만들어줘야 하는 번거로움이 있었는데, 이를 해결한것이 dispatcherServlet이다. 모든 URL요청을  dispatcherServlet에 넘기고 각 요청에 맞는 결과를 반환한다.   출처: https://justforchangesake.files.wordpress.c">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringMVC 청동기시대">
 <meta property="og:url" content="http://yoursite.com/2019/03/15/SpringMVC-청동기-시대/index.html">
 <meta property="og:site_name" content="jjj&#39;s park">
-<meta property="og:description" content="DispatcherServlet.java 출처: https://justforchangesake.files.wordpress.com/2014/05/spring-request-lifecycle.jpg 12345678910111213&amp;lt;!--web.xml--&amp;gt;&amp;lt;servlet&amp;gt;    &amp;lt;servlet-name&amp;gt;app&amp;lt;/servle">
+<meta property="og:description" content="DispatcherServlet.java 기존의 URL 요청하나마다 Servlet을 만들어줘야 하는 번거로움이 있었는데, 이를 해결한것이 dispatcherServlet이다. 모든 URL요청을  dispatcherServlet에 넘기고 각 요청에 맞는 결과를 반환한다.   출처: https://justforchangesake.files.wordpress.c">
 <meta property="og:locale" content="ko">
 <meta property="og:image" content="https://justforchangesake.files.wordpress.com/2014/05/spring-request-lifecycle.jpg">
-<meta property="og:updated_time" content="2019-04-18T14:38:43.281Z">
+<meta property="og:updated_time" content="2019-05-22T11:25:37.600Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringMVC 청동기시대">
-<meta name="twitter:description" content="DispatcherServlet.java 출처: https://justforchangesake.files.wordpress.com/2014/05/spring-request-lifecycle.jpg 12345678910111213&amp;lt;!--web.xml--&amp;gt;&amp;lt;servlet&amp;gt;    &amp;lt;servlet-name&amp;gt;app&amp;lt;/servle">
+<meta name="twitter:description" content="DispatcherServlet.java 기존의 URL 요청하나마다 Servlet을 만들어줘야 하는 번거로움이 있었는데, 이를 해결한것이 dispatcherServlet이다. 모든 URL요청을  dispatcherServlet에 넘기고 각 요청에 맞는 결과를 반환한다.   출처: https://justforchangesake.files.wordpress.c">
 <meta name="twitter:image" content="https://justforchangesake.files.wordpress.com/2014/05/spring-request-lifecycle.jpg">
 
 
@@ -378,7 +378,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-04-18 23:38:43" itemprop="dateModified" datetime="2019-04-18T23:38:43+09:00">2019-04-18</time>
+                <time title="Updated at: 2019-05-22 20:25:37" itemprop="dateModified" datetime="2019-05-22T20:25:37+09:00">2019-05-22</time>
               
             
           </span>
@@ -429,7 +429,10 @@
       
 
       
-        <h2 id="DispatcherServlet-java"><a href="#DispatcherServlet-java" class="headerlink" title="DispatcherServlet.java"></a>DispatcherServlet.java</h2><p><img src="https://justforchangesake.files.wordpress.com/2014/05/spring-request-lifecycle.jpg" width="450px"></p>
+        <h2 id="DispatcherServlet-java"><a href="#DispatcherServlet-java" class="headerlink" title="DispatcherServlet.java"></a>DispatcherServlet.java</h2><blockquote>
+<p>기존의 URL 요청하나마다 Servlet을 만들어줘야 하는 번거로움이 있었는데, 이를 해결한것이 dispatcherServlet이다. 모든 URL요청을  dispatcherServlet에 넘기고 각 요청에 맞는 결과를 반환한다.</p>
+</blockquote>
+<p><img src="https://justforchangesake.files.wordpress.com/2014/05/spring-request-lifecycle.jpg" width="450px"></p>
 <p>출처: <a href="https://justforchangesake.files.wordpress.com/2014/05/spring-request-lifecycle.jpg" target="_blank" rel="noopener">https://justforchangesake.files.wordpress.com/2014/05/spring-request-lifecycle.jpg</a></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--web.xml--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>app<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextClass<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>org.springframework.web.context.support.AnnotationConfigWebApplicationContext<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>me.jjjpark.WebConfig<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -570,7 +573,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">포스트</span>
                   </a>
                 </div>
@@ -599,7 +602,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">카테고리</span>
                   
                 </div>
