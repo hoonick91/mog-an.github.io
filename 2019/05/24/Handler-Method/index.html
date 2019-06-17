@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Handler Method(Controller method)1. Argument &amp;amp; Return typeArgument NativeWebRequest,  WebRequest HttpServletRequest, HttpServletResponse RequestBody에 있는 거는 request.getReader(InputStream requestBod">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Handler Method">
+<meta property="og:url" content="http://yoursite.com/2019/05/24/Handler-Method/index.html">
+<meta property="og:site_name" content="jjj&#39;s park">
+<meta property="og:description" content="Handler Method(Controller method)1. Argument &amp;amp; Return typeArgument NativeWebRequest,  WebRequest HttpServletRequest, HttpServletResponse RequestBody에 있는 거는 request.getReader(InputStream requestBod">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2019-06-14T09:57:52.749Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Handler Method">
+<meta name="twitter:description" content="Handler Method(Controller method)1. Argument &amp;amp; Return typeArgument NativeWebRequest,  WebRequest HttpServletRequest, HttpServletResponse RequestBody에 있는 거는 request.getReader(InputStream requestBod">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/24/Handler-Method/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Handler Method | jjj's park</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="ko">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jjj's park</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>홈</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>카테고리</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>아카이브</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/24/Handler-Method/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonghun.park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jjj's park">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Handler Method
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-05-24 08:07:14" itemprop="dateCreated datePublished" datetime="2019-05-24T08:07:14+09:00">2019-05-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2019-06-14 18:57:52" itemprop="dateModified" datetime="2019-06-14T18:57:52+09:00">2019-06-14</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Spring-framework/" itemprop="url" rel="index"><span itemprop="name">Spring framework</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Handler-Method-Controller-method"><a href="#Handler-Method-Controller-method" class="headerlink" title="Handler Method(Controller method)"></a>Handler Method(Controller method)</h2><h3 id="1-Argument-amp-Return-type"><a href="#1-Argument-amp-Return-type" class="headerlink" title="1. Argument &amp; Return type"></a>1. Argument &amp; Return type</h3><h4 id="Argument"><a href="#Argument" class="headerlink" title="Argument"></a>Argument</h4><ul>
+<li>NativeWebRequest, </li>
+<li>WebRequest</li>
+<li>HttpServletRequest, HttpServletResponse<ul>
+<li>RequestBody에 있는 거는 request.getReader(InputStream requestBody, OutputStream responseBobyd)</li>
+</ul>
+</li>
+<li>PushBuilder - 일반적으로 한번 요청이 들어왔을때, 보여주는 브라우져는 필요한 img를 다시 요청한다. 하지만 PushBuilder를 사용하면 서버가 능동적으로 img를 반환한다.</li>
+<li>HttpMethod - 요청의 http method를 알 수 있다.<ul>
+<li>@RequestMethod를 사용할 때, 모든 method를 사용할 수 있으므로</li>
+</ul>
+</li>
+<li>Locale, TimeZone, ZoneId - LocalResolver를 이용해서 처리함.</li>
+</ul>
+<hr>
+<ul>
+<li>@PathVariable</li>
+<li>@RequestPart - 파일 </li>
+<li>@ModelAttribute - 추후에 설명</li>
+<li>@SessionAttribute</li>
+<li>UriComponentBuilder - utility…</li>
+<li>@MatrixVariable - key/value 쌍을 URI에 적용하는 방안</li>
+</ul>
+<h4 id="Return-type"><a href="#Return-type" class="headerlink" title="Return type"></a>Return type</h4><ul>
+<li>ResponseEntity<string> events() - 응답헤더 , 응답 코드에 대한 것을 추가해줄 수 있다. Rest…?</string></li>
+<li>HttpHeaders</li>
+<li>View - viewResolver를 타지않고, view를 찾는다.</li>
+<li>Model - model정보만 넘긴다. 그래서 view를 모르니까 view를 유추한다…?</li>
+</ul>
+<h3 id="2-URI-패턴"><a href="#2-URI-패턴" class="headerlink" title="2. URI 패턴"></a>2. URI 패턴</h3><ul>
+<li>@PathVariable</li>
+<li>@MatrixVariable</li>
+</ul>
+<h3 id="3-요청매개변수"><a href="#3-요청매개변수" class="headerlink" title="3. 요청매개변수"></a>3. 요청매개변수</h3><ul>
+<li>queryParm<ul>
+<li>@RequestParam(생략도 가능)</li>
+</ul>
+</li>
+<li>formData</li>
+</ul>
+<h3 id="4-폼-서브밋"><a href="#4-폼-서브밋" class="headerlink" title="4. 폼 서브밋"></a>4. 폼 서브밋</h3><h3 id="5-ModelAttribute"><a href="#5-ModelAttribute" class="headerlink" title="5. @ModelAttribute"></a>5. @ModelAttribute</h3><ul>
+<li>요청에 들어있는 data를 가져온다.</li>
+<li>/event?name=jjjpark</li>
+<li>/event/name/{name} 등 여러가지 바인딩이 가능하다.</li>
+</ul>
+<h3 id="6-Validated"><a href="#6-Validated" class="headerlink" title="6. @Validated"></a>6. @Validated</h3><ul>
+<li>그룹으로 validation 체크를 할 수 있다.</li>
+</ul>
+<h3 id="7-폼-서브밋-에러"><a href="#7-폼-서브밋-에러" class="headerlink" title="7. 폼 서브밋 에러"></a>7. 폼 서브밋 에러</h3><h3 id="8-SessionAttributes"><a href="#8-SessionAttributes" class="headerlink" title="8. @SessionAttributes"></a>8. @SessionAttributes</h3><p>자동으로 model에 있는 attribute중에 @SessionAttributes(“”) “”에 선언된 attribute를 session에 넣어준다.</p>
+<ul>
+<li>장바구니 데이터</li>
+<li>데이터 생성시 여러화면에 거쳐서 만들게 되는 경우</li>
+<li>데이터가 생성될때(POST)일때 데이터가 생성되는 시간을 넣어줄 수 도 있을것 같다…</li>
+</ul>
+<p>SessionStatus를 handler의 param으로 주어 session의 정리를 할 수 있다. 예를 들어 여러페이지에 걸쳐서 만들어진 데이터가 완전 저장되어 더이상 session에 갖고 있지 않아도 되는경우</p>
+<ul>
+<li>비울때 sessionStatus.setComplete(); 를 사용할 수 있다.</li>
+<li>Session을 사용하여 사용자의 정보를 계속 담고 있을 수 있다.</li>
+</ul>
+<h3 id="10-SessionAttribute"><a href="#10-SessionAttribute" class="headerlink" title="10. @SessionAttribute"></a>10. @SessionAttribute</h3><p>@SessionAttribute’s’는 Controller class 안에서만 Session을 정의해서 사용한다. SessionStatus로 Session을 관리한다.(여러 Controller에서 적용되지는 않는다.)</p>
+<p>@SessionAttribute는 범용적일떄 사용한다. Interceptor나 뭐 이럴 때… 한번 session에 기록된것은 변하지 않는다.</p>
+<h3 id="11-RedirectAttributes"><a href="#11-RedirectAttributes" class="headerlink" title="11. RedirectAttributes"></a>11. RedirectAttributes</h3><p>form에서 값을 작성하고 다른 페이지로 데이터를 넘기는 방법으로는 (리다이렉트) model에 담은 후 Spring 설정값을 바꾸어 RequestParam에 나타나게한다. 하지만 이는 model에 있는 데이터를 모두 보여준다. 내가 보여주고 싶은 값만 바꾸고 싶으면 RedirectAttributes를 사용한다.</p>
+<p>받을때는 @RequestParam, Model 둘중 선택해서 받으면 된다.</p>
+<p>받을때 주의할점이 @ModelAttribute를 사용할경우 Controller 상단에서 선언한 @SessionAttributes의 (“value”) 값과 @ModelAttribute로 선언한 “value”를 똑같은 이름으로 쓰면 안된다. @ModelAttriubte의 이름과 @SessionAttributes의 이름이 같다면 model을 Session에서 찾기 때문이다.</p>
+<h3 id="12-FlashAttributes"><a href="#12-FlashAttributes" class="headerlink" title="12. FlashAttributes"></a>12. FlashAttributes</h3><p>RedirectAttributes - queryParam으로 데이터를 전달하기 때문에 모두 문자열로 변환이 가능해야된다. 복합적이 객체전달은 어렵다.</p>
+<p>FalshAttributes - 1회성으로 사용한다. 객체를 전달할 수 있다. httpSession으로 전달되기 때문에 URI경로에 노출되지 않는다.</p>
+<h3 id="13-MulipartFile"><a href="#13-MulipartFile" class="headerlink" title="13. MulipartFile"></a>13. MulipartFile</h3><p>이걸 사용하려면 DispatcherServlet에 선언이 되어있어야 한다. MultipartResolver를 선언 즉, 선언하지 않으면 설정하지 않는다. 하지만 Spring boot는 설정이 되어있다. (MultipartAutoConfiguration) </p>
+<h3 id="14-ResponseEntity"><a href="#14-ResponseEntity" class="headerlink" title="14. ResponseEntity"></a>14. ResponseEntity</h3><h3 id="15-RequestBody-amp-HttpEntitiy"><a href="#15-RequestBody-amp-HttpEntitiy" class="headerlink" title="15. @RequestBody &amp; HttpEntitiy"></a>15. @RequestBody &amp; HttpEntitiy</h3><p>요청이 객체로 들어올때, 미리 만들어둔 객체로 형식을 바꿔줄 수 있는데, 이를 HttpMessageConverter가 역할을 한다.<br>@EnableWebMvc를 붙여야하는데, 이를 붙이는 순간 기본적인 컨버터들을 못쓴다. 요청의 헤더에 Content-type이 있는데 이를 보고 어떤 형식이다~ 라고 이해한 후 그에 맞는 컨버터를 이용한다.</p>
+<p>BindingResult bindingResult를 붙이면 binding error가 생기면 우리가 원하는 처리를 할 수 있다. 무조건 400 error만 주는 것이 아니라… 좀 더 친절한 서버개발자가 된다.</p>
+<h3 id="16-ResponseBody-amp-ResponseEntity"><a href="#16-ResponseBody-amp-ResponseEntity" class="headerlink" title="16. @ResponseBody &amp; ResponseEntity"></a>16. @ResponseBody &amp; ResponseEntity</h3><p>@ResponseBody - HttpMessageConverter를 이용해서 응답 본문에 return값을 담아준다.</p>
+<p>Accept - 반환을 원하는 리턴타입의 형식</p>
+<p>Meta annotation - 어떤 annotation위에 붙어서 사용됨…?</p>
+<ul>
+<li>meta data - 데이터에 관한 데이터<ul>
+<li>meta는 어떤 추상화를 한것을 일컷는다. <ul>
+<li>그러므로 meta annotataion은 annotation에 대한 데이터를 말하고, 이는 예를 들어 @Service의 안에 meta annotation으로 있는 @Component를 들 수 있다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>ResponseEntity - 결과 값을 넣어줄 형식을 만들어 준다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ResponseEntity&lt;Event&gt; <span class="title">getEvent</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  Event event = <span class="keyword">new</span> Event();</span><br><span class="line">  event.setName(<span class="string">"hoon"</span>);</span><br><span class="line">  event.setLimit(<span class="number">20</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> ResponseEntity&lt;&gt;(event, HttpStatus.OK);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>다음과 같이 결과값에 상태코드를 넣어 줄 수 있다.</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/20/요청-매핑하기/" rel="next" title="요청 매핑하기">
+                <i class="fa fa-chevron-left"></i> 요청 매핑하기
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/08/추가내용/" rel="prev" title="추가내용">
+                추가내용 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            목차
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            흝어보기
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">jonghun.park</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-name">포스트</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">카테고리</span>
+                  
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/jjjpark" title="GitHub &rarr; https://github.com/jjjpark" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:wecube.1@gmail.com" title="E-Mail &rarr; mailto:wecube.1@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler-Method-Controller-method"><span class="nav-number">1.</span> <span class="nav-text">Handler Method(Controller method)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Argument-amp-Return-type"><span class="nav-number">1.1.</span> <span class="nav-text">1. Argument &amp; Return type</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Argument"><span class="nav-number">1.1.1.</span> <span class="nav-text">Argument</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Return-type"><span class="nav-number">1.1.2.</span> <span class="nav-text">Return type</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-URI-패턴"><span class="nav-number">1.2.</span> <span class="nav-text">2. URI 패턴</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-요청매개변수"><span class="nav-number">1.3.</span> <span class="nav-text">3. 요청매개변수</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-폼-서브밋"><span class="nav-number">1.4.</span> <span class="nav-text">4. 폼 서브밋</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-ModelAttribute"><span class="nav-number">1.5.</span> <span class="nav-text">5. @ModelAttribute</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Validated"><span class="nav-number">1.6.</span> <span class="nav-text">6. @Validated</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-폼-서브밋-에러"><span class="nav-number">1.7.</span> <span class="nav-text">7. 폼 서브밋 에러</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-SessionAttributes"><span class="nav-number">1.8.</span> <span class="nav-text">8. @SessionAttributes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-SessionAttribute"><span class="nav-number">1.9.</span> <span class="nav-text">10. @SessionAttribute</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-RedirectAttributes"><span class="nav-number">1.10.</span> <span class="nav-text">11. RedirectAttributes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-FlashAttributes"><span class="nav-number">1.11.</span> <span class="nav-text">12. FlashAttributes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-MulipartFile"><span class="nav-number">1.12.</span> <span class="nav-text">13. MulipartFile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-ResponseEntity"><span class="nav-number">1.13.</span> <span class="nav-text">14. ResponseEntity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-RequestBody-amp-HttpEntitiy"><span class="nav-number">1.14.</span> <span class="nav-text">15. @RequestBody &amp; HttpEntitiy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-ResponseBody-amp-ResponseEntity"><span class="nav-number">1.15.</span> <span class="nav-text">16. @ResponseBody &amp; ResponseEntity</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jonghun.park</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v6.5.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

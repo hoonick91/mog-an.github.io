@@ -108,17 +108,17 @@
 
 
 
-  <meta name="description" content="GET  Get요청은 캐싱할 수 있다. 조건에 따라 304 - 서버가 body에 넣어서 보내지 않더라도 idemponent - 동일한 요청에 따라 동일한 응답을 리턴해야한다.  POST  URI는 post에 실어보내는 데이터를 처리할 수 있는 리소스 리소스를 새로 만들거나 수정하므로… idemponent하지않을 수 있다. - 같은 요청을 하더라도 결과 값이">
+  <meta name="description" content="DispatcherServlet이 요청을 받아서 처리할 핸들러를 찾아주고 하는 일련의 과정 1. 요청 메소드GET  Get요청은 캐싱할 수 있다. 조건에 따라 304 - 서버가 body에 넣어서 보내지 않더라도 idemponent - 동일한 요청에 따라 동일한 응답을 리턴해야한다.  POST  URI는 post에 실어보내는 데이터를 처리할 수 있는 리소스">
 <meta property="og:type" content="article">
 <meta property="og:title" content="요청 매핑하기">
 <meta property="og:url" content="http://yoursite.com/2019/05/20/요청-매핑하기/index.html">
 <meta property="og:site_name" content="jjj&#39;s park">
-<meta property="og:description" content="GET  Get요청은 캐싱할 수 있다. 조건에 따라 304 - 서버가 body에 넣어서 보내지 않더라도 idemponent - 동일한 요청에 따라 동일한 응답을 리턴해야한다.  POST  URI는 post에 실어보내는 데이터를 처리할 수 있는 리소스 리소스를 새로 만들거나 수정하므로… idemponent하지않을 수 있다. - 같은 요청을 하더라도 결과 값이">
+<meta property="og:description" content="DispatcherServlet이 요청을 받아서 처리할 핸들러를 찾아주고 하는 일련의 과정 1. 요청 메소드GET  Get요청은 캐싱할 수 있다. 조건에 따라 304 - 서버가 body에 넣어서 보내지 않더라도 idemponent - 동일한 요청에 따라 동일한 응답을 리턴해야한다.  POST  URI는 post에 실어보내는 데이터를 처리할 수 있는 리소스">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2019-05-21T23:37:20.051Z">
+<meta property="og:updated_time" content="2019-05-29T00:00:03.899Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="요청 매핑하기">
-<meta name="twitter:description" content="GET  Get요청은 캐싱할 수 있다. 조건에 따라 304 - 서버가 body에 넣어서 보내지 않더라도 idemponent - 동일한 요청에 따라 동일한 응답을 리턴해야한다.  POST  URI는 post에 실어보내는 데이터를 처리할 수 있는 리소스 리소스를 새로 만들거나 수정하므로… idemponent하지않을 수 있다. - 같은 요청을 하더라도 결과 값이">
+<meta name="twitter:description" content="DispatcherServlet이 요청을 받아서 처리할 핸들러를 찾아주고 하는 일련의 과정 1. 요청 메소드GET  Get요청은 캐싱할 수 있다. 조건에 따라 304 - 서버가 body에 넣어서 보내지 않더라도 idemponent - 동일한 요청에 따라 동일한 응답을 리턴해야한다.  POST  URI는 post에 실어보내는 데이터를 처리할 수 있는 리소스">
 
 
 
@@ -376,7 +376,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-05-22 08:37:20" itemprop="dateModified" datetime="2019-05-22T08:37:20+09:00">2019-05-22</time>
+                <time title="Updated at: 2019-05-29 09:00:03" itemprop="dateModified" datetime="2019-05-29T09:00:03+09:00">2019-05-29</time>
               
             
           </span>
@@ -427,7 +427,8 @@
       
 
       
-        <p>GET</p>
+        <p>DispatcherServlet이 요청을 받아서 처리할 핸들러를 찾아주고 하는 일련의 과정</p>
+<h3 id="1-요청-메소드"><a href="#1-요청-메소드" class="headerlink" title="1. 요청 메소드"></a>1. 요청 메소드</h3><p>GET</p>
 <ul>
 <li>Get요청은 캐싱할 수 있다. 조건에 따라 304 - 서버가 body에 넣어서 보내지 않더라도</li>
 <li>idemponent - 동일한 요청에 따라 동일한 응답을 리턴해야한다.</li>
@@ -437,6 +438,7 @@
 <li>URI는 post에 실어보내는 데이터를 처리할 수 있는 리소스</li>
 <li>리소스를 새로 만들거나 수정하므로…</li>
 <li>idemponent하지않을 수 있다. - 같은 요청을 하더라도 결과 값이 달라질 수 있다.</li>
+<li>데이터 길이제한이 없다.</li>
 </ul>
 <p>PUT</p>
 <ul>
@@ -450,7 +452,25 @@
 <li>PUT과 비슷하지만, 기존 서버데이터와 put요청에 실어서 보내는 데이터의 차이점만 찾아서 보낸다? 일부의 데이터가 바뀔때는 PATCH…??</li>
 </ul>
 <p>DELETE</p>
-<h3 id="헤더와-매개변수-매핑하기"><a href="#헤더와-매개변수-매핑하기" class="headerlink" title="헤더와 매개변수 매핑하기"></a>헤더와 매개변수 매핑하기</h3><p>consumes, produces와 다르게 좀 더 일반적인 방법이다.</p>
+<h3 id="2-URI-패턴-매핑"><a href="#2-URI-패턴-매핑" class="headerlink" title="2. URI 패턴 매핑"></a>2. URI 패턴 매핑</h3><p>@RequestMapping</p>
+<ul>
+<li>/author/?? : 2개의 글자</li>
+<li>/author/* : 여러 글자</li>
+<li>/author/** : 여러 path</li>
+</ul>
+<p>정규표현식으로도 매핑할 수 있다.</p>
+<ul>
+<li>/{name:정규식}</li>
+</ul>
+<p>URI확장자 매핑은 spring boot에서 지원하지 않는다. 확장자 매핑은 브라우져가 자동으로 파일 다운로드를 하게 만든다. 그래서 RFD Attack에 취약하다. (URL 클릭으로 악성코드를 내려받게함..)</p>
+<h3 id="3-미디어-타입-매핑"><a href="#3-미디어-타입-매핑" class="headerlink" title="3. 미디어 타입 매핑"></a>3. 미디어 타입 매핑</h3><h4 id="특정-타입의-데이터를-담고있는-요청만-처리"><a href="#특정-타입의-데이터를-담고있는-요청만-처리" class="headerlink" title="특정 타입의 데이터를 담고있는 요청만 처리"></a>특정 타입의 데이터를 담고있는 요청만 처리</h4><ul>
+<li>@RequestMapping(<strong>consumes</strong>=MediaType.APPLICATION_JSON_UTF8_VALUE)</li>
+<li>Content-Type</li>
+</ul>
+<h4 id="특정-타입의-응답을-만드는-핸들러"><a href="#특정-타입의-응답을-만드는-핸들러" class="headerlink" title="특정 타입의 응답을 만드는 핸들러"></a>특정 타입의 응답을 만드는 핸들러</h4><ul>
+<li>@RequestMapping(<strong>produces</strong>=”application/json”)</li>
+</ul>
+<h3 id="4-헤더와-매개변수-매핑하기"><a href="#4-헤더와-매개변수-매핑하기" class="headerlink" title="4. 헤더와 매개변수 매핑하기"></a>4. 헤더와 매개변수 매핑하기</h3><p>consumes, produces와 다르게 좀 더 일반적인 방법이다.</p>
 <h3 id="SampleController-java"><a href="#SampleController-java" class="headerlink" title="SampleController.java"></a>SampleController.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/hello"</span>, headers = HttpHeaders.CONTENT_TYPE +<span class="string">"="</span>+<span class="string">"application/json"</span>)</span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"hello jjjpark"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="SampleControllerTest-java"><a href="#SampleControllerTest-java" class="headerlink" title="SampleControllerTest.java"></a>SampleControllerTest.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(SpringRunner.class)</span><br><span class="line"><span class="meta">@WebMvcTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SampleControllerTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    MockMvc mockMvc;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">helloTest</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        mockMvc.perform(get(<span class="string">"/hello"</span>).contentType(MediaType.APPLICATION_JSON_UTF8))</span><br><span class="line">                .andDo(print())</span><br><span class="line">                .andExpect(status().isOk());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>HttpHeaders.CONTENT_TYPE는 consumes로 바꿀 수 있고,<br>HttpHeaders.ACCEPT는 produces로 바꿀 수 있다.</p>
@@ -497,6 +517,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/24/Handler-Method/" rel="prev" title="Handler Method">
+                Handler Method <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -566,7 +590,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-count">36</span>
                     <span class="site-state-item-name">포스트</span>
                   </a>
                 </div>
@@ -597,7 +621,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">카테고리</span>
                   
                 </div>
@@ -660,7 +690,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#헤더와-매개변수-매핑하기"><span class="nav-number">1.</span> <span class="nav-text">헤더와 매개변수 매핑하기</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SampleController-java"><span class="nav-number">2.</span> <span class="nav-text">SampleController.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SampleControllerTest-java"><span class="nav-number">3.</span> <span class="nav-text">SampleControllerTest.java</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#커스텀-annotation"><span class="nav-number"></span> <span class="nav-text">커스텀 annotation</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-요청-메소드"><span class="nav-number">1.</span> <span class="nav-text">1. 요청 메소드</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-URI-패턴-매핑"><span class="nav-number">2.</span> <span class="nav-text">2. URI 패턴 매핑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-미디어-타입-매핑"><span class="nav-number">3.</span> <span class="nav-text">3. 미디어 타입 매핑</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#특정-타입의-데이터를-담고있는-요청만-처리"><span class="nav-number">3.1.</span> <span class="nav-text">특정 타입의 데이터를 담고있는 요청만 처리</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#특정-타입의-응답을-만드는-핸들러"><span class="nav-number">3.2.</span> <span class="nav-text">특정 타입의 응답을 만드는 핸들러</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-헤더와-매개변수-매핑하기"><span class="nav-number">4.</span> <span class="nav-text">4. 헤더와 매개변수 매핑하기</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SampleController-java"><span class="nav-number">5.</span> <span class="nav-text">SampleController.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SampleControllerTest-java"><span class="nav-number">6.</span> <span class="nav-text">SampleControllerTest.java</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#커스텀-annotation"><span class="nav-number"></span> <span class="nav-text">커스텀 annotation</span></a></li></div>
             
 
           </div>

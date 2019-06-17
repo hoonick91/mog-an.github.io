@@ -314,6 +314,898 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/16/Handler-Interceptor/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonghun.park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jjj's park">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/16/Handler-Interceptor/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">Handler Interceptor</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-05-16 08:18:33" itemprop="dateCreated datePublished" datetime="2019-05-16T08:18:33+09:00">2019-05-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2019-05-17 08:58:16" itemprop="dateModified" datetime="2019-05-17T08:58:16+09:00">2019-05-17</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/spring-framework/" itemprop="url" rel="index"><span itemprop="name">spring framework</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>HandlerMapping에서 interceptor를 추가해준다.</p>
+<p>요청 처리 전/후에 무언가 처리하고 싶으면 interceptor를 추가한다.</p>
+<ol>
+<li>preHandle 1</li>
+<li>preHandle 2</li>
+<li>요청처리</li>
+<li>postHandle 2</li>
+<li>postHandle 1 - 다음과 같이 역순으로 호출 된다.</li>
+<li>뷰 렌더링</li>
+<li>afterCompletion 2</li>
+<li>afterCompletion 1</li>
+</ol>
+<p>ServletFilter와의 차이점</p>
+<ul>
+<li>더 구체적이다.</li>
+<li>일반적인 기능을 구현할때 - ServletFilter</li>
+<li>Spring에 특화된 정보를 참고해야 한다. - HandlerInterceptor</li>
+<li>Xss attack<ul>
+<li>웹의 form에 다가 script를 넣어 해킹하는 방법 - ServletFilter</li>
+<li>Naver - LUCY XSS</li>
+</ul>
+</li>
+</ul>
+<p>HandlerInterceptor을 구현하기 위해서는 Interceptor java파일을 생성해야한다.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/16/Test와-Formatter/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonghun.park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jjj's park">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/16/Test와-Formatter/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">Test와 Formatter</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-05-16 00:02:31 / Updated at: 08:07:54" itemprop="dateCreated datePublished" datetime="2019-05-16T00:02:31+09:00">2019-05-16</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/spring-framework/" itemprop="url" rel="index"><span itemprop="name">spring framework</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="SampleController-java"><a href="#SampleController-java" class="headerlink" title="SampleController.java"></a>SampleController.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springfram...</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SampleController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">(@RequestParam(<span class="string">"name"</span>)</span> Person person)</span>&#123;</span><br><span class="line">        <span class="comment">//formatter의 역할을 name이라는 글자를 Person으로 넣어주는 것이다.</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello "</span> + person.getName();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="SampleControllerTest-java"><a href="#SampleControllerTest-java" class="headerlink" title="SampleControllerTest.java"></a>SampleControllerTest.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> me.jjjpark.demobootweb;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.runner.RunWith;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.test.context.SpringBootTest;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.context.junit4.SpringRunner;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.web.servlet.MockMvc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.jupiter.api.Assertions.*;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RunWith</span>(SpringRunner.class)</span><br><span class="line"><span class="comment">//@WebMvcTest //@Component 떄문에 다른걸 사용해야 한다.</span></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="meta">@AutoConfigureMockMvc</span> <span class="comment">//MockMvc가 자동을 등록되지 않으므로 추가</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SampleControllerTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    MockMvc mockMvc;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mockMvc.perform(get(<span class="string">"/hello"</span>)</span><br><span class="line">                .param(<span class="string">"name"</span>,<span class="string">"jjjpark"</span>)) <span class="comment">//queryString (name=jjjpark)</span></span><br><span class="line">                .andDo(print()) <span class="comment">//결과를 출력한다.</span></span><br><span class="line">                .andExpect(content().string(<span class="string">"hello jjjpark"</span>)); <span class="comment">//예상하는 결과</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="PersonFormatter-java"><a href="#PersonFormatter-java" class="headerlink" title="PersonFormatter.java"></a>PersonFormatter.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.format.Formatter;</span><br><span class="line">...</span><br><span class="line">  </span><br><span class="line"><span class="meta">@Component</span> <span class="comment">//Web과 관련된 bean이라고 인식 못하기떄문에 Test가 깨진다.(@WebMvcTest 때문에)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PersonFormatter</span> <span class="keyword">implements</span> <span class="title">Formatter</span>&lt;<span class="title">Person</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Person <span class="title">parse</span><span class="params">(String s, Locale locale)</span> <span class="keyword">throws</span> ParseException </span>&#123;</span><br><span class="line">        Person person = <span class="keyword">new</span> Person();</span><br><span class="line">        person.setName(s);</span><br><span class="line">        <span class="keyword">return</span> person;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">print</span><span class="params">(Person person, Locale locale)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> person.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Spring-data-JPA-이런게-있더라"><a href="#Spring-data-JPA-이런게-있더라" class="headerlink" title="Spring data JPA - 이런게 있더라~"></a>Spring data JPA - 이런게 있더라~</h3>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/03/설정 spring-untitled/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonghun.park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jjj's park">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/03/설정 spring-untitled/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">spring-untitled</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-05-03 07:50:00" itemprop="dateCreated datePublished" datetime="2019-05-03T07:50:00+09:00">2019-05-03</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2019-05-22 20:30:39" itemprop="dateModified" datetime="2019-05-22T20:30:39+09:00">2019-05-22</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/spring-framework/" itemprop="url" rel="index"><span itemprop="name">spring-framework</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>@Configruation은 annotation기반의 환경 구성을 돕는다. 예를 들어 @Bean을 사용할 수 있다. 이는 Spring Container가 Bean을 생성하고, Runtime에 Bean의 요청을 처리할 것을 선언한다. </p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/29/Gateway/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonghun.park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jjj's park">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/29/Gateway/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">Gateway</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-04-29 10:29:28 / Updated at: 18:58:16" itemprop="dateCreated datePublished" datetime="2019-04-29T10:29:28+09:00">2019-04-29</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/computer-science/" itemprop="url" rel="index"><span itemprop="name">computer science</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>두 컴퓨터가 네트워크 상에서 서로 연결되기 위해서는 같은 통신 프로토콜을 이용해야 한다. gateway는 이 통신 프로토콜을 적절히 변환해주는 변환기 역할을 한다. </p>
+<p>유/무선 공유기는 gateway이다. 공유기는 internet과 사용자의 컴퓨터를 연결시켜준다. </p>
+<p>같은 로컬 네트워크 구역에 연결하고자 하는 2대의 컴퓨터가 있다면, IP주소와 서브넷 마스크만 있어도 통신이 가능하다. 하지만 internet등 밖으로 나갈떄는 gateway도 있어야 한다.</p>
+<p>gateway주소도 ip주소처럼 고유한 값을 가져야 하는데, 일반적으로 ip주소중 끝자리만 다른 형태이다.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/26/가상화, 그리고 docker/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonghun.park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jjj's park">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/26/가상화, 그리고 docker/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">가상화, 그리고 docker</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-04-26 15:22:23" itemprop="dateCreated datePublished" datetime="2019-04-26T15:22:23+09:00">2019-04-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2019-04-27 12:37:32" itemprop="dateModified" datetime="2019-04-27T12:37:32+09:00">2019-04-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>가상머신은 성능상 너무 후지다.</li>
+<li>docker는 프로세스의 격리된 공간을 만들어 주는 도구이다.</li>
+<li>다양한 프로그램, 실행환경을 추상화하고, 동일한 인터페이스를 제공해 프로그램의 배포 및 관리를 단순하게 해준다.</li>
+</ul>
+<p>docker 역시 가상화 기술 중 하나인데 기존방식과는 다른점이 있다. 그렇다면 여기서 <u><strong>가상화</strong></u>는 무엇일까?</p>
+<ul>
+<li><p>가상화 : 기존의 서버하나에 하나의 application이 운영되었는데, 한 서버에 여러 application을 이용할수 있도록 하는 작업, 컴퓨터 리소스의 추상화를 일컫는다. </p>
+<p><img src="https://github.com/jjjpark/test/blob/master/Untitled%20Diagram.png?raw=true" alt="image"></p>
+</li>
+</ul>
+<ol>
+<li>처음에는 호스트 OS위에 게스트 OS 전체를 가상화 했다. 하지만 무겁고 느림</li>
+<li>KVM, Xen이 등장했지만 결국 OS를 설치하여 가상화 하는 방법이어서 성능문제가 발생</li>
+<li><strong>프로세스 격리하는 방식의 등장(Docker)</strong></li>
+</ol>
+<p>docker에서 중요한 개념은 바로 <u><strong>이미지</strong></u> 이다. 이미지는 컨테이너 실행에 필요한 파일과 설정값등을 포함하고 있다. 그리고 변하지 않는다.(Immutable)</p>
+<h3 id="가상화의-주요-용어"><a href="#가상화의-주요-용어" class="headerlink" title="가상화의 주요 용어"></a>가상화의 주요 용어</h3><ul>
+<li>호스트 시스템 : CPU, 메모리, HDD를 장착한 물리적인 시스템 자체</li>
+<li>가상화 운영체제(하이퍼 바이저) : 호스트 시스템 위에 설치되어 가상 머신들이 하드웨어 리소스를 공유하여 사용할 수 있게끔 스케줄링하는 일을 한다.</li>
+<li>가상머신 : 하이퍼바이저에 의해 생성된 가상 하드웨어를 말한다.</li>
+<li>게스트 운영체제 : 가상머신위에 설치된 운영체제를 말한다.</li>
+</ul>
+<h3 id="가상화의-기능"><a href="#가상화의-기능" class="headerlink" title="가상화의 기능"></a>가상화의 기능</h3><ul>
+<li>공유 : 다수의 가상자원들이 하나의 동일한 물리자원과 연결하는 것</li>
+<li>풀링 : 여러개의 물리적 자원으로 하나의 가상 자원을 만든다. (가상디스크??)</li>
+<li>에뮬레이션 : </li>
+<li>캡슐화</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/21/예외처리/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1292,922 +2184,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/31/SpringMVC-동작원리/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jonghun.park">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jjj's park">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/31/SpringMVC-동작원리/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">SpringMVC 동작원리</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">작성일</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2019-03-31 14:32:19" itemprop="dateCreated datePublished" datetime="2019-03-31T14:32:19+09:00">2019-03-31</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2019-04-18 23:38:43" itemprop="dateModified" datetime="2019-04-18T23:38:43+09:00">2019-04-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/spring-framework/" itemprop="url" rel="index"><span itemprop="name">spring framework</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Spring Boot</p>
-<p>Servlet 기반 application이다.</p>
-<ul>
-<li>init</li>
-<li>doGet, doPost</li>
-<li>destory<ul>
-<li>DispatcherServlet<ul>
-<li>초기화시 여러 인터페이스들을 이용한다. (빈을 찾아서 전략으로 사용한다.) 없다면 DispatcherServlet.properties에 있는 기본전략을 사용한다.</li>
-<li>web.xml이 없어도 구현이 가능하다.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>Servlet Container가 필요하다.</p>
-<ol>
-<li>요청이 DispatcherServlet으로 들어온다.</li>
-<li>interface전략을 사용해서 초기화한다.(각 요청에 대한 bean)</li>
-<li>handlerMapping을 이용하여 handler를 찾아준다.</li>
-<li>handlerAdapter를 이용하여 handlerMapping으로 찾아준 handler를 실행시켜준다.<ul>
-<li>이때 reflection을 이용하여 사용된다.</li>
-</ul>
-</li>
-</ol>
-<p>Spring boot를 사용하지 않으면 @Bean에 들어가는 메소드가 중요하다. 하지만 기본 @Bean이 없다면 DispatcherServlet.properties에 있는 설정들이 들어간다. ViewResolver같은 것을 스스로 등록해야한다. </p>
-<p>Spring boot를 사용하면, java application안에 imbedded tomcat에 servlet을 등록해준다. 기본적인 전략도 boot가 등록해준다. spring boot는 더 많은 것들을 기본 @Bean으로 등록해논다. 가령 ViewResolver와 같은 경우</p>
-<h2 id="HandlerMapping"><a href="#HandlerMapping" class="headerlink" title="HandlerMapping"></a>HandlerMapping</h2><blockquote>
-<h2 id="초기에-initHandlerMappings로-Bean에-등록된-모든-HandlerMapping을-가져온다"><a href="#초기에-initHandlerMappings로-Bean에-등록된-모든-HandlerMapping을-가져온다" class="headerlink" title="초기에 initHandlerMappings로 Bean에 등록된 모든 HandlerMapping을 가져온다."></a>초기에 initHandlerMappings로 Bean에 등록된 모든 HandlerMapping을 가져온다.</h2></blockquote>
-<p>handlerMapping이 등록된 클래스를 돌면서 RequestMappingHandlerMapping.getHandler(request)를 요청한다. 각 클래스(RequestMappingHandlerMapping -&gt; RequestMappingInfoHandlerMapping -&gt; AbstractHandlerMethodMapping<requestmappinginfo> -&gt; AbstractHandlerMapping)</requestmappinginfo></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="meta">@Nullable</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> HandlerExecutionChain <span class="title">getHandler</span><span class="params">(HttpServletRequest request)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">...</span><br><span class="line">		HandlerExecutionChain executionChain = getHandlerExecutionChain(handler, request);</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> HandlerExecutionChain <span class="title">getHandlerExecutionChain</span><span class="params">(Object handler, HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">		HandlerExecutionChain chain = (handler <span class="keyword">instanceof</span> HandlerExecutionChain ?</span><br><span class="line">				(HandlerExecutionChain) handler : <span class="keyword">new</span> HandlerExecutionChain(handler));</span><br><span class="line"></span><br><span class="line">		String lookupPath = <span class="keyword">this</span>.urlPathHelper.getLookupPathForRequest(request);</span><br><span class="line">		<span class="keyword">for</span> (HandlerInterceptor interceptor : <span class="keyword">this</span>.adaptedInterceptors) &#123;</span><br><span class="line">			<span class="keyword">if</span> (interceptor <span class="keyword">instanceof</span> MappedInterceptor) &#123;</span><br><span class="line">				MappedInterceptor mappedInterceptor = (MappedInterceptor) interceptor;</span><br><span class="line">				<span class="keyword">if</span> (mappedInterceptor.matches(lookupPath, <span class="keyword">this</span>.pathMatcher)) &#123;</span><br><span class="line">					chain.addInterceptor(mappedInterceptor.getInterceptor());</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				chain.addInterceptor(interceptor);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> chain;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<p>BeanFactory에 있는 interceptor들은 <code>this.adaptedInterceptors</code>에 들어있다. 이 인터셉터들이 사용자가 요청한 url과 맞는지 확인하여 맞으면 HandlerExceptionChain을 반환한다. 아마 Beanfactory에는 @Controller, @RequestMapping으로 만들어진 Bean들이 있을 것같다. 결국 반환된 HandlerExceptionChain은 DispatcherServlet에서 null인지 아닌지 최종 검사를 하게 되고, 다시 그 <code>HandlerExceptionChain.getHandler()</code> 로 반환된 값을 HandlerAdapter의 param으로 넘김다. </p>
-<p>여기 HandlerExceptionChain에 무언가 chain적인 비밀이 있는 것 같다.</p>
-<h2 id="HandlerAdapter"><a href="#HandlerAdapter" class="headerlink" title="HandlerAdapter"></a>HandlerAdapter</h2><blockquote>
-<p>초기에 Bean에 등록된 모든 HandlerAdapter을 가져온다.</p>
-</blockquote>
-<p>handlerAdapter중에 for문 돌면서 해당 요청에 대한 handlerMapping이용해 찾은 handler를 처리할 수 있는 HandlerAdapter을 찾고, 찾으면 handlerAdapter.handle를 호출한다. (<code>mv = ha.handle(processedRequest, response, mappedHandler.getHandler())</code>)</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/27/test/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jonghun.park">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jjj's park">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/27/test/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">test</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">작성일</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2019-03-27 19:18:44 / Updated at: 19:22:47" itemprop="dateCreated datePublished" datetime="2019-03-27T19:18:44+09:00">2019-03-27</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="/Users/bagjonghun/Desktop/my-blog/source/_posts/test/listenerAndFilter.png" alt="listenerAndFilter"></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/27/item8-equals를-재정의할-때는-일반-규약을-따르라/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jonghun.park">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jjj's park">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/27/item8-equals를-재정의할-때는-일반-규약을-따르라/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">item8. equals를 재정의할 때는 일반 규약을 따르라</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">작성일</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2019-03-27 10:43:59" itemprop="dateCreated datePublished" datetime="2019-03-27T10:43:59+09:00">2019-03-27</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2019-04-18 23:38:43" itemprop="dateModified" datetime="2019-04-18T23:38:43+09:00">2019-04-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/effective-java/" itemprop="url" rel="index"><span itemprop="name">effective java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>instance of</li>
-<li>getClass()</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/25/item6-유효기간이-지난-객체-참조는-폐기하라/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jonghun.park">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jjj's park">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/25/item6-유효기간이-지난-객체-참조는-폐기하라/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">item6. 유효기간이 지난 객체 참조는 폐기하라</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">작성일</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2019-03-25 11:17:38" itemprop="dateCreated datePublished" datetime="2019-03-25T11:17:38+09:00">2019-03-25</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2019-04-18 23:38:43" itemprop="dateModified" datetime="2019-04-18T23:38:43+09:00">2019-04-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/effective-java/" itemprop="url" rel="index"><span itemprop="name">effective java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>디스크 페이징</p>
-</li>
-<li><p>obsolete reference</p>
-</li>
-<li><h1 id="GC의-동작원리"><a href="#GC의-동작원리" class="headerlink" title="GC의 동작원리"></a>GC의 동작원리</h1><p>Stop-the-world : GC를 실행하기위해 다른 쓰레드들이 작업을 멈추는 것. 이 시간을 적게 하는 것이 성능을 나타낸다.</p>
-<p>GC는 2가지의 가설에 의해 설계 되었다.</p>
-<pre><code>1. 대부분의 객체는 금방 접근불가능상태가 된다. (객체의 유효기간이 짧다)
-2. 오래된 객체는 새로 생긴 객체 참조를 적게한다.
-</code></pre><p>그래서 <strong>HotSpot VM(JVM 종류 중 하나)</strong>에서는 Old, Young영역으로 물리적 공간이 나뉘어 있다.</p>
-</li>
-</ul>
-<h2 id="Young영역"><a href="#Young영역" class="headerlink" title="Young영역"></a>Young영역</h2><blockquote>
-<p>Eden, Survivor, Survivor</p>
-</blockquote>
-<pre><code>1. 새로생긴 객체는 eden에 저장된다.
-2. GC로 Eden에서 살아남은 객체는 Survivor에 저장된다. 
-3. 한쪽의 Survivor이 다 차면, 그 중 살아남은 객체는 다른 Survivor에 저장된다.
-4. 혹은 Old Generation으로 이동한다. 이때 다 차있었던 Survivor은 비어있는 상태가 된다.
-</code></pre>  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">HotSpot VM에서는 빠른 메모리 할당을 위해 2가지를 사용한다.</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; Bump-the-pointer, TLABs(Thread-Local-Allocation-Buffers)</span></span><br><span class="line"></span><br><span class="line">Bump-the-pointer는 stack처럼 새로운 객체가 할당될때, 맨위에 있는 마지막 객체를 추적해서 Eden에 새로운 객체가 할당될 수 있는지 없는지만 판단한다. 하지만 이는 단일 쓰레드 환경일 때이다. 멀티쓰레드 환경일때는 TLABs를 이용한다.</span><br><span class="line"></span><br><span class="line">멀티쓰레드 환경일때에는 Eden에 저장하려면 lock가 걸릴 수 밖에 없다. 이를 해결한 것이 TLABs이다. 각각의 Thread가 Eden의 덩어리를 갖게 하는 것인데.. 그럼 동기화는 어떻게 하는 걸까?</span><br></pre></td></tr></table></figure>
-<h2 id="Old영역에-대한-GC"><a href="#Old영역에-대한-GC" class="headerlink" title="Old영역에 대한 GC"></a>Old영역에 대한 GC</h2><blockquote>
-<p>기본적으로 데이터가 가득차면 GC를 실행한다. 방식은 5가지 방식이 있다.(JDK 7)</p>
-</blockquote>
-<ul>
-<li>Serial GC - mark-sweep-compact 알고리즘 사용 (코어 수가 적을때 적합)<ol>
-<li>살아있는 객체를 식별</li>
-<li>힙의 앞 부분부터 확인하여 살아있는것만 남긴다. </li>
-<li>살아남은 객체를 힙의 앞으로 쭉땡겨서 객체가 있는 부분과 없는 부분으로 나눈다.</li>
-</ol>
-</li>
-<li>Parallel GC - Serial GC랑 방식은 같으나 GC 쓰레드가 여러개이다. (코어가 많을때 유리)</li>
-<li>Parallel Old GC - ?</li>
-<li>Concurrent Mark &amp; Sweep GC<ol>
-<li><strong>클래스 로더</strong>에서 가까운 객체 중 살아있는 것을 찾는다. </li>
-</ol>
-</li>
-<li>G1(Garbage First) GC</li>
-</ul>
-<h3 id="Serial-GC"><a href="#Serial-GC" class="headerlink" title="Serial GC"></a>Serial GC</h3><ul>
-<li>사용하지 않는 참조들을 null로 바꾸면 GC는 반환해도 좋은 객체인지 판별할 수 있게 된다.</li>
-</ul>
-<ul>
-<li>Background thread</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/20/item3-private-생성자나-enum-자료형은-싱글턴-패턴을-따르도록-설계하라/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jonghun.park">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jjj's park">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/20/item3-private-생성자나-enum-자료형은-싱글턴-패턴을-따르도록-설계하라/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">item3 private 생성자나 enum 자료형은 싱글턴 패턴을 따르도록 설계하라</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">작성일</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2019-03-20 10:16:28" itemprop="dateCreated datePublished" datetime="2019-03-20T10:16:28+09:00">2019-03-20</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2019-04-18 23:38:43" itemprop="dateModified" datetime="2019-04-18T23:38:43+09:00">2019-04-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/effective-java/" itemprop="url" rel="index"><span itemprop="name">effective java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>Reflection</li>
-<li>Serializable</li>
-<li>Transient</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2255,7 +2231,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-count">36</span>
                     <span class="site-state-item-name">포스트</span>
                   </a>
                 </div>
@@ -2286,7 +2262,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">카테고리</span>
                   
                 </div>

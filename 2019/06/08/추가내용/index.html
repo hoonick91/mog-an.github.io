@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="ko">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="@JsonView 자신이 원하는 response 의 field만 리턴할 수 있게 해줌. 객체에 interface를 선언하고, 객체의 field의 값위위에 @JsonView를 사용하여 적용할 수 있다.  123456789101112131415161718192021222324252627282930313233343536@RestControllerpublic cl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="추가내용">
+<meta property="og:url" content="http://yoursite.com/2019/06/08/추가내용/index.html">
+<meta property="og:site_name" content="jjj&#39;s park">
+<meta property="og:description" content="@JsonView 자신이 원하는 response 의 field만 리턴할 수 있게 해줌. 객체에 interface를 선언하고, 객체의 field의 값위위에 @JsonView를 사용하여 적용할 수 있다.  123456789101112131415161718192021222324252627282930313233343536@RestControllerpublic cl">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2019-06-10T23:50:09.160Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="추가내용">
+<meta name="twitter:description" content="@JsonView 자신이 원하는 response 의 field만 리턴할 수 있게 해줌. 객체에 interface를 선언하고, 객체의 field의 값위위에 @JsonView를 사용하여 적용할 수 있다.  123456789101112131415161718192021222324252627282930313233343536@RestControllerpublic cl">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/06/08/추가내용/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>추가내용 | jjj's park</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="ko">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jjj's park</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>홈</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>카테고리</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>아카이브</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/08/추가내용/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonghun.park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jjj's park">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">추가내용
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">작성일</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-06-08 16:40:36" itemprop="dateCreated datePublished" datetime="2019-06-08T16:40:36+09:00">2019-06-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2019-06-11 08:50:09" itemprop="dateModified" datetime="2019-06-11T08:50:09+09:00">2019-06-11</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/spring-framework/" itemprop="url" rel="index"><span itemprop="name">spring framework</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="JsonView"><a href="#JsonView" class="headerlink" title="@JsonView"></a>@JsonView</h3><ul>
+<li>자신이 원하는 response 의 field만 리턴할 수 있게 해줌.</li>
+<li>객체에 interface를 선언하고, 객체의 field의 값위위에 @JsonView를 사용하여 적용할 수 있다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/user"</span>)</span><br><span class="line">    <span class="meta">@JsonView</span>(User.WithoutPasswordView.class)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">getUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> User(<span class="string">"eric"</span>, <span class="string">"7!jd#h23"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">WithoutPasswordView</span> </span>&#123;&#125;;</span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">WithPasswordView</span> <span class="keyword">extends</span> <span class="title">WithoutPasswordView</span> </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String username, String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.username = username;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@JsonView</span>(WithoutPasswordView.class)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUsername</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@JsonView</span>(WithPasswordView.class)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.password;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-httpentity" target="_blank" rel="noopener">https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-httpentity</a></p>
+<p>위의 코드처럼 Class에 2가지의 interface를 만들어 getter() method위에 @JsonView를 사용해서 선언을 하고, 선언한 class의 형태를 가진 getter() method의 field값만 반환한다.</p>
+<h3 id="ModelAttribute"><a href="#ModelAttribute" class="headerlink" title="@ModelAttribute"></a>@ModelAttribute</h3><p>먼저 @ModelAttribute에 대해 알아야한다. 2가지 역할이 있다.</p>
+<ol>
+<li>Method위에 붙을 때<ul>
+<li>model의 attribute를 추가할 수 있다.</li>
+</ul>
+</li>
+<li>Method의 argument로 붙을 때<ul>
+<li>argument의 이름이 Model의 의 이름과 일치한다. 즉 model로 부터 값을 argument의 이름고 같은 값을 가져올 때 사용한다.</li>
+</ul>
+</li>
+</ol>
+<p>여기서 말하고 싶은 추가적인 내용은 모든 요청을 실행할 때, model에 공통적인 데이터를 똑같이 넣어서 반환하는 귀찮음을 경험하게되는데 그런 귀찮음을 막아줄 수 있는 방법이다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//    자동으로 Model에 담아준다.</span></span><br><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/events/form/name"</span>)</span><br><span class="line"><span class="meta">@ModelAttribute</span> <span class="comment">// 생략가능</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Event <span class="title">eventsFormName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> Event();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//    요청에 해당하는 view이름의 view를 불러온다. RequestToViewNameTranslator가</span></span><br></pre></td></tr></table></figure>
+<h3 id="데이터바인더-InitBinder"><a href="#데이터바인더-InitBinder" class="headerlink" title="데이터바인더 @InitBinder"></a>데이터바인더 @InitBinder</h3><ul>
+<li><p>요청 매개변수(queryParam, formdata)에 쓰이는 데이터를 바인딩할때, 쓰는 바인더를 커스터마이징할 수 있다.</p>
+</li>
+<li><p>바인딩 설정 - 요청에서 들어오는 parmeter에서 원하는 값만 가져올 수 있다.</p>
+</li>
+<li><p>Formatter 지원</p>
+<p>webDataBinder.addCustomFormatter();</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Event</span> </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="meta">@DateTimeFormat</span>(iso = DateTimeFormat.ISO.DATE)</span><br><span class="line">  <span class="keyword">private</span> LocalDate startDate;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이는 위의 annotation을 이해하는 formatter가 이미 등록이 되어 있어서 해석할 수 있다.</p>
+<ul>
+<li>Validator 설정</li>
+<li>@InitBinder(“event”)를 주면 event model객체를 binding 받을 떄에만 InitBinder를 사용할 수 있다.</li>
+</ul>
+<h3 id="예외-처리-핸들러-ExceptionHandler"><a href="#예외-처리-핸들러-ExceptionHandler" class="headerlink" title="예외 처리 핸들러 @ExceptionHandler"></a>예외 처리 핸들러 @ExceptionHandler</h3><p>MVC에서 어떤 요청에 대해 에러가 발생했을때, 처리해주는 것…? 우리가 정의한 handler로 error를 처리한 후 결과값을 반환해준다. 보통 @ExceptionHandler, @InitBinder, @ModelAttribute를 묶어서 BaseController로 만들어 사용한다.</p>
+<p>Exception이 발생했을 때, 이를 처리하는 handler를 만들 수 있다. 그러나 보통 거의 다 만들어져 있어서, error에 대한 추가적인 message만 보낼 때 사용하는 듯하다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ExceptionHandler</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">eventErrorHandler</span><span class="params">(EventException exception , Model model)</span> </span>&#123;</span><br><span class="line">  model.addAttribute(<span class="string">"message"</span>, <span class="string">"event error"</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"error"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ExceptionHandler</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">runtimeErrorHandler</span><span class="params">(RuntimeException exception , Model model)</span> </span>&#123;</span><br><span class="line">  model.addAttribute(<span class="string">"message"</span>, <span class="string">"runtime  error"</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"error"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>둘 중 가장 구체적인 EventException이 매핑이 된다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ExceptionHandler</span>(&#123;EventException.class, RuntimeException.class&#125;)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">eventErrorHandler</span><span class="params">(RuntimeException exception , Model model)</span> </span>&#123;</span><br><span class="line">        model.addAttribute(<span class="string">"message"</span>, <span class="string">"event error"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"error"</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>2가지 error에도 적용할 수 있다.</p>
+<p>정리하자면 controller에서 throw Exception을 던지면 @ExceptionHandler로 돌아온다. 그리고 여기서 Exception에 대한 handling을 해줄 수 있다.</p>
+<p>RestAPI를 설계할때, error에 대한 message를 출력할 떄가 있으므로 다음과 같이 처리할 수 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ExceptionHandler</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ResponseEntity <span class="title">errorHandler</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> ResponseEntity.badRequest().body(<span class="string">"can't create event as ..."</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="전역컨트롤러-ControllerAdvice"><a href="#전역컨트롤러-ControllerAdvice" class="headerlink" title="전역컨트롤러 @ControllerAdvice"></a>전역컨트롤러 @ControllerAdvice</h3><ul>
+<li>@ExceptionHandler</li>
+<li>@InitBinder</li>
+<li>@ModelAttributes</li>
+</ul>
+<p>를 모든 컨트롤러에 적용하고 싶을때 사용한다.</p>
+<p>보통 BaseController(@ExceptionHandler, @InitBinder, @ModlerAttribute)를 만들고 이를 적용하고 싶은 Controller 혹은 모든 Controller에 적용할때 @ControllerAdvice를 사용한다.</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/24/Handler-Method/" rel="next" title="Handler Method">
+                <i class="fa fa-chevron-left"></i> Handler Method
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/12/docker를-이용한-elastic-stack-설치/" rel="prev" title="docker를 이용한 elastic stack 설치">
+                docker를 이용한 elastic stack 설치 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            목차
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            흝어보기
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">jonghun.park</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-name">포스트</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">카테고리</span>
+                  
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/jjjpark" title="GitHub &rarr; https://github.com/jjjpark" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:wecube.1@gmail.com" title="E-Mail &rarr; mailto:wecube.1@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JsonView"><span class="nav-number">1.</span> <span class="nav-text">@JsonView</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ModelAttribute"><span class="nav-number">2.</span> <span class="nav-text">@ModelAttribute</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#데이터바인더-InitBinder"><span class="nav-number">3.</span> <span class="nav-text">데이터바인더 @InitBinder</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#예외-처리-핸들러-ExceptionHandler"><span class="nav-number">4.</span> <span class="nav-text">예외 처리 핸들러 @ExceptionHandler</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#전역컨트롤러-ControllerAdvice"><span class="nav-number">5.</span> <span class="nav-text">전역컨트롤러 @ControllerAdvice</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jonghun.park</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v6.5.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
